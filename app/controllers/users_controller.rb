@@ -1,12 +1,15 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!
+    # authorize_resource :class => false
     
     def edit
         @user = User.find(params[:id])
+        authorize! :update, @user 
     end
     
     def update
         @user = User.find(params[:id])
+        authorize! :update, @user if current_user.id == @user.id
         if @user.update(user_params)
             redirect_to edit_user_path, notice: "User profile updated successfully"
         else

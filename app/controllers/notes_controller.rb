@@ -6,6 +6,8 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
+    @user = User.find(params[:user_id])
+    authorize! :update, @user 
     @notes = current_user.notes
   end
 
@@ -42,6 +44,7 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1
   # PATCH/PUT /notes/1.json
   def update
+    # authorize! :update, @user 
     respond_to do |format|
       if @note.update(note_params)
         format.html { redirect_to @note, notice: 'Note was successfully updated.' }

@@ -9,8 +9,11 @@ class Ability
         can :manage, :all
       elsif(user.user?)
         # can :read, :all
+        # can :update,User,:id => user.id
+        # can :edit,:user,:id => user.id
         can :update,User,:id => user.id
         can :read, User,:id => user.id
+        # can :update,User
         
         can [:read,:messages], Chat do |chat|
           user.chats.pluck(:id).include?(chat.id)
@@ -18,7 +21,8 @@ class Ability
         # can :message,Chat
         # can :manage,Note,:user_id => user.id
         # can :read,Note,
-        # can :crud,Note,:user_id => user.id
+        can :crud,Note,:user_id => user.id
+        # can :read,Note
         # can :create,Note,:user_id => user.id
         
       end
