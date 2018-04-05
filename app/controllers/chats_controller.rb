@@ -1,11 +1,12 @@
 class ChatsController < ApplicationController
   before_action :set_chat, only: [:message,:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  authorize_resource
 
   # GET /chats
   # GET /chats.json
   def index
-    @chats = Chat.all
+    @chats = current_user.chats
   end
 
   # GET /chats/1

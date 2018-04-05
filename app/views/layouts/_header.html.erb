@@ -28,6 +28,13 @@
             <a class="nav-link" href="<%= user_notes_path(current_user) %>">Notes</a>
           </li>
           
+          <li class="nav-item">
+            <a class="nav-link" href="<%= chats_path %>">Inbox</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= users_path %>">All Users</a>
+          </li>
+          
           <% if current_user.admin? %>
             <li class="nav-item">
               <a class="nav-link" href="<%= admin_path %>">Admin Dashboard</a>

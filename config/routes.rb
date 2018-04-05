@@ -2,7 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
-  resources :chats do
+  resources :chats, except: [:new,:edit,:update] do
     # member do
       # get 'message'
       post 'messages'

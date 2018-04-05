@@ -11,6 +11,11 @@ class Ability
         # can :read, :all
         can :update,User,:id => user.id
         can :read, User,:id => user.id
+        
+        can [:read,:messages], Chat do |chat|
+          user.chats.pluck(:id).include?(chat.id)
+        end
+        # can :message,Chat
         # can :manage,Note,:user_id => user.id
         # can :read,Note,
         # can :crud,Note,:user_id => user.id
