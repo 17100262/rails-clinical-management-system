@@ -1,0 +1,30 @@
+<div class="container">
+      <div class="row">
+          <h2>Users</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <!--<th>#</th>-->
+                  <th>Name</th>
+                  <th>User Type</th>
+                  <th>Email</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <% @users.each do |user| %>
+                      <tr>
+                          <td> <%= user.name %> </td>
+                          <td> <%= user.user_type %> </td>
+                          <td> <%= user.email %> </td>
+                          <td><%= link_to 'Start Chat', chats_path({user_id: user.id}),method: :post %></td>
+                      </tr>
+                  <% end %>
+                
+              </tbody>
+            </table>
+          </div>
+        <!--</main>-->
+      </div>
+    </div>

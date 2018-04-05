@@ -14,8 +14,23 @@ class UsersController < ApplicationController
         end
     end
     
+    def index
+        @users = User.all.where.not(id: current_user.id)
+    end
+    
+    def approve_user
+        @user = User.find(params[:user_id])
+        if @user.update(approved: params[:approved])
+            redirect_to admin_path,notice: "User has been updated successfully"
+        else
+            redirect_to admin_path,notice: "Something went wrong"
+        end
+    end
+    
     private
     def user_params
-        params.require(:user).permit(:name, :username,:phone_number,:identifier,:company_name,:linkedin_link,:githhub_link,:website_link,:portfolio,:other_link1,:other_link2,:other_link3,:experience)
+        params.require(:user).permit(:name,:gender,:about_me,:user_type,:organization,:profile_picture, :email)
     end
+    
+    
 end

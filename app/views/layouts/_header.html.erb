@@ -24,17 +24,17 @@
           <li class="nav-item">
             <a class="nav-link" href="<%= edit_user_path(current_user) %>">Profile</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= user_notes_path(current_user) %>">Notes</a>
+          </li>
           
-          <% if current_user.admin %>
+          <% if current_user.admin? %>
             <li class="nav-item">
               <a class="nav-link" href="<%= admin_path %>">Admin Dashboard</a>
             </li>
           <% end %>
           
         <% end %>
-      <!--<li class="nav-item">-->
-      <!--  <a class="nav-link disabled" href="#">Disabled</a>-->
-      <!--</li>-->
     </ul>
   </div>
 </nav>

@@ -1,0 +1,4 @@
+<%= form_for [@chat,@chat.messages.new],:remote => true do |f| %>
+    <%= f.text_area :content %>
+    <%= f.submit %>
+<% end %>

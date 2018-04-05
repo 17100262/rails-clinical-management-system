@@ -33,19 +33,12 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       # t.datetime :locked_at
 
       t.string :name
-      t.string :username
-      t.string :phone_number
-      t.string :identifier
-      t.string :company_name
-      t.string :linkedin_link
-      t.string :githhub_link
-      t.string :website_link
-      t.string :portfolio
-      t.string :other_link1
-      t.string :other_link2
-      t.string :other_link3
-      t.text :experience
-      t.boolean :admin, default: false
+      t.string :gender
+      t.text :about_me
+      t.string :user_type
+      t.string :organization
+      
+      t.integer :role, default: 0
 
       t.timestamps null: false
     end
