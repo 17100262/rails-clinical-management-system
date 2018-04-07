@@ -14,7 +14,7 @@ class User < ApplicationRecord
   
   has_many :notes, dependent: :destroy
   has_many :chat_subscribers,dependent: :destroy
-  has_many :chats, through: :chat_subscribers
+  has_many :chats, through: :chat_subscribers,dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :clinical_cases, dependent: :destroy
   has_many :message_notifications,dependent: :destroy
