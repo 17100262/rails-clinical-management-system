@@ -1,5 +1,29 @@
-<div id="messages" data-chat_id="<%=@chat.id %>">
-    <%= render @messages %>
+<div class="container-fluid container-top" style="">
+  <div class="container">
+    <div id="messages" class="small-chat-box active" data-chat_id="<%=@chat.id %>">
+    
+        <div class="heading" draggable="true">
+           <%= @chat.chat_subscribers.where.not(user_id: current_user.id).first.user.name %>
+         
+        </div>
+    
+        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 60vh;">
+            <div class="content" style="overflow-y: scroll; width: auto; height: 60vh;">
+                <%#= render @messages %>
+                <% @messages.each do |msg| %>
+                    <div class=<%= (msg.user_id==current_user.id) ? "right":"left" %>>
+                        <%= render partial: 'messages/message', locals: {message: msg} %>
+                    </div>
+                <% end %>
+           
+            </div>
+            <div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 164.928px;"></div>
+            <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.4; z-index: 90; right: 1px;"></div>
+            
+        </div>
+        <%= render 'messages/form' %>
+        
+    
+    </div>
 </div>
-<%= render 'messages/form' %>
-<%= link_to 'Back', chats_path %>
+</div>

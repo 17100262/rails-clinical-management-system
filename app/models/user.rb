@@ -12,10 +12,12 @@ class User < ApplicationRecord
   has_attached_file :profile_picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :profile_picture, content_type: /\Aimage\/.*\z/
   
-  has_many :notes
+  has_many :notes, dependent: :destroy
   has_many :chat_subscribers,dependent: :destroy
   has_many :chats, through: :chat_subscribers
   has_many :messages, dependent: :destroy
+  has_many :clinical_cases, dependent: :destroy
+  has_many :message_notifications,dependent: :destroy
   
   enum role: [:user,:admin,:moderator]
   

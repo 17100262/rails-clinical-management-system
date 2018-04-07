@@ -1,0 +1,58 @@
+<h2> Edit Profile</h2>
+<br>
+<%= form_for @user do |f| %>
+    <div class="form-group row">
+        <%= f.label :name, :class => "col-2 col-form-label" %> <br />
+        <div class="col-10">
+            <%= f.text_field :name, :class => 'form-control' %><br />
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <%= f.label :gender, :class => "col-2 col-form-label" %> <br />
+        <div class="col-10">
+            <%#= f.text_field :gender, :class => 'form-control' %>
+            <%= f.select(:gender, ["Male","Female"], { prompt: "Please Select Gender" }) %><br />
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <%= f.label :about_me, :class => "col-2 col-form-label" %> <br />
+        <div class="col-10">
+            <%= f.text_area :about_me, :class => 'form-control' %><br />
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <%= f.label :user_type, :class => "col-2 col-form-label" %> <br />
+        <div class="col-10">
+            <%#= f.text_field :user_type, :class => 'form-control' %><br />
+            <%= f.select(:user_type, ["Medic","Researcher","Other"], { prompt: "Please Select User Type" }) %><br />
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <%= f.label :organization, :class => "col-2 col-form-label" %> <br />
+        <div class="col-10">
+            <%= f.text_field :organization, :class => 'form-control' %><br />
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <%= f.label :profile_picture, :class => "col-2 col-form-label" %> <br />
+        <div class="col-10">
+            <%= f.file_field :profile_picture, :class => 'form-control' %><br />
+        </div>
+        <%= image_tag(@user.profile_picture.url(:thumb) ) if @user.persisted? and @user.profile_picture.exists? %>
+    </div>
+    
+    <div class="form-group row">
+        <%= f.label :email, :class => "col-2 col-form-label" %> <br />
+        <div class="col-10">
+            <%= f.text_field :email, :class => 'form-control' %><br />
+        </div>
+    </div>
+    
+    
+    <%= f.submit "Update" %>
+<% end %>

@@ -1,0 +1,289 @@
+<div class="container-fluid container-top" style="">
+  <div class="container">
+    <div class="row">
+     <div class="col-md-offset-2 col-md-8">
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <table class="footable table table-stripped toggle-arrow-tiny default breakpoint footable-loaded">
+               
+                <tbody>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Date of Birth:</td>
+                    <td class="footable-visible"><%= @clinical_case.date_of_birth %></td>
+                   
+                </tr>
+                 <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Date of Diagnostic:</td>
+                <td class="footable-visible"><%= @clinical_case.date_of_diagnostic %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Histology Type:</td>
+                <td class="footable-visible"><%= @clinical_case.histology_type %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Histology Level:</td>
+                <td class="footable-visible"><%= @clinical_case.histology_level %></td>
+                   
+                </tr>
+                 <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Estrogen Receptor:</td>
+                <td class="footable-visible"><%= @clinical_case.estrogen_receptors %></td>
+                   
+                </tr>
+                 <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Progesterone Receptors:</td>
+                <td class="footable-visible"><%= @clinical_case.progesterone_receptors %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>KI67:</td>
+                <td class="footable-visible"><%= @clinical_case.ki67 %></td>
+                   
+                </tr>
+                 <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Estadiamento Clinico:</td>
+                <td class="footable-visible"><%= @clinical_case.estadiamento_clinico %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Neoadjuvant Systemic Treatement:</td>
+                <td class="footable-visible"><%= @clinical_case.neoadjuvant_systemic_treatment %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Surgery Date:</td>
+                <td class="footable-visible"><%= @clinical_case.surgery_date %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Surgery Type:</td>
+                <td class="footable-visible"><%= @clinical_case.surgery_type %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Sentinel Ganglion:</td>
+                <td class="footable-visible"><%= @clinical_case.sentinel_ganglion %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Axillary Emptying:</td>
+                <td class="footable-visible"> <%= @clinical_case.axillary_emptying %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Adjuvent Chemotherapy:</td>
+                <td class="footable-visible"> <%= @clinical_case.adjuvant_chemotherapy %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Adjuvent Hormone Therapy Duration:</td>
+                <td class="footable-visible"> <%= @clinical_case.adjuvant_hormone_therapy_duration %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Adjuvent Hormone Therapy Treatement:</td>
+                <td class="footable-visible"> <%= @clinical_case.adjuvant_hormone_therapy_treatment %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Date of IPO Discharge:</td>
+                <td class="footable-visible"> <%= @clinical_case.date_of_ipo_discharge %></td>
+                
+                
+                
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Date of 1st Follow up at MGF:</td>
+                <td class="footable-visible"> <%= @clinical_case.first_follow_up_at_mgf %></td>
+                   
+                </tr>
+                
+                <tr class="footable-even" style="">
+                    <td colspan="2" class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span><h2 style="text-align: center">Date of imaging control </h2></td>
+                   
+                </tr>
+                <% @clinical_case.imaging_controls.each do |casee| %>
+                    
+                    <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Date</td>
+                    <td class="footable-visible"> <%= casee.date_of_imaging %></td>
+                   
+                    <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Mammography</td>
+                    <td class="footable-visible"> <%= casee.mammography ? "Yes":"No" %></td>
+                    </tr>
+                    
+                    <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Eco Breast</td>
+                    <td class="footable-visible"> <%= casee.eco_breast ? "Yes":"No" %></td>
+                    </tr>
+                    
+                    <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Result</td>
+                    <td class="footable-visible"> <%= casee.result %></td>
+                    </tr>
+                    
+                <% end %>
+                
+                <tr class="footable-even" style="">
+                    <td colspan="2" class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span><h2 style="text-align: center">Date of suspected recurrence </h2></td>
+                        
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Local recurrence:</td>
+                <td class="footable-visible"> <%= @clinical_case.date_of_suspected_recurrence_local_recurrence %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Collateral breast cancer:</td>
+                <td class="footable-visible"> <%= @clinical_case.date_of_suspected_recurrence_collateral_breast_cancer %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Distance metastasis:</td>
+                <td class="footable-visible"> <%= @clinical_case.date_of_suspected_recurrence_distance_metastasis %></td>
+                   
+                </tr>
+                
+                 <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Second neoplasm:</td>
+                <td class="footable-visible"><%= @clinical_case.date_of_suspected_recurrence_second_neoplasm %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column"></td>
+                     <td class="footable-visible"></td>
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Date of confirmation of recurrence (PFS):</td>
+                <td class="footable-visible"><%= @clinical_case.date_of_confirmation_of_recurrence %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Global survival:</td>
+                <td class="footable-visible"><%= @clinical_case.global_survival %></td>
+                   
+                </tr>
+                 <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Specif breast cancer survival:</td>
+                <td class="footable-visible"><%= @clinical_case.Specif_breast_cancer_survival %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Last contact or death:</td>
+                <td class="footable-visible"><%= @clinical_case.last_contact_or_death %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Death cause (oncologic vs no oncologic):</td>
+                <td class="footable-visible"><%= @clinical_case.death_cause %></td>
+                   
+                </tr>
+                
+                <tr class="footable-even" style="">
+                    <td colspan="2" class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span><h2 style="text-align: center">Satisfaction survey record </h2></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td colspan="2" class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span><h3 style="text-align: center">At discharge</h3></td>
+                   
+                </tr>
+                
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Text:</td>
+                <td class="footable-visible"><%= @clinical_case.satisfaction_survey_record_discharge_text %></td>
+                   
+                </tr>
+                
+                 <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>File:</td>
+                <td class="footable-visible"><a href=<%= @clinical_case.satisfaction_survey_record_discharge.url %>> File </a></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td colspan="2" class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span><h3 style="text-align: center">After 1st follow-up</h3></td>
+                   
+                </tr>
+                
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Text:</td>
+                <td class="footable-visible"><%= @clinical_case.satisfaction_survey_record_first_text %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>File:</td>
+                <td class="footable-visible"><a href=<%=@clinical_case.satisfaction_survey_record_first.url %>> File </a></td>
+                   
+                </tr>
+                
+               <tr class="footable-even" style="">
+                    <td colspan="2" class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span><h3 style="text-align: center">Next Ones</h3></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Text:</td>
+                <td class="footable-visible"><%= @clinical_case.satisfaction_survey_record_next_text %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>File:</td>
+                <td class="footable-visible"><a href=<%=@clinical_case.satisfaction_survey_record_next.url%>> File </a></td>
+                   
+                </tr>
+            </table>
+            <%= link_to 'Edit', edit_clinical_case_path(@clinical_case) %> |
+            <%= link_to 'Back', clinical_cases_path %>
+
+        </div>
+    </div>
+</div>
+ </div>
+</div>
+</div>

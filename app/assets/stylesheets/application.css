@@ -12,8 +12,29 @@
  *
  *= require_tree .
  *= require_self
+ *= require toastr
+ *= require_custom
  */
  
- body {
-     margin-top: 69px;
+ .navbar{
+  margin-bottom:0 !important;
+  border-bottom:1px solid #676a6c !important;
+ }
+ .container-top{
+  background:#f5f5f5; min-height:85vh;
+ }
+ .container-top .container{
+  padding:30px 0;
+ }
+ 
+ .notes i{
+  color: #fff !important;
+ }
+ 
+ .page-heading h2{
+  margin-top: 10px !important;
+  margin-bottom: 0 !important;
+ }
+ .page-heading{
+  padding-bottom: 10px !important;
  }

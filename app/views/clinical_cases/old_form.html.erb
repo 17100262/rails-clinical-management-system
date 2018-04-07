@@ -1,0 +1,304 @@
+<%= form_with(model: clinical_case, local: true) do |form| %>
+  <% if clinical_case.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(clinical_case.errors.count, "error") %> prohibited this clinical_case from being saved:</h2>
+
+      <ul>
+      <% clinical_case.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+     
+    </div>
+    
+  <% end %>
+  <div class="container">
+  <div class="field">
+      <%= form.label :date_of_birth %> <br>
+      <%= form.date_field :date_of_birth %>
+      
+  </div>
+  <div class="field">
+      <%= form.label :date_of_diagnostic %> <br>
+      <%= form.date_field :date_of_diagnostic %>
+      
+  </div>
+  <div class="field">
+      <%= form.label :histology_type %> <br>
+      
+      <%= form.radio_button :histology_type,"Ductal",:value => "Ductal" %>
+      <%= form.label :histology_type, "Ductal", :value => "Ductal"  %><br>
+      
+      <%= form.radio_button :histology_type,"Lobular",:value => "Lobular" %>
+      <%= form.label :histology_type, "Lobular", :value => "Lobular"  %><br>
+      
+      <%= form.radio_button :histology_type,"Outro",:value => "Outro" %>
+      <%= form.label :histology_type, "Outro", :value => "Outro"  %><br>
+      
+  </div>
+  <div class="field">
+      <%= form.label :histology_level %> <br>
+      
+      <%= form.radio_button :histology_level,1,:value => 1 %>
+      <%= form.label :histology_level, "1", :value => 1  %><br>
+      
+      <%= form.radio_button :histology_level,2,:value => 2 %>
+      <%= form.label :histology_level, "2", :value => 2  %><br>
+      
+      <%= form.radio_button :histology_level,3,:value => 3 %>
+      <%= form.label :histology_level, "3", :value => 3  %><br>
+      
+  </div>
+  
+  <div class="field">
+      <%= form.label :estrogen_receptors %> <br>
+      
+      <%= form.radio_button :estrogen_receptors,"positives",:value => "positives" %>
+      <%= form.label :estrogen_receptors, "positives", :value => "positives"  %><br>
+      
+      <%= form.radio_button :estrogen_receptors,"negatives",:value => "negatives" %>
+      <%= form.label :estrogen_receptors, "negatives", :value => "negatives"  %><br>
+      
+      <%= form.radio_button :estrogen_receptors,"unknown",:value => "unknown" %>
+      <%= form.label :estrogen_receptors, "unknown", :value => "unknown"  %><br>
+      
+  </div>
+  
+  <div class="field">
+      <%= form.label :progesterone_receptors %> <br>
+      
+      <%= form.radio_button :progesterone_receptors,"positives",:value => "positives" %>
+      <%= form.label :progesterone_receptors, "positives", :value => "positives"  %><br>
+      
+      <%= form.radio_button :progesterone_receptors,"negatives",:value => "negatives" %>
+      <%= form.label :progesterone_receptors, "negatives", :value => "negatives"  %><br>
+      
+      <%= form.radio_button :progesterone_receptors,"unknown",:value => "unknown" %>
+      <%= form.label :progesterone_receptors, "unknown", :value => "unknown"  %><br>
+      
+  </div>
+  <div class="field">
+      <%= form.label :her2 %> <br>
+      
+      <%= form.radio_button :her2,"positive",:value => "positive" %>
+      <%= form.label :her2, "positive", :value => "positive"  %><br>
+      
+      <%= form.radio_button :her2,"negative",:value => "negative" %>
+      <%= form.label :her2, "negative", :value => "negative"  %><br>
+      
+  </div>
+  <div class="field">
+      <%= form.label :ki67 %> <br>
+      <%= form.number_field :ki67%>
+    
+  </div>
+  
+  <div class="field">
+      <%= form.label :estadiamento_clinico %> <br>
+      <%= form.text_area :estadiamento_clinico %>
+    
+  </div>
+  
+  <div class="field">
+    
+    <%= form.label :neoadjuvant_systemic_treatment %> <br>
+    
+    <%= form.radio_button :neoadjuvant_systemic_treatment,"QT",:value => "QT" %>
+    <%= form.label :neoadjuvant_systemic_treatment, "QT", :value => "QT"  %><br>
+    
+    <%= form.radio_button :neoadjuvant_systemic_treatment ,"HT",:value => "HT" %>
+    <%= form.label :neoadjuvant_systemic_treatment , "HT", :value => "HT"  %><br>
+    
+    <%= form.radio_button :neoadjuvant_systemic_treatment ,"RT",:value => "RT" %>
+    <%= form.label :neoadjuvant_systemic_treatment , "RT", :value => "RT"  %><br>
+  
+    
+  </div>
+  
+  <div class="field">
+    <%= form.label :surgery_date %> <br>
+    <%= form.date_field :surgery_date %>
+  </div>
+  
+  <div class="field">
+    
+    <%= form.label :surgery_type %> <br>
+    
+    <%= form.radio_button :surgery_type,"Tumorectomia",:value => "Tumorectomia" %>
+    <%= form.label :surgery_type, "Tumorectomia", :value => "Tumorectomia"  %><br>
+    
+    <%= form.radio_button :surgery_type ,"Mastectomia",:value => "Mastectomia" %>
+    <%= form.label :surgery_type , "Mastectomia", :value => "Mastectomia"  %><br>
+  
+    
+  </div>
+  
+  <div class="field">
+    
+    <%= form.label :sentinel_ganglion %> <br>
+    
+    <%= form.radio_button :sentinel_ganglion,"Yes",:value => "Yes" %>
+    <%= form.label :sentinel_ganglion, "Yes", :value => "Yes"  %><br>
+    
+    <%= form.radio_button :sentinel_ganglion ,"No",:value => "No" %>
+    <%= form.label :sentinel_ganglion , "No", :value => "No"  %><br>
+  </div>
+  
+  <div class="field">
+    
+    <%= form.label :axillary_emptying %> <br>
+    
+    <%= form.radio_button :axillary_emptying,"Yes",:value => "Yes" %>
+    <%= form.label :axillary_emptying, "Yes", :value => "Yes"  %><br>
+    
+    <%= form.radio_button :axillary_emptying ,"No",:value => "No" %>
+    <%= form.label :axillary_emptying , "No", :value => "No"  %><br>
+  </div>
+  
+  <div class="field">
+    
+    <%= form.label :adjuvant_chemotherapy %> <br>
+    
+    <%= form.radio_button :adjuvant_chemotherapy,"Yes",:value => "Yes" %>
+    <%= form.label :adjuvant_chemotherapy, "Yes", :value => "Yes"  %><br>
+    
+    <%= form.radio_button :adjuvant_chemotherapy ,"No",:value => "No" %>
+    <%= form.label :adjuvant_chemotherapy , "No", :value => "No"  %><br>
+  </div>
+  
+  <div class="field">
+    
+    <%= form.label :adjuvant_radiotherapy %> <br>
+    
+    <%= form.radio_button :adjuvant_radiotherapy,"Yes",:value => "Yes" %>
+    <%= form.label :adjuvant_radiotherapy, "Yes", :value => "Yes"  %><br>
+    
+    <%= form.radio_button :adjuvant_radiotherapy ,"No",:value => "No" %>
+    <%= form.label :adjuvant_radiotherapy , "No", :value => "No"  %><br>
+  </div>
+  <hr>
+  <div class="field">
+    
+    
+    <h2>Adjuvent Hormone Therapy</h2><br>
+    
+    <%= form.label :duration %><br>
+    <%= form.number_field :adjuvant_hormone_therapy_duration %><br>
+    
+    <%= form.label :treatment %><br>
+    <%= form.radio_button :adjuvant_hormone_therapy_treatment ,"Tamoxifeno",:value => "Tamoxifeno" %>
+    <%= form.label :adjuvant_hormone_therapy_treatment , "Tamoxifeno", :value => "Tamoxifeno"  %><br>
+    
+    <%= form.radio_button :adjuvant_hormone_therapy_treatment ,"Inhibitor Aromatase",:value => "Inhibitor Aromatase" %>
+    <%= form.label :adjuvant_hormone_therapy_treatment , "Inhibitor Aromatase", :value => "Inhibitor Aromatase"  %><br>
+    
+    <%= form.radio_button :adjuvant_hormone_therapy_treatment ,"Goserelina",:value => "Goserelina" %>
+    <%= form.label :adjuvant_hormone_therapy_treatment , "Goserelina", :value => "Goserelina"  %><br>
+  </div>
+  
+  <div class="field">
+    <%= form.label "Date of IPO discharge"  %><br>
+    <%= form.date_field :date_of_ipo_discharge %><br>
+  </div>
+  
+  <div class="field">
+    <%= form.label "Date of first follow up at MGF"  %><br>
+    <%= form.date_field :first_follow_up_at_mgf %><br>
+  </div>
+  
+  <hr>
+  <h2>Date of imaging control </h2>
+  <div id="imaging_controls">
+    <%= form.fields_for :imaging_controls do |ff| %>
+        <%= render 'imaging_control_fields', f: ff %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'Add Imaging control', form, :imaging_controls %>
+    </div>
+  </div>
+  
+  <hr>
+  <div class="field">
+    <h2>Date of Suspected Recurrence</h2><br>
+    
+    <%= form.label "Local Recurrence"  %><br>
+    <%= form.date_field :date_of_suspected_recurrence_local_recurrence %><br>
+    
+    <%= form.label :collateral_breast_cancer  %><br>
+    <%= form.date_field :date_of_suspected_recurrence_collateral_breast_cancer %><br>
+    
+    <%= form.label :collateral_breast_cancer  %><br>
+    <%= form.date_field :date_of_suspected_recurrence_distance_metastasis %><br>
+    
+    <%= form.label :second_neoplasm  %><br>
+    <%= form.date_field :date_of_suspected_recurrence_second_neoplasm %><br>
+  </div>
+  <hr>
+  <div class="field">
+     <%= form.label :date_of_confirmation_of_recurrence  %><br>
+    <%= form.date_field :date_of_confirmation_of_recurrence %><br>
+  </div>
+  
+  <div class="field">
+    <%= form.label :global_survival %> <br>
+    <%= form.text_area :global_survival %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :Specif_breast_cancer_survival %> <br>
+    <%= form.text_area :Specif_breast_cancer_survival %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :last_contact_or_death %> <br>
+    <%= form.text_area :last_contact_or_death %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :death_cause %> <br>
+    <%= form.text_area :death_cause %>
+  </div>
+  <hr>
+  
+  <h2>Satisfaction survey record</h2>
+  
+  <h3> At Discharge</h3>
+  <div class="field">
+    <%#= form.label :at_discharge %>
+    <%= form.text_area :satisfaction_survey_record_discharge_text %>
+    <%= form.file_field :satisfaction_survey_record_discharge %>
+    
+  </div>
+  
+  <h3> After 1st follow-up </h3>
+  <div class="field">
+    <%#= form.label :at_discharge %>
+    <%= form.text_area :satisfaction_survey_record_first_text %>
+    <%= form.file_field :satisfaction_survey_record_first %>
+    
+  </div>
+  
+  <h3> Next ones</h3>
+  <div class="field">
+    <%#= form.label :at_discharge %>
+    <%= form.text_area :satisfaction_survey_record_next_text %>
+    <%= form.file_field :satisfaction_survey_record_next %>
+    
+  </div>
+  
+  
+      <!--:satisfaction_survey_record_discharge_text-->
+      <!--:satisfaction_survey_record_discharge-->
+      
+      <!--:satisfaction_survey_record_first_text-->
+      <!--:satisfaction_survey_record_first-->
+      
+      <!--:satisfaction_survey_record_next_text-->
+      <!--:satisfaction_survey_record_next-->
+      
+
+  <div class="actions">
+    <%= form.submit "Submit Case" %>
+  </div>
+  </div>
+<% end %>

@@ -1,2 +1,9 @@
-<%= message.user.email %> says: <%= message.content  %> <br>
-<%= time_ago_in_words(message.created_at) %> ago <br>
+
+    <div class="author-name">
+        <%= message.user.name %> <small class="chat-date">
+        <%= time_ago_in_words(message.created_at) %> ago
+    </small>
+    </div>
+    <div class="chat-message active">
+        <%= message.content  %>
+    </div>

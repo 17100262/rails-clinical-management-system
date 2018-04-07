@@ -62,3 +62,7 @@ gem 'omniauth-twitter'
 gem 'paperclip'
 gem "cancancan"
 gem 'sidekiq'
+gem "cocoon"
+gem 'faker'
+gem 'chartjs-ror'
+gem 'toastr-rails'

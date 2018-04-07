@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Freelance</title>
+    <title>Clinical Management System</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -18,11 +20,13 @@
         </div>
       <% end %>
       <% unless params[:controller]=='home' && params[:action]=='admin' %>
-      <div class="container">
-      <% end %>  
+          
+      <% end %>
+      <div class="main" style="min-height:85vh;">
         <%= yield %>
-    <% unless params[:controller]=='home' && params[:action]=='admin' %>
       </div>
+    <% unless params[:controller]=='home' && params[:action]=='admin' %>
+
     <% end %>
       <%= render 'layouts/footer' %>
     

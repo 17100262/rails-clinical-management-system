@@ -1,5 +1,514 @@
-hello world
-asdas
-saddddddddddddd
-asdddddddddddd
-asddddddddddddd
+<div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-10">
+                <h2>Charts</h2>
+                
+            </div>
+            <div class="col-lg-2">
+
+            </div>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Line Chart Example
+                                <small>With custom colors.</small>
+                            </h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <% data = {
+                                  labels: ClinicalCase.group("date_trunc('month', date_of_birth)").count.sort.to_h.keys.map{|d| d.strftime("%B,%Y")},
+                                  datasets: [
+                                    {
+                                        label: "Date of Birth",
+                                        backgroundColor: "rgba(220,220,220,0.2)",
+                                        borderColor: "rgba(220,220,220,1)",
+                                        data: ClinicalCase.group("date_trunc('month', date_of_birth)").count.sort.to_h.values
+                                    }
+                                    # ,
+                                    # {
+                                    #     label: "Date of Diagnostic",
+                                    #     backgroundColor: "rgba(151,187,205,0.2)",
+                                    #     borderColor: "rgba(151,187,205,1)",
+                                    #     data: ClinicalCase.group("date_trunc('month', date_of_diagnostic)").count.sort.to_h.values
+                                    # }
+                                  ]
+                                }
+                                options = { 
+                                    height: 140
+                                    } %>
+                                <%= line_chart data, options %>
+                                <!--<canvas id="lineChart" height="140"></canvas>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Histology Type</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <%
+                                    barData = {
+                                             labels: ClinicalCase.all.group(:histology_type).count.keys,
+                                             datasets: [
+                                                 
+                                                 {
+                                                     label: "N",
+                                                     backgroundColor: 'rgba(26,179,148,0.5)',
+                                                     borderColor: "rgba(26,179,148,0.7)",
+                                                     pointBackgroundColor: "rgba(26,179,148,1)",
+                                                     pointBorderColor: "#fff",
+                                                     data: [16, 19, 16]
+                                                 }
+                                             ]
+                                         };
+                                    
+                                         barOptions = {
+                                             responsive: true,
+                                             height: 140,
+                                             scales: {
+                                                yAxes: [{
+                                                    display: true,
+                                                    ticks: {
+                                                        suggestedMin: 0   
+                                                    }
+                                                }]
+                                            }
+                                            
+                                            
+                                         }
+                                %>
+                                <!--<canvas id="barChart" height="140"></canvas>-->
+                                <%= bar_chart barData, barOptions %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Histology Level</h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <div class="text-center">
+                                <!--<canvas id="polarChart" height="140"></canvas>-->
+                                <%
+                                    polarData = {
+                                        datasets: [{
+                                            data: ClinicalCase.all.group(:histology_level).count.sort.to_h.values,
+                                            backgroundColor: [
+                                                "#a3e1d4", "#dedede", "#b5b8cf"
+                                            ],
+                                            label: [
+                                                "My Radar chart"
+                                            ]
+                                        }],
+                                        labels: ClinicalCase.all.group(:histology_level).count.sort.to_h.keys
+                                    }
+                                    
+                                    polarOptions = {
+                                        segmentStrokeWidth: 2,
+                                        responsive: true,
+                                        height: 200,
+                                        scale: {
+                                        #   reverse: false,
+                                          ticks: {
+                                            min: 0,
+                                            max: ClinicalCase.count
+                                          }
+                                        }
+                                        
+                                    }
+
+                                %>
+                                <%= polar_area_chart polarData,polarOptions %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Surgery Type </h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <!--<canvas id="doughnutChart" height="140"></canvas>-->
+                                <%
+                                    surgery_type_data = {
+                                        labels: ClinicalCase.all.group(:surgery_type).count.sort.to_h.keys,
+                                         datasets: [{
+                                             data: ClinicalCase.all.group(:surgery_type).count.sort.to_h.values,
+                                             backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
+                                         }]
+                                     } ;
+                                
+                                
+                                    surgery_type_options = {
+                                        responsive: true,
+                                        height: 140
+                                    };
+                                    
+
+                                %>
+                                <%= doughnut_chart surgery_type_data,surgery_type_options %>
+                                
+
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Estrogen Receptors</h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <div class="text-center">
+                                <!--<canvas id="polarChart" height="140"></canvas>-->
+                                <%
+                                    surgery_type_data = {
+                                        labels: ClinicalCase.all.group(:estrogen_receptors).count.sort.to_h.keys,
+                                         datasets: [{
+                                             data: ClinicalCase.all.group(:estrogen_receptors).count.sort.to_h.values,
+                                             backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
+                                         }]
+                                     } ;
+                                
+                                
+                                    surgery_type_options = {
+                                        responsive: true,
+                                        height: 140
+                                    };
+                                    
+
+                                %>
+                                <%= doughnut_chart surgery_type_data,surgery_type_options %>
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Progesterone Receptors </h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <!--<canvas id="doughnutChart" height="140"></canvas>-->
+                                <%
+                                    surgery_type_data = {
+                                        labels: ClinicalCase.all.group(:progesterone_receptors).count.sort.to_h.keys,
+                                         datasets: [{
+                                             data: ClinicalCase.all.group(:progesterone_receptors).count.sort.to_h.values,
+                                             backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
+                                         }]
+                                     } ;
+                                
+                                
+                                    surgery_type_options = {
+                                        responsive: true,
+                                        height: 140
+                                    };
+                                    
+
+                                %>
+                                <%= doughnut_chart surgery_type_data,surgery_type_options %>
+                                
+
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>HER2</h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <div class="text-center">
+                                <!--<canvas id="polarChart" height="140"></canvas>-->
+                                <%
+                                    surgery_type_data = {
+                                        labels: ClinicalCase.all.group(:her2).count.sort.to_h.keys,
+                                         datasets: [{
+                                             data: ClinicalCase.all.group(:her2).count.sort.to_h.values,
+                                             backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
+                                         }]
+                                     } ;
+                                
+                                
+                                    surgery_type_options = {
+                                        responsive: true,
+                                        height: 140
+                                    };
+                                    
+
+                                %>
+                                <%= doughnut_chart surgery_type_data,surgery_type_options %>
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>KI67 </h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <!--<canvas id="doughnutChart" height="140"></canvas>-->
+                                <%
+                                    surgery_type_data = {
+                                        labels: ClinicalCase.all.group(:progesterone_receptors).count.sort.to_h.keys,
+                                         datasets: [{
+                                             data: ClinicalCase.all.group(:progesterone_receptors).count.sort.to_h.values,
+                                             backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
+                                         }]
+                                     } ;
+                                
+                                
+                                    surgery_type_options = {
+                                        responsive: true,
+                                        height: 140
+                                    };
+                                    
+
+                                %>
+                                <%= doughnut_chart surgery_type_data,surgery_type_options %>
+                                
+
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Sentinel Ganglion</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                            <%
+                                barData = {
+                                         labels: ClinicalCase.all.group(:sentinel_ganglion).count.sort.to_h.keys,
+                                         datasets: [
+                                             
+                                             {
+                                                 label: "N",
+                                                 backgroundColor: 'rgba(26,179,148,0.5)',
+                                                 borderColor: "rgba(26,179,148,0.7)",
+                                                 pointBackgroundColor: "rgba(26,179,148,1)",
+                                                 pointBorderColor: "#fff",
+                                                 data: ClinicalCase.all.group(:sentinel_ganglion).count.sort.to_h.values
+                                             }
+                                         ]
+                                     };
+                                
+                                     barOptions = {
+                                         responsive: true,
+                                         height: 400,
+                                         scales: {
+                                            yAxes: [{
+                                                display: true,
+                                                ticks: {
+                                                    min: 0,
+                                                    max: ClinicalCase.count
+                                                    
+                                                }
+                                            }]
+                                        }
+                                        
+                                        
+                                     }
+                                %>
+                            <%= bar_chart barData, barOptions %>
+
+                                <!--<canvas id="radarChart"></canvas>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Axillary Emptying</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <%
+                                barData = {
+                                         labels: ClinicalCase.all.group(:axillary_emptying).count.sort.to_h.keys,
+                                         datasets: [
+                                             
+                                             {
+                                                 label: "N",
+                                                 backgroundColor: 'rgba(26,179,148,0.5)',
+                                                 borderColor: "rgba(26,179,148,0.7)",
+                                                 pointBackgroundColor: "rgba(26,179,148,1)",
+                                                 pointBorderColor: "#fff",
+                                                 data: ClinicalCase.all.group(:axillary_emptying).count.sort.to_h.values
+                                             }
+                                         ]
+                                     };
+                                
+                                     barOptions = {
+                                         responsive: true,
+                                         height: 400,
+                                         scales: {
+                                            yAxes: [{
+                                                display: true,
+                                                ticks: {
+                                                    min: 0,
+                                                    max: ClinicalCase.count
+                                                    
+                                                }
+                                            }]
+                                        }
+                                        
+                                        
+                                     }
+                                %>
+                            <%= bar_chart barData, barOptions %>
+
+                                <!--<canvas id="radarChart"></canvas>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Adjuvant  Chemotherapy</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <%
+                                barData = {
+                                         labels: ClinicalCase.all.group(:adjuvant_chemotherapy).count.sort.to_h.keys,
+                                         datasets: [
+                                             
+                                             {
+                                                 label: "N",
+                                                 backgroundColor: 'rgba(26,179,148,0.5)',
+                                                 borderColor: "rgba(26,179,148,0.7)",
+                                                 pointBackgroundColor: "rgba(26,179,148,1)",
+                                                 pointBorderColor: "#fff",
+                                                 data: ClinicalCase.all.group(:adjuvant_chemotherapy).count.sort.to_h.values
+                                             }
+                                         ]
+                                     };
+                                
+                                     barOptions = {
+                                         responsive: true,
+                                         height: 400,
+                                         scales: {
+                                            yAxes: [{
+                                                display: true,
+                                                ticks: {
+                                                    min: 0,
+                                                    max: ClinicalCase.count
+                                                    
+                                                }
+                                            }]
+                                        }
+                                        
+                                        
+                                     }
+                                %>
+                            <%= bar_chart barData, barOptions %>
+
+                                
+                                <!--<canvas id="radarChart"></canvas>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Adjuvant Radiotherapy</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <%
+                                barData = {
+                                         labels: ClinicalCase.all.group(:adjuvant_radiotherapy).count.sort.to_h.keys,
+                                         datasets: [
+                                             
+                                             {
+                                                 label: "N",
+                                                 backgroundColor: 'rgba(26,179,148,0.5)',
+                                                 borderColor: "rgba(26,179,148,0.7)",
+                                                 pointBackgroundColor: "rgba(26,179,148,1)",
+                                                 pointBorderColor: "#fff",
+                                                 data: ClinicalCase.all.group(:adjuvant_radiotherapy).count.sort.to_h.values
+                                             }
+                                         ]
+                                     };
+                                
+                                     barOptions = {
+                                         responsive: true,
+                                         height: 400,
+                                         scales: {
+                                            yAxes: [{
+                                                display: true,
+                                                ticks: {
+                                                    min: 0,
+                                                    max: ClinicalCase.count
+                                                    
+                                                }
+                                            }]
+                                        }
+                                        
+                                        
+                                     }
+                                %>
+                            <%= bar_chart barData, barOptions %>
+
+                                
+                                <!--<canvas id="radarChart"></canvas>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

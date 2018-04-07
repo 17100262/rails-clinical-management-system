@@ -12,10 +12,57 @@
 //
 //= require rails-ujs
 //= require jquery3
+//= require Chart.bundle.min
+//= require cocoon
+//= require toastr
 //= require turbolinks
 //= require cable
+//= require datatables.min
+//= require Chart.min
+//= require chart-demo
+//= require icheck.min
 //= require_tree .
 
 $(document).ready(function() {
    $('.alert').delay(2000).fadeOut();
+});
+$( document ).on('turbolinks:load', function() {
+     $(document).ready(function () {
+    $('.show-radio').hide();
+// $('#yes_neoadjuvant_systemic_treatment').on('change', function() {
+    
+//      $('.show-radio').show();   
+    
+// });
+});
+ $('.click-radio input').change(function () {
+
+    $('.show-radio').show();
+});
+$('.not-click input').change(function () {
+
+    $('.show-radio').hide();
+});
+        $(document).ready(function () {
+            
+                $('.i-checks').iCheck({
+                    checkboxClass: 'icheckbox_square-green',
+                    radioClass: 'iradio_square-green',
+                });
+            });
+
+       $(".inbx-tr").click(function(){
+       window.location=$(this).find("td a").attr("href"); 
+       return false;
+      });
+      
+      $(document).ready(function(){
+            $('.project-list table').DataTable({
+                pageLength: 25,
+                responsive: true,
+
+            });
+
+        });
+ 
 });

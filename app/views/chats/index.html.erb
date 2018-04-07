@@ -1,29 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Inbox</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Last Message</th>
-      <th>Time</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @chats.each do |chat| %>
-      <tr>
-        <% last_message  = chat.messages.order('created_at ASC').last %>
-        <td><%= chat.users.where.not(id: current_user.id).first.name %></td>
-        <td><%= last_message.content %></td>
-        <td> <%= time_ago_in_words( last_message.created_at) %> ago</td>
-        <td><%= link_to 'Show', chat %></td>
-        <td><%= link_to 'Destroy', chat, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, chat %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class="container-fluid container-top" style="">
+  <div class="container">
+      
+      <h1>Inbox</h1>
+      <div class="project-list">
+      <table class="table white-bg border-left-right border-top-bottom">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Last Message</th>
+            <th>Time</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <% @chats.each do |chat| %>
+            <tr class="inbx-tr">
+              <% last_message  = chat.messages.order('created_at ASC').last %>
+              <td><%= chat.users.where.not(id: current_user.id).first.name %> </td>
+              <td><%= last_message.content %></td>
+              <td> <%= time_ago_in_words( last_message.created_at) %> ago</td>
+              <td><%= link_to 'Start Chat', chat, class: "btn btn-primary" %></td>
+              <!--<td><%#= link_to 'Destroy', chat, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, chat %></td>-->
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+      <br>
+</div>
+</div>

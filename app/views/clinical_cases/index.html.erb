@@ -1,0 +1,41 @@
+<div class="container-fluid container-top" style="">
+<div class="row wrapper border-bottom white-bg  page-heading">
+    <div class="col-lg-10">
+        <h2>Clinical Cases</h2>
+    </div>
+    <div class="col-lg-2">
+        <%= link_to 'New Clinical Case', new_clinical_case_path, class:"btn btn-primary m-t-sm" %>
+    </div>
+</div>
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+
+<div class="table-responsive project-list">
+<table class="table white-bg border-left-right border-top-bottom">
+  <thead>
+    <tr>
+      <th> Serial No. </th>
+      <th> User </th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% counter = 1 %>
+    <% @clinical_cases.each do |clinical_case| %>
+      <tr>
+        <td><%= counter  %></td>
+        <td> <%= clinical_case.user.name %></td>
+        <td><%= link_to 'Show', clinical_case, class:"btn btn-sm btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_clinical_case_path(clinical_case, class:"btn btn-sm btn-primary") if can? :update, clinical_case %></td>
+        <td><%= link_to 'Destroy', clinical_case, method: :delete, data: { confirm: 'Are you sure?', class:"btn btn-sm btn-primary" } if can? :destroy, clinical_case %></td>
+        <% counter = counter + 1 %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+

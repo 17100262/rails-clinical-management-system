@@ -1,0 +1,54 @@
+
+Date of Birth: <%= @clinical_case.date_of_birth %> <br>
+Date of Diagnostic:<%= @clinical_case.date_of_diagnostic %> <br>
+Histology Type:<%= @clinical_case.histology_type %> <br>
+Histology Level:<%= @clinical_case.histology_level %><br>
+Estrogen Receptor:<%= @clinical_case.estrogen_receptors %><br> 
+Progesterone Receptors: <%= @clinical_case.progesterone_receptors %><br>
+HER2:<%= @clinical_case.her2 %><br>
+KI67:<%= @clinical_case.ki67 %><br>
+Estadiamento Clinico:<%= @clinical_case.estadiamento_clinico %><br>
+Neoadjuvant Systemic Treatement:<%= @clinical_case.neoadjuvant_systemic_treatment %><br>
+Surgery Date:<%= @clinical_case.surgery_date %><br>
+Surgery Type:<%= @clinical_case.surgery_type %><br>
+Sentinel Ganglion: <%= @clinical_case.sentinel_ganglion %><br>
+Axillary Emptying: <%= @clinical_case.axillary_emptying %><br>
+Adjuvent Chemotherapy: <%= @clinical_case.adjuvant_chemotherapy %><br>
+Adjuvent Radiotherapy:<%= @clinical_case.adjuvant_radiotherapy %><br>
+Adjuvent Hormone Therapy Duration: <%= @clinical_case.adjuvant_hormone_therapy_duration %><br>
+Adjuvent Hormone Therapy Treatement: <%= @clinical_case.adjuvant_hormone_therapy_treatment %><br>
+Date of IPO Discharge :<%= @clinical_case.date_of_ipo_discharge %><br>
+Date of 1st Follow up at MGF: <%= @clinical_case.first_follow_up_at_mgf %><br>
+<h2> Date of imaging control </h2> <br>
+<% @clinical_case.imaging_controls.each do |casee| %>
+    Date: <%= casee.date_of_imaging %> <br>
+    Mammography: <%= casee.mammography ? "Yes":"No" %><br>
+    Eco Breast: <%= casee.eco_breast ? "Yes":"No" %><br>
+    Result: <%= casee.result %>
+    
+<% end %>
+<hr>
+<h2> Date of suspected recurrence </h2> <br>
+Local recurrence :<%= @clinical_case.date_of_suspected_recurrence_local_recurrence %> <br>
+Collateral breast cancer : <%= @clinical_case.date_of_suspected_recurrence_collateral_breast_cancer %><br>
+Distance metastasis: <%= @clinical_case.date_of_suspected_recurrence_distance_metastasis %><br>
+Second neoplasm: <%= @clinical_case.date_of_suspected_recurrence_second_neoplasm %><br>
+<hr>
+Date of confirmation of recurrence (PFS) :<%= @clinical_case.date_of_confirmation_of_recurrence %><br>
+Global survival: <%= @clinical_case.global_survival %><br>
+Specif breast cancer survival :<%= @clinical_case.Specif_breast_cancer_survival %><br>
+Last contact or death: <%= @clinical_case.last_contact_or_death %><br>
+Death cause (oncologic vs no oncologic) :<%= @clinical_case.death_cause %><br>
+<h2>Satisfaction survey record </h2> <br>
+<h3>At discharge</h3>
+Text: <%= @clinical_case.satisfaction_survey_record_discharge_text %><br>
+File :<a href=<%= @clinical_case.satisfaction_survey_record_discharge.url %>> File </a><br>
+<h3>After 1st follow-up</h3>
+Text: <%= @clinical_case.satisfaction_survey_record_first_text %><br>
+File :<a href=<%=@clinical_case.satisfaction_survey_record_first.url %>> File </a> <br>
+<h3>Next Ones</h3>
+Text: <%= @clinical_case.satisfaction_survey_record_next_text %><br>
+File: <a href=<%=@clinical_case.satisfaction_survey_record_next.url%>> File </a> <br>
+
+<%= link_to 'Edit', edit_clinical_case_path(@clinical_case) %> |
+<%= link_to 'Back', clinical_cases_path %>

@@ -7,14 +7,14 @@ class Ability
     #   user ||= User.new # guest user (not logged in)
       if user.admin?
         can :manage, :all
-      elsif(user.user?)
+      elsif(user.user? or user.moderator?)
         # can :read, :all
         # can :update,User,:id => user.id
         # can :edit,:user,:id => user.id
         can :update,User,:id => user.id
         can :read, User,:id => user.id
         # can :update,User
-        
+        can :create,Chat
         can [:read,:messages], Chat do |chat|
           user.chats.pluck(:id).include?(chat.id)
         end
@@ -22,6 +22,9 @@ class Ability
         # can :manage,Note,:user_id => user.id
         # can :read,Note,
         can :crud,Note,:user_id => user.id
+        can :read, ClinicalCase
+        can :create, ClinicalCase
+        can [:update,:destroy],ClinicalCase,:user_id => user.id
         # can :read,Note
         # can :create,Note,:user_id => user.id
         

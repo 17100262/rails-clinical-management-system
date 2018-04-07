@@ -16,6 +16,15 @@ class UsersController < ApplicationController
             redirect_to edit_user_path, notice: @user.errors.full_messages.join
         end
     end
+    def make_moderator
+        @user = User.find(params[:id])
+        if @user.moderator?
+            @user.user!
+        else
+            @user.moderator!
+        end
+        redirect_to users_path, notice: "User has been #{@user.moderator? ? "successfully made moderator": "removed as moderator"}" 
+    end
     
     def index
         @users = User.all.where.not(id: current_user.id)
