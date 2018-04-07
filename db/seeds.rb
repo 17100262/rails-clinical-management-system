@@ -5,10 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# User.create(email:"admin@test.com",password:"admin123",role:"admin",approved: true)
-# 50.times do
-#     User.create(email: Faker::Internet.unique.email,password:"admin123", name: Faker::Name.name,approved:true)
-# end
+User.create(email:"admin@test.com",password:"admin123",role:"admin",approved: true)
+50.times do
+    User.create(email: Faker::Internet.unique.email,password:"admin123", name: Faker::Name.name,approved:true)
+end
 
 50.times do
 ClinicalCase.create!(user_id: User.all.pluck(:id).sample,
