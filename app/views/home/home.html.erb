@@ -258,7 +258,7 @@
                                 <!--<canvas id="polarChart" height="140"></canvas>-->
                                 <%
                                     surgery_type_data = {
-                                        labels: ClinicalCase.all.group(:her2).count.to_h.keys,
+                                        labels: ClinicalCase.all.group(:her2).count.keys,
                                          datasets: [{
                                              data: ClinicalCase.all.group(:her2).count.sort.to_h.values,
                                              backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
