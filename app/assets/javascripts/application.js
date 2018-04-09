@@ -31,16 +31,16 @@ $(document).ready(function() {
 $( document ).on('turbolinks:load', function() {
     
     
-    var users_table = null;
-    document.addEventListener("turbolinks:load", function(){
-        users_table = $('.user-list table').DataTable()
+    // var users_table = null;
+    // document.addEventListener("turbolinks:load", function(){
+    //     users_table = $('.user-list table').DataTable()
         
-    });
+    // });
         
-    document.addEventListener("turbolinks:before-cache", function(){
-      if ($('.user-list table').length == 1)
-        users_table.destroy()
-    });
+    // document.addEventListener("turbolinks:before-cache", function(){
+    //   if ($('.user-list table').length == 1)
+    //     users_table.destroy()
+    // });
      
      
      $(document).ready(function () {
