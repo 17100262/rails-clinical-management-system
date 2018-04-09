@@ -260,7 +260,7 @@
                                     surgery_type_data = {
                                         labels: ClinicalCase.all.group(:her2).count.keys,
                                          datasets: [{
-                                             data: ClinicalCase.all.group(:her2).count.sort.to_h.values,
+                                             data: ClinicalCase.all.group(:her2).count.values,
                                              backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
                                          }]
                                      } ;
