@@ -29,6 +29,20 @@ $(document).ready(function() {
    $('.alert').delay(2000).fadeOut();
 });
 $( document ).on('turbolinks:load', function() {
+    
+    
+    var users_table = null;
+    document.addEventListener("turbolinks:load", function(){
+        users_table = $('.user-list table').DataTable()
+        
+    });
+        
+    document.addEventListener("turbolinks:before-cache", function(){
+      if ($('.user-list table').length == 1)
+        users_table.destroy()
+    });
+     
+     
      $(document).ready(function () {
     
 // $('#yes_neoadjuvant_systemic_treatment').on('change', function() {
