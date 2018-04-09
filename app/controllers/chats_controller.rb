@@ -10,7 +10,7 @@ class ChatsController < ApplicationController
     current_user.chats.includes(:messages).each do |chat|
       all_messages << chat.messages.order('created_at ASC').last
     end
-    if 
+    # if 
     @chats = all_messages.compact.sort_by{|a| a.created_at }.reverse.map(&:chat)
     
   end
