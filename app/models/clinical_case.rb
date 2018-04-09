@@ -17,5 +17,7 @@ class ClinicalCase < ApplicationRecord
     accepts_nested_attributes_for :imaging_controls, reject_if: :all_blank, allow_destroy: true
     
     belongs_to :user
+    
+    validates :date_of_birth, presence: true
   
 end
