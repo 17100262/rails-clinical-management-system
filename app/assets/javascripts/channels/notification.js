@@ -33,7 +33,15 @@ $(document).ready(function(){
                 // alert(data);
                 // $('#message_content').val('');
                 // $('#messages').append(data);
-                toastr.info(data);
+                if($('#messages').length)
+                {
+                    
+                }
+                else{
+                    toastr.info(data);
+                    
+                }
+                
                 // $('#notification_dropdown').prepend(data);
                 
             },

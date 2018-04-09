@@ -6,13 +6,18 @@ class ChatsController < ApplicationController
   # GET /chats
   # GET /chats.json
   def index
-    @chats = current_user.chats
+    all_messages = []
+    current_user.chats.includes(:messages).each do |chat|
+      all_messages << chat.messages.order('created_at ASC').last
+    end
+    @chats = all_messages.sort_by{|a| a.created_at }.reverse.map(&:chat)
   end
 
   # GET /chats/1
   # GET /chats/1.json
   def show
     @messages = @chat.messages.order('created_at ASC')
+    @messages.where.not(user_id: current_user.id).update_all(read: true)
   end
 
   # GET /chats/new

@@ -4,7 +4,7 @@
           <div class="container">
                 <div class="row">
                     <h2>Users</h2>
-                    <div class="table-responsive project-list">
+                    <div class="table-responsive user-list">
                       <table class="table white-bg border-left-right border-top-bottom">
                         <thead>
                           <tr>
@@ -12,17 +12,17 @@
                             <th>Name</th>
                             <th>Username</th>
                             <th>Email</th>
-                            <th>Actions</th>
-                            <th>Actions</th>
+                            <th class="actions">Actions</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
-                            <% User.all.each do |user| %>
+                            <% User.all.sort_by{|a| a.approved ? 1 : 0 }.each do |user| %>
                                 <tr>
                                     <td> <%= user.name %> </td>
                                     <td> <%= user.role %> </td>
                                     <td> <%= user.email %> </td>
-                                    <td> <%= link_to (user.approved ? 'Block user':'Approve User'),approve_user_path({user_id: user.id,approved: !user.approved}),method: :put, class: "btn btn-danger"  if not current_user.id==user.id %> </td>
+                                    <td> <%= link_to (user.approved ? 'Block user':'Approve User'),approve_user_path({user_id: user.id,approved: !user.approved}),method: :put, class: "btn btn-#{user.approved ? 'danger':'primary'}"  if not current_user.id==user.id %> </td>
                                     <td> <%= link_to (user.moderator? ? 'Remove Moderator':'Make Moderator'),make_moderator_user_path(user),method: :put, class: "btn btn-primary" if current_user.id!=user.id and not current_user.moderator? %> </td>
                                 </tr>
                             <% end %>

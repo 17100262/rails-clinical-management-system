@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :notes, except:[:show,:edit,:destroy]
     member do
       put 'make_moderator'
+      get 'profile'
     end
   end
   resources :notes, only: [:show,:edit,:destroy]

@@ -1,52 +1,32 @@
-<div class="row wrapper border-bottom white-bg page-heading">
-            <div class="col-lg-10">
-                <h2>Charts</h2>
-                
-            </div>
-            <div class="col-lg-2">
+<div class="container-fluid container-top">
+    
 
+<div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-12">
+                <h2>Charts</h2>
+                   
             </div>
+            
         </div>
         <div class="wrapper wrapper-content animated fadeInRight">
             
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Line Chart Example
-                                <small>With custom colors.</small>
-                            </h5>
-                        </div>
-                        <div class="ibox-content">
-                            <div>
-                                <% data = {
-                                  labels: ClinicalCase.group("date_trunc('month', date_of_birth)").count.sort.to_h.keys.map{|d| d.strftime("%B,%Y")},
-                                  datasets: [
-                                    {
-                                        label: "Date of Birth",
-                                        backgroundColor: "rgba(220,220,220,0.2)",
-                                        borderColor: "rgba(220,220,220,1)",
-                                        data: ClinicalCase.group("date_trunc('month', date_of_birth)").count.sort.to_h.values
-                                    }
-                                    # ,
-                                    # {
-                                    #     label: "Date of Diagnostic",
-                                    #     backgroundColor: "rgba(151,187,205,0.2)",
-                                    #     borderColor: "rgba(151,187,205,1)",
-                                    #     data: ClinicalCase.group("date_trunc('month', date_of_diagnostic)").count.sort.to_h.values
-                                    # }
-                                  ]
-                                }
-                                options = { 
-                                    height: 140
-                                    } %>
-                                <%= line_chart data, options %>
+            <!--<div class="row">-->
+            <!--    <div class="col-lg-12">-->
+            <!--        <div class="ibox float-e-margins">-->
+            <!--            <div class="ibox-title">-->
+            <!--                <h5>Line Chart Example-->
+            <!--                    <small>With custom colors.</small>-->
+            <!--                </h5>-->
+            <!--            </div>-->
+            <!--            <div class="ibox-content">-->
+            <!--                <div>-->
+                                
                                 <!--<canvas id="lineChart" height="140"></canvas>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--                </div>-->
+            <!--            </div>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</div>-->
             <div class="row">
                 
                 <div class="col-lg-6">
@@ -92,6 +72,19 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Notifications</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="notification-home">
+                            <a href="/user_management"><h3><%= User.where(approved: false).count > 0  ? "There are #{ pluralize(User.where(approved: false).count,"user")} waiting for approval": nil %></h3></a>
+                            <a href="/chats"><h3><%= @count > 0  ? "There are #{@count} unread messages": nil %></h3></a>
+                            </div>
+                        </div>
+                    </div>    
                 </div>
             </div>
             <div class="row">
@@ -512,3 +505,5 @@
                 </div>
             </div>
         </div>
+        
+</div>

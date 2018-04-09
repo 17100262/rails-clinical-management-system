@@ -33,13 +33,13 @@
                           <a href="<%= users_path %>">All Users</a>
                         </li>
                         <li>
-                          <a href="<%= chats_path %>">Inbox</a>
+                          <a href="<%= chats_path %>">Inbox(<div id="unread_count" style="display: inline-block;"><%= @count %></div>)</a>
                         </li>
                         <li>
                           <a href="<%= user_notes_path(current_user) %>">Notes</a>
                         </li>
                         <li>
-                          <a href="<%= edit_user_path(current_user) %>">Profile</a>
+                          <a href="<%= profile_user_path(current_user) %>">Profile</a>
                         </li>
                         
                         <li>
@@ -48,9 +48,9 @@
                       <% end %>
                       <li>
                         <% if user_signed_in? %>
-                            <a href="<%= destroy_user_session_path %>" data-method="delete">Log Out</a>
+                            <a class="" href="<%= destroy_user_session_path %>" data-method="delete">Log Out</a> 
                         <% else %>
-                            <a href="<%= new_user_registration_path %>">Sign Up</a>
+                            <a class="" href="<%= new_user_registration_path %>">Sign Up</a>
                         <% end %>
                       </li>
                     </ul>

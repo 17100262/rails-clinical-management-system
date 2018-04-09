@@ -1,0 +1,59 @@
+<div class="container-fluid container-top" style="">
+  <div class="container">
+    <div class="row">
+     <div class="col-md-offset-2 col-md-8">
+      <div class="ibox float-e-margins">
+          <div class="ibox-title">
+              <h5><%= @user.name %> Profile</h5>
+          </div>
+        <div class="ibox-content">
+            <table class="footable table table-stripped toggle-arrow-tiny default breakpoint footable-loaded">
+               
+                <tbody>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Name:</td>
+                    <td class="footable-visible"><%= @user.name %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Email:</td>
+                    <td class="footable-visible"><%= @user.email %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Profile Picture:</td>
+                    <td class="footable-visible"><%= @user.profile_picture.exists? ? image_tag(@user.profile_picture.url(:medium)):"Not Provided"  %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>About Me:</td>
+                    <td class="footable-visible"><%= @user.about_me.blank? ? "Not Provided": @user.about_me %></td>
+                   
+                </tr>
+                
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>User Type:</td>
+                    <td class="footable-visible"><%= @user.user_type.blank? ? "Not Provided": @user.user_type %></td>
+                   
+                </tr>
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Organization:</td>
+                    <td class="footable-visible"><%= @user.organization.blank? ? "Not Provided": @user.organization %></td>
+                   
+                </tr>
+             </table>
+            <%= link_to 'Edit', edit_user_path(@user), class:"btn btn-primary" if can? :update, @user %> 
+            <%#= link_to 'Back', clinical_cases_path %>
+
+        </div>
+    </div>
+</div>
+ </div>
+</div>
+</div>

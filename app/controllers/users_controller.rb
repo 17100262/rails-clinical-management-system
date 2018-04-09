@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         authorize! :update, @user if current_user.id == @user.id
         if @user.update(user_params)
-            redirect_to edit_user_path, notice: "User profile updated successfully"
+            redirect_to profile_user_path(@user), notice: "User profile updated successfully"
         else
             redirect_to edit_user_path, notice: @user.errors.full_messages.join
         end
@@ -24,6 +24,10 @@ class UsersController < ApplicationController
             @user.moderator!
         end
         redirect_to users_path, notice: "User has been #{@user.moderator? ? "successfully made moderator": "removed as moderator"}" 
+    end
+    
+    def profile
+        @user = User.find(params[:id])
     end
     
     def index

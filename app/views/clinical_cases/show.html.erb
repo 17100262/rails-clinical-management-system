@@ -9,6 +9,13 @@
                 <tbody>
                 <tr class="footable-even" style="">
                     <td class="footable-visible footable-first-column">
+                        <span class="footable-toggle"></span>Unique Identifier:</td>
+                    <td class="footable-visible"><%= @clinical_case.unique_identifier %></td>
+                   
+                </tr>
+                
+                <tr class="footable-even" style="">
+                    <td class="footable-visible footable-first-column">
                         <span class="footable-toggle"></span>Date of Birth:</td>
                     <td class="footable-visible"><%= @clinical_case.date_of_birth %></td>
                    
@@ -238,7 +245,18 @@
                  <tr class="footable-even" style="">
                     <td class="footable-visible footable-first-column">
                         <span class="footable-toggle"></span>File:</td>
-                <td class="footable-visible"><a href=<%= @clinical_case.satisfaction_survey_record_discharge.url %>> File </a></td>
+                <td class="footable-visible">
+                    <!--<a href=<%= @clinical_case.satisfaction_survey_record_discharge.url %>> File </a>-->
+                    
+                    <% if @clinical_case.satisfaction_survey_record_discharge.exists? %>
+                        <a href=<%= @clinical_case.satisfaction_survey_record_discharge.url %>> File </a>
+                    <% else %>
+                        Not Provided
+                    <% end %>
+                    
+                    
+                    
+                </td>
                    
                 </tr>
                 <tr class="footable-even" style="">
@@ -256,7 +274,17 @@
                 <tr class="footable-even" style="">
                     <td class="footable-visible footable-first-column">
                         <span class="footable-toggle"></span>File:</td>
-                <td class="footable-visible"><a href=<%=@clinical_case.satisfaction_survey_record_first.url %>> File </a></td>
+                <td class="footable-visible">
+                    
+                    <% if @clinical_case.satisfaction_survey_record_first.exists? %>
+                        <a href=<%=@clinical_case.satisfaction_survey_record_first.url %>> File </a>
+                    <% else %>
+                        Not Provided
+                    <% end %>
+                    
+                    
+                    
+                </td>
                    
                 </tr>
                 
@@ -268,13 +296,22 @@
                 <tr class="footable-even" style="">
                     <td class="footable-visible footable-first-column">
                         <span class="footable-toggle"></span>Text:</td>
-                <td class="footable-visible"><%= @clinical_case.satisfaction_survey_record_next_text %></td>
+                <td class="footable-visible">
+                    <%= @clinical_case.satisfaction_survey_record_next_text %>
+                    
+                </td>
                    
                 </tr>
                 <tr class="footable-even" style="">
                     <td class="footable-visible footable-first-column">
                         <span class="footable-toggle"></span>File:</td>
-                <td class="footable-visible"><a href=<%=@clinical_case.satisfaction_survey_record_next.url%>> File </a></td>
+                <td class="footable-visible">
+                    <% if @clinical_case.satisfaction_survey_record_next.exists? %>
+                        <a href=<%=@clinical_case.satisfaction_survey_record_next.url%>> File </a>
+                    <% else %>
+                        Not Provided
+                    <% end %>
+                </td>
                    
                 </tr>
             </table>

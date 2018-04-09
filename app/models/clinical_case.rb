@@ -19,5 +19,6 @@ class ClinicalCase < ApplicationRecord
     belongs_to :user
     
     validates :date_of_birth, presence: true
+    validates :unique_identifier, uniqueness: true
   
 end

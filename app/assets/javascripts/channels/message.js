@@ -30,12 +30,14 @@ $(document).ready(function(){
                     var message = "<div class='right'>" + data["message"] + "</div>"
                     // alert("right");
                     $('.content').append(message);
+                    
                 }
                 else {
                     
                     var message = "<div class='left'>" + data["message"] + "</div>"
                     // alert("right");
                     $('.content').append(message);
+                    $('#unread_count').html(parseInt($('#unread_count').html())+1);
                 }
                     
                 
