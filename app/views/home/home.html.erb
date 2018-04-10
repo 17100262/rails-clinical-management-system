@@ -38,7 +38,7 @@
                             <div>
                                 <%
                                     barData = {
-                                             labels: ClinicalCase.all.group(:histology_type).count.keys,
+                                             labels: ClinicalCase.all.group(:histology_level).group(:histology_level).count.to_h.keys,
                                              datasets: [
                                                  
                                                  {
