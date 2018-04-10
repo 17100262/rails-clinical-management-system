@@ -142,9 +142,9 @@
                                 <!--<canvas id="doughnutChart" height="140"></canvas>-->
                                 <%
                                     surgery_type_data = {
-                                        labels: ClinicalCase.all.group(:surgery_type).count.sort.to_h.keys,
+                                        labels: ClinicalCase.all.group(:surgery_type).count.to_h.keys,
                                          datasets: [{
-                                             data: ClinicalCase.all.group(:surgery_type).count.sort.to_h.values,
+                                             data: ClinicalCase.all.group(:surgery_type).count.to_h.values,
                                              backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
                                          }]
                                      } ;
