@@ -100,7 +100,7 @@
                                 <%
                                     polarData = {
                                         datasets: [{
-                                            data: ClinicalCase.where.not(histology_level: nil).group(:histology_level).count.sort.to_h.values,
+                                            data: ClinicalCase.all.group(:histology_level).group(:histology_level).count.to_h.values,
                                             backgroundColor: [
                                                 "#a3e1d4", "#dedede", "#b5b8cf"
                                             ],
@@ -108,7 +108,7 @@
                                                 "My Radar chart"
                                             ]
                                         }],
-                                        labels: ClinicalCase.all.group(:histology_level).count.sort.to_h.keys
+                                        labels: ClinicalCase.all.group(:histology_level).count.to_h.keys
                                     }
                                     
                                     polarOptions = {
