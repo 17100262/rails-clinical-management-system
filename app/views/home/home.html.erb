@@ -47,7 +47,7 @@
                                                      borderColor: "rgba(26,179,148,0.7)",
                                                      pointBackgroundColor: "rgba(26,179,148,1)",
                                                      pointBorderColor: "#fff",
-                                                     data: ClinicalCase.all.group(:histology_level).count.to_h.values
+                                                     data: ClinicalCase.all.group(:histology_type).count.to_h.values
                                                  }
                                              ]
                                          };
