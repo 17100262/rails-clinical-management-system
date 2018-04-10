@@ -100,7 +100,7 @@
                                 <%
                                     polarData = {
                                         datasets: [{
-                                            data: ClinicalCase.all.group(:histology_level).count.sort.to_h.values,
+                                            data: ClinicalCase.where.not(histology_level: nil).group(:histology_level).count.sort.to_h.values,
                                             backgroundColor: [
                                                 "#a3e1d4", "#dedede", "#b5b8cf"
                                             ],

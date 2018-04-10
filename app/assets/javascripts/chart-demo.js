@@ -1,4 +1,3 @@
-// $( document ).on('turbolinks:load', function() {
 // $(function () {
 
 //     var lineData = {
@@ -126,5 +125,4 @@
 //     var ctx5 = document.getElementById("radarChart").getContext("2d");
 //     new Chart(ctx5, {type: 'radar', data: radarData, options:radarOptions});
 
-// });
 // });
