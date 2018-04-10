@@ -179,9 +179,9 @@
                                 <!--<canvas id="polarChart" height="140"></canvas>-->
                                 <%
                                     surgery_type_data = {
-                                        labels: ClinicalCase.all.group(:estrogen_receptors).count.sort.to_h.keys,
+                                        labels: ClinicalCase.all.group(:estrogen_receptors).count.to_h.keys,
                                          datasets: [{
-                                             data: ClinicalCase.all.group(:estrogen_receptors).count.sort.to_h.values,
+                                             data: ClinicalCase.all.group(:estrogen_receptors).count.to_h.values,
                                              backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
                                          }]
                                      } ;
@@ -214,9 +214,9 @@
                                 <!--<canvas id="doughnutChart" height="140"></canvas>-->
                                 <%
                                     surgery_type_data = {
-                                        labels: ClinicalCase.all.group(:progesterone_receptors).count.sort.to_h.keys,
+                                        labels: ClinicalCase.all.group(:progesterone_receptors).count.to_h.keys,
                                          datasets: [{
-                                             data: ClinicalCase.all.group(:progesterone_receptors).count.sort.to_h.values,
+                                             data: ClinicalCase.all.group(:progesterone_receptors).count.to_h.values,
                                              backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
                                          }]
                                      } ;
@@ -286,9 +286,9 @@
                                 <!--<canvas id="doughnutChart" height="140"></canvas>-->
                                 <%
                                     surgery_type_data = {
-                                        labels: ClinicalCase.all.group(:progesterone_receptors).count.sort.to_h.keys,
+                                        labels: ClinicalCase.all.group(:progesterone_receptors).count.to_h.keys,
                                          datasets: [{
-                                             data: ClinicalCase.all.group(:progesterone_receptors).count.sort.to_h.values,
+                                             data: ClinicalCase.all.group(:progesterone_receptors).count.to_h.values,
                                              backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
                                          }]
                                      } ;
@@ -322,7 +322,7 @@
                             <div>
                             <%
                                 barData = {
-                                         labels: ClinicalCase.all.group(:sentinel_ganglion).count.sort.to_h.keys,
+                                         labels: ClinicalCase.all.group(:sentinel_ganglion).count.to_h.keys,
                                          datasets: [
                                              
                                              {
@@ -331,7 +331,7 @@
                                                  borderColor: "rgba(26,179,148,0.7)",
                                                  pointBackgroundColor: "rgba(26,179,148,1)",
                                                  pointBorderColor: "#fff",
-                                                 data: ClinicalCase.all.group(:sentinel_ganglion).count.sort.to_h.values
+                                                 data: ClinicalCase.all.group(:sentinel_ganglion).count.to_h.values
                                              }
                                          ]
                                      };
@@ -369,7 +369,7 @@
                             <div>
                                 <%
                                 barData = {
-                                         labels: ClinicalCase.all.group(:axillary_emptying).count.sort.to_h.keys,
+                                         labels: ClinicalCase.all.group(:axillary_emptying).count.to_h.keys,
                                          datasets: [
                                              
                                              {
@@ -378,7 +378,7 @@
                                                  borderColor: "rgba(26,179,148,0.7)",
                                                  pointBackgroundColor: "rgba(26,179,148,1)",
                                                  pointBorderColor: "#fff",
-                                                 data: ClinicalCase.all.group(:axillary_emptying).count.sort.to_h.values
+                                                 data: ClinicalCase.all.group(:axillary_emptying).count.to_h.values
                                              }
                                          ]
                                      };
@@ -416,7 +416,7 @@
                             <div>
                                 <%
                                 barData = {
-                                         labels: ClinicalCase.all.group(:adjuvant_chemotherapy).count.sort.to_h.keys,
+                                         labels: ClinicalCase.all.group(:adjuvant_chemotherapy).count.to_h.keys,
                                          datasets: [
                                              
                                              {
@@ -425,7 +425,7 @@
                                                  borderColor: "rgba(26,179,148,0.7)",
                                                  pointBackgroundColor: "rgba(26,179,148,1)",
                                                  pointBorderColor: "#fff",
-                                                 data: ClinicalCase.all.group(:adjuvant_chemotherapy).count.sort.to_h.values
+                                                 data: ClinicalCase.all.group(:adjuvant_chemotherapy).count.to_h.values
                                              }
                                          ]
                                      };
@@ -464,7 +464,7 @@
                             <div>
                                 <%
                                 barData = {
-                                         labels: ClinicalCase.all.group(:adjuvant_radiotherapy).count.sort.to_h.keys,
+                                         labels: ClinicalCase.all.group(:adjuvant_radiotherapy).count.to_h.keys,
                                          datasets: [
                                              
                                              {
@@ -473,7 +473,7 @@
                                                  borderColor: "rgba(26,179,148,0.7)",
                                                  pointBackgroundColor: "rgba(26,179,148,1)",
                                                  pointBorderColor: "#fff",
-                                                 data: ClinicalCase.all.group(:adjuvant_radiotherapy).count.sort.to_h.values
+                                                 data: ClinicalCase.all.group(:adjuvant_radiotherapy).count.to_h.values
                                              }
                                          ]
                                      };
