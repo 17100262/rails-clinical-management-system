@@ -1,14 +1,14 @@
-<div class="container-fluid container-top" style="">
+<div class="container-fluid container-top bg-covr" style="">
   <div class="container">
     <div class="row">
       <div class="col-md-offset-3 col-md-6">
-        <div class="ibox float-e-margins">
+        <div class="ibox float-e-margins bg-frm-opcty">
     <div class="ibox-title">
         <h5>Login</h5>
     </div>
     <div class="ibox-content">
         <%= form_for(resource, as: resource_name,  url: session_path(resource_name),class:"form-horizontal") do |f| %>
-            <p>Sign in today for more expirience.</p>
+            <p class="btnlnk">Sign in today for more expirience.</p>
             <div class="form-group row"><label class="col-lg-2 control-label">Email</label>
 
                 <div class="col-lg-10"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
@@ -26,7 +26,7 @@
                       <%= f.label :remember_me %>
                     </div>
                   <% end -%>
-                  <a href="/users/password/new" class="btn btn-link pull-right">Forgot your password?</a>
+                  <a href="/users/password/new" class="btn btn-link pull-right btnlnk">Forgot your password?</a>
                 </div>
             </div>
             <div class="form-group row">
@@ -35,7 +35,23 @@
                 </div>
             </div>
             <hr>
-           <center> <span>Don't hava account?</span><a href="/users/sign_up" class="btn btn-link">Sign Up</a></center>
+            <div class="row">
+              <div class="col-lg-offset-2 col-lg-10">
+              <table>
+                  
+                  <table>
+                    <tr>
+                      <td>
+                        <span class="btnlnk">Don't hava account?</span>
+                      </td>
+                       <td>
+                         <a href="/users/sign_up" class="btn btn-link btnlnk">Sign Up</a>
+                      </td>
+                    </tr>
+                    
+              </table>
+              </div>
+            </div>
         <% end %>
     </div>
   </div>

@@ -1,9 +1,13 @@
 <div class="container-fluid container-top" style="">
-  <div class="container">
+    <div class="row wrapper border-bottom white-bg  page-heading">
+        <div class="col-lg-10">
+            <h2>Users</h2>
+        </div>
+  </div>
 <% if current_user.admin? or current_user.moderator? %>
           <div class="container">
                 <div class="row">
-                    <h2>Users</h2>
+                    
                     <div class="table-responsive user-list">
                       <table class="table white-bg border-left-right border-top-bottom">
                         <thead>

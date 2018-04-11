@@ -79,7 +79,7 @@ $(document).ready(function() {
       $(document).ready(function(){
             $('.user-list table').DataTable({
                  "aaSorting": [ ],
-                pageLength: 25,
+                pageLength: 10,
                 responsive: true,
 
             });
@@ -88,7 +88,7 @@ $(document).ready(function() {
      
       $(document).ready(function(){
             $('.project-list table').DataTable({
-                pageLength: 25,
+                pageLength: 10,
                 responsive: true,
 
             });
@@ -141,4 +141,8 @@ $(document).ready(function() {
         actions();
         actions3();
      });
+
+
+
+
 

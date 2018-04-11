@@ -52,5 +52,23 @@
     margin-top: 6px;
     color: #fff !important;
  }
- 
- 
+ .btnlnk{
+  font-size: 13px !important;
+ }
+ .bg-covr{
+  background-image: url(/login-form-bg.jpg);
+  background-size: cover;
+  background-position: center center;
+ }
+ .bg-frm-opcty{
+   background: rgba(255,255,255,0.8) !important;
+ }
+ .bg-frm-opcty .ibox-title, .bg-frm-opcty .ibox-content, .bg-frm-opcty .ibox-content .form-group .form-control, .bg-frm-opcty .ibox-content .form-group select, .bg-frm-opcty .ibox-content .form-group .input-group-addon{
+  background-color: transparent !important;
+ }
+ .bg-frm-opcty .ibox-content .form-group .form-control, .bg-frm-opcty .ibox-content .form-group .input-group-addon, .bg-frm-opcty .ibox-content .form-group select{
+  border-color: #000 !important;
+ }
+ .usr-bg {    
+       padding: 0px 20px 0px 20px !important;
+}

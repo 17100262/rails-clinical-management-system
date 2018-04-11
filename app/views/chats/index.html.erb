@@ -17,7 +17,7 @@
           <% @chats.each do |chat| %>
             <tr class="inbx-tr">
               <% last_message  = chat.messages.order('created_at ASC').last if not chat.messages.blank? %>
-              <td><%= chat.users.where.not(id: current_user.id).first.name %> </td>
+              <td><%= chat.users.select{|u| u!=current_user}.first.name %> </td>
               <td><%= last_message.content if last_message %></td>
               <td> <%= time_ago_in_words( last_message.created_at)+ " ago" if last_message %></td>
               <td><%= link_to 'Start Chat', chat, class: "btn btn-primary" %></td>
