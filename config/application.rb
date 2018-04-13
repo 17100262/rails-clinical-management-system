@@ -11,7 +11,7 @@ module Freelance
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.active_job.queue_adapter = :sidekiq
-    I18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}')]
+    I18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :pt
     # config.i18n.available_locales = [:en, :pt]
 
