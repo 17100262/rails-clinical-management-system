@@ -25,7 +25,7 @@
   background:#f5f5f5; min-height:86vh;
  }
  .container-top .container{
-  padding:30px 0;
+  padding:50px 0;
  }
  
  .notes i{
@@ -36,9 +36,10 @@
   margin-top: 10px !important;
   margin-bottom: 0 !important;
  }
- .page-heading{
-  padding-bottom: 10px !important;
- }
+.page-heading {
+    font-size: 20px;
+    padding: 5px !important;
+}
  .log-button {
   background: #df0803;
   color: #fff !important;
@@ -70,5 +71,49 @@
   border-color: #000 !important;
  }
  .usr-bg {    
-       padding: 0px 20px 0px 20px !important;
+       padding: 0px 20px 3px 20px !important;
 }
+.m-b-sm {
+    margin-bottom: 0px !important;
+}
+.set-set{    
+    margin-bottom: 1px;
+    padding-bottom: 2px;
+}
+.brnd{
+ padding: 2px 15px;
+}
+.icon-chat {
+ font-size: 22px;
+ color: #19aa8d;
+}
+.icon-danger {
+ font-size: 22px;
+ color: red;
+}
+.table-icons td i{
+ padding-right: 30px !important;
+}
+@media (min-width:768px){
+.btn-notify{
+  font-size:20px;
+ display:block !important;
+ margin: 0px 30px 25px 30px;
+}
+.td-notify{
+ font-size:18px;
+ padding:52px 0 !important;
+}}
+@media (max-width:992px){
+.navbar-header, #navbar{
+ width:100% !important;
+}
+ #navbar{
+ margin-top:50px !important;
+}
+}
+@media (min-width:992px){
+.nav > li > a i {
+  display: block;
+  text-align: center;
+}}

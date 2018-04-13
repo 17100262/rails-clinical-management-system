@@ -3,9 +3,7 @@
       
       <div class="col-md-12">
         <div class="ibox float-e-margins">
-          <div class="ibox-title">
-              <h5>Add New Note</h5>
-          </div>
+
           <div class="ibox-content">
             <%= form_for [current_user,note], class:"form-horizontal" do |form| %>
               <% if note.errors.any? %>
@@ -35,7 +33,7 @@
                   
                   <div class="form-group row">
                       <div class="col-lg-offset-2 col-lg-10">
-                        <%= form.submit "Add new note", class:"btn btn-primary" %>
+                        <%= form.submit "Save", class:"btn btn-primary" %>
                       </div>
                   </div>
               <% end %>

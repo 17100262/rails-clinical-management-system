@@ -1,42 +1,38 @@
 <div class="container-fluid container-top" style="">
-    <div class="row wrapper border-bottom white-bg  page-heading">
-        <div class="col-lg-10">
-            <h2>Users</h2>
-        </div>
-  </div>
+
+<div class="container">
 <% if current_user.admin? or current_user.moderator? %>
-          <div class="container">
-                <div class="row">
-                    
-                    <div class="table-responsive user-list">
-                      <table class="table white-bg border-left-right border-top-bottom">
-                        <thead>
-                          <tr>
-                            <!--<th>#</th>-->
-                            <th>Name</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th class="actions">Actions</th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            <% User.all.sort_by{|a| a.approved ? 1 : 0 }.each do |user| %>
-                                <tr>
-                                    <td> <%= user.name %> </td>
-                                    <td> <%= user.role %> </td>
-                                    <td> <%= user.email %> </td>
-                                    <td> <%= link_to (user.approved ? 'Block user':'Approve User'),approve_user_path({user_id: user.id,approved: !user.approved}),method: :put, class: "btn btn-#{user.approved ? 'danger':'primary'}"  if not current_user.id==user.id %> </td>
-                                    <td> <%= link_to (user.moderator? ? 'Remove Moderator':'Make Moderator'),make_moderator_user_path(user),method: :put, class: "btn btn-primary" if current_user.id!=user.id and not current_user.moderator? %> </td>
-                                </tr>
-                            <% end %>
-                          
-                        </tbody>
-                      </table>
-                    </div>
-                  <!--</main>-->
-                </div>
-              </div>
-            <% end %>
+        <div class="row">
+            
+            <div class="table-responsive user-list">
+              <table class="table white-bg border-left-right border-top-bottom">
+                <thead>
+                  <tr>
+                    <!--<th>#</th>-->
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th class="actions">Actions</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% User.all.sort_by{|a| a.approved ? 1 : 0 }.each do |user| %>
+                        <tr>
+                            <td> <%= user.name %> </td>
+                            <td> <%= user.role %> </td>
+                            <td> <%= user.email %> </td>
+                            <td> <%= link_to (user.approved ? 'Block user':'Approve User'),approve_user_path({user_id: user.id,approved: !user.approved}),method: :put, class: "btn btn-#{user.approved ? 'danger':'primary'}"  if not current_user.id==user.id %> </td>
+                            <td> <%= link_to (user.moderator? ? 'Remove Moderator':'Make Moderator'),make_moderator_user_path(user),method: :put, class: "btn btn-primary" if current_user.id!=user.id and not current_user.moderator? %> </td>
+                        </tr>
+                    <% end %>
+                  
+                </tbody>
+              </table>
             </div>
-            </div>
+          <!--</main>-->
+        </div>
+      </div>
+    <% end %>
+    </div>
+</div> 

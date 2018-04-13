@@ -11,7 +11,7 @@
             <%= form_with(model: clinical_case, local: true, class:"form-horizontal") do |form| %>
                 <% if clinical_case.errors.any? %>
                   <div id="error_explanation">
-                    <h2><%= pluralize(clinical_case.errors.count, "error") %> prohibited this clinical_case from being saved:</h2>
+                    <h3><%= pluralize(clinical_case.errors.count, "error") %> prohibited this clinical_case from being saved:</h3>
               
                     <ul>
                     <% clinical_case.errors.full_messages.each do |message| %>
@@ -117,7 +117,11 @@
                      </div>
                       <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :neoadjuvant_systemic_treatment ,"RT",:value => "RT" %>
                       <%= form.label :neoadjuvant_systemic_treatment , "RT", :value => "RT"  %></div>
-                      </div>
+                       <div class="col-lg-12"><div class="ichecks"><%= form.radio_button :neoadjuvant_systemic_treatment ,"No",:value => "RT" %> 
+                      <%= form.label :neoadjuvant_systemic_treatment, "No", :value => "No"  %>
+                      </div></div>
+                      
+                  </div>    
                   </div>
                   <div class="form-group"><label class="col-lg-12 control-label">Surgery Date</label>
       
@@ -169,52 +173,22 @@
                         <%= form.label :adjuvant_radiotherapy , "No", :value => "No"  %></div>
                       </div>
                   </div>
-                  <div class="form-group"><label class="col-lg-12 control-label">Estadiamento Clinico</label>
-      
-                      <div class="col-lg-12"><%= form.text_area :estadiamento_clinico, class:"form-control" %>
-                      </div>
-                  </div>
-                  <div class="form-group click-radio1"><label class="col-lg-12 control-label">Neoadjuvant Systemic Treatment</label>
-                      
-                      <div class="col-lg-12"><div class="yes-click"><%= radio_button_tag("clinical_case[neoadjuvant_systemic_treatment]", 
-                      "Yes" , checked = false, options = {id: "yes_neoadjuvant_systemic_treatment"})%> 
-                      <%= form.label :neoadjuvant_systemic_treatment, "Yes", :value => "Yes"  %> <br>
-                      </div></div>
-                      <div class="show-radio">
-                      <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :neoadjuvant_systemic_treatment,"QT",:value => "QT" %>
-                      <%= form.label :neoadjuvant_systemic_treatment, "QT", :value => "QT"  %></div>
-                      </div>
-                      <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :neoadjuvant_systemic_treatment ,"HT",:value => "HT" %>
-                      <%= form.label :neoadjuvant_systemic_treatment , "HT", :value => "HT"  %></div>
-                      </div>
-                      <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :neoadjuvant_systemic_treatment ,"RT",:value => "RT" %>
-                      <%= form.label :neoadjuvant_systemic_treatment , "RT", :value => "RT"  %></div>
-                      </div>
-                      </div>
-                      <div class="col-lg-12"><div class="no-click"><%= form.radio_button :neoadjuvant_systemic_treatment ,"RT",:value => "RT" %> 
-                      <%= form.label :neoadjuvant_systemic_treatment, "No", :value => "No"  %> <br>
-                      </div></div>
-
-                  </div>
+                  
                   <div class="row wrapper border-bottom  page-heading">
                     <div class="col-lg-12">
-                        <h2>Adjuvent Hormone Therapy</h2>
+                        <h3>Adjuvant Hormone Therapy</h3>
                     </div>
                     
                   </div>
-                  <div class="form-group click-radio2">
-                  <div class="col-lg-12"><div class="yes-click"><%= radio_button_tag("clinical_case[adjuvant_hormone_therapy_duration]", 
-                      "Yes" , checked = false, options = {id: "yes_adjuvant_hormone_therapy_duration"})%> 
-                      <%= form.label :adjuvant_hormone_therapy_duration, "Yes", :value => "Yes"  %> <br>
-                      </div></div>
+                  <div class="form-group">
                       
-                      <div class="show-radio">
-                      <label class="col-lg-12 show-radio control-label">Duration</label>
+                     
+                      <label class="col-lg-12 control-label">Duration</label>
       
-                      <div class="col-lg-12 show-radio"><%= form.number_field :adjuvant_hormone_therapy_duration, class:"form-control" %>
+                      <div class="col-lg-12"><%= form.number_field :adjuvant_hormone_therapy_duration, class:"form-control" %>
                       </div>
                   
-                  <label class="col-lg-12 control-label show-radio">Treatment</label>
+                  <label class="col-lg-12 control-label">Treatment</label>
       
                       <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :adjuvant_hormone_therapy_treatment ,"Tamoxifeno",:value => "Tamoxifeno" %>
                         <%= form.label :adjuvant_hormone_therapy_treatment , "Tamoxifeno", :value => "Tamoxifeno"  %></div>
@@ -225,15 +199,12 @@
                       <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :adjuvant_hormone_therapy_treatment ,"Goserelina",:value => "Goserelina" %>
                         <%= form.label :adjuvant_hormone_therapy_treatment , "Goserelina", :value => "Goserelina"  %></div>
                       </div>
-                  </div>
+                 
                   
-                  <div class="col-lg-12"><div class="no-click"><%= form.radio_button :adjuvant_hormone_therapy_duration ,"RT",:value => "RT" %> 
-                      <%= form.label :adjuvant_hormone_therapy_duration, "No", :value => "No"  %> <br>
+                  <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :adjuvant_hormone_therapy_treatment ,"RT",:value => "RT" %> 
+                      <%= form.label :adjuvant_hormone_therapy_treatment, "No", :value => "No"  %> <br>
                       </div></div>
                       </div>
-                  
-                  
-                  
                   <div class="form-group"><label class="col-lg-12 control-label">Date of IPO discharge</label>
       
                       <div class="col-lg-12"><%= form.text_field :date_of_ipo_discharge, class:"form-control date" %>
@@ -246,7 +217,7 @@
                   </div>
                   <div class="row wrapper border-bottom  page-heading">
                     <div class="col-lg-12">
-                        <h2>Date of imaging control</h2>
+                        <h3>Date of imaging control</h3>
                     </div>
                     
                 </div>
@@ -260,7 +231,7 @@
                   </div>
                   <div class="row wrapper border-bottom  page-heading">
                     <div class="col-lg-12">
-                        <h2>Date of Suspected Recurrence</h2>
+                        <h3>Date of Suspected Recurrence</h3>
                     </div>
                     
                 </div>
@@ -284,6 +255,7 @@
                       <div class="col-lg-12"><%= form.text_field :date_of_suspected_recurrence_second_neoplasm, class:"form-control date" %>
                       </div>
                   </div>
+                  <hr>
                   <div class="form-group"><label class="col-lg-12 control-label">Date of confirmation of Recurrence</label>
       
                       <div class="col-lg-12"><%= form.text_field :date_of_confirmation_of_recurrence, class:"form-control date" %>
@@ -311,33 +283,36 @@
                   </div>
                   <div class="row wrapper border-bottom  page-heading">
                     <div class="col-lg-12">
-                        <h2>Satisfaction survey record</h2>
+                        <h3>Satisfaction survey record</h3>
   
                         
                     </div>
                     
                 </div>
-                  <h3> At Discharge</h3>
+                  <label class="m-b-xs control-label"> At Discharge</label>
                   <div class="form-group">
       
                       <div class="col-lg-12">
                         <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                           <div class="form-control" data-trigger="fileinput">
                             <%= @clinical_case.satisfaction_survey_record_discharge_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_discharge.exists? ) %>
-                              <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                              
                           <span class="fileinput-filename"></span>
                           </div>
                           <span class="input-group-addon btn btn-default btn-file">
                               <span class="fileinput-new">Select file</span>
                               <span class="fileinput-exists">Change</span>
                               <%= form.file_field :satisfaction_survey_record_discharge %>
+                              <% if @clinical_case.satisfaction_survey_record_discharge.exists? %>
+                                <%#= link_to 'Remove File',  %>
+                              <% end  %>
                           </span>
                           <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
                       </div> 
                         
                       </div>
                   </div>
-                  <h3> After 1st follow-up </h3>
+                  <label class="m-b-xs control-label"> After 1st follow-up </label>
                   <div class="form-group">
       
                       <div class="col-lg-12">
@@ -345,7 +320,7 @@
                           
                           <div class="form-control" data-trigger="fileinput">
                             <%= @clinical_case.satisfaction_survey_record_first_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_first.exists? ) %>
-                              <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                              
                           <span class="fileinput-filename"></span>
                           </div>
                           <span class="input-group-addon btn btn-default btn-file">
@@ -358,14 +333,14 @@
                         
                       </div>
                   </div>
-                  <h3> Next ones</h3>
+                  <label class="m-b-xs control-label"> Next ones</label>
                   <div class="form-group">
       
                       <div class="col-lg-12">
                         <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                           <div class="form-control" data-trigger="fileinput">
                               <%= @clinical_case.satisfaction_survey_record_next_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_next.exists? )%>
-                              <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                              
                           <span class="fileinput-filename"></span>
                           </div>
                           <span class="input-group-addon btn btn-default btn-file">

@@ -302,3 +302,71 @@
   </div>
   </div>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+<!--<div class="form-group"><label class="col-lg-12 control-label">Estadiamento Clinico</label>-->
+      
+                  <!--    <div class="col-lg-12"><#%= form.text_area :estadiamento_clinico, class:"form-control" %>-->
+                  <!--    </div>-->
+                  <!--</div>-->
+                  <div class="form-group click-radio1"><label class="col-lg-12 control-label">Neoadjuvant Systemic Treatment</label>
+                      
+                      <div class="col-lg-12"><div class="yes-click"><%= radio_button_tag("clinical_case[neoadjuvant_systemic_treatment]", 
+                      "Yes" , checked = false, options = {id: "yes_neoadjuvant_systemic_treatment"})%> 
+                      <%= form.label :neoadjuvant_systemic_treatment, "Yes", :value => "Yes"  %> <br>
+                      </div></div>
+                      <div class="show-radio">
+                      <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :neoadjuvant_systemic_treatment,"QT",:value => "QT" %>
+                      <%= form.label :neoadjuvant_systemic_treatment, "QT", :value => "QT"  %></div>
+                      </div>
+                      <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :neoadjuvant_systemic_treatment ,"HT",:value => "HT" %>
+                      <%= form.label :neoadjuvant_systemic_treatment , "HT", :value => "HT"  %></div>
+                      </div>
+                      <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :neoadjuvant_systemic_treatment ,"RT",:value => "RT" %>
+                      <%= form.label :neoadjuvant_systemic_treatment , "RT", :value => "RT"  %></div>
+                      </div>
+                      </div>
+                      <div class="col-lg-12"><div class="no-click"><%= form.radio_button :neoadjuvant_systemic_treatment ,"RT",:value => "RT" %> 
+                      <%= form.label :neoadjuvant_systemic_treatment, "No", :value => "No"  %> <br>
+                      </div></div>
+
+                  </div>
+                  
+                  
+ <div class="form-group click-radio2">
+                  <div class="col-lg-12"><div class="yes-click"><%= radio_button_tag("clinical_case[adjuvant_hormone_therapy_duration]", 
+                      "Yes" , checked = false, options = {id: "yes_adjuvant_hormone_therapy_duration"})%> 
+                      <%= form.label :adjuvant_hormone_therapy_duration, "Yes", :value => "Yes"  %> <br>
+                      </div></div>
+                      
+                      <div class="show-radio">
+                      <label class="col-lg-12 show-radio control-label">Duration</label>
+      
+                      <div class="col-lg-12 show-radio"><%= form.number_field :adjuvant_hormone_therapy_duration, class:"form-control" %>
+                      </div>
+                  
+                  <label class="col-lg-12 control-label show-radio">Treatment</label>
+      
+                      <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :adjuvant_hormone_therapy_treatment ,"Tamoxifeno",:value => "Tamoxifeno" %>
+                        <%= form.label :adjuvant_hormone_therapy_treatment , "Tamoxifeno", :value => "Tamoxifeno"  %></div>
+                      </div>
+                      <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :adjuvant_hormone_therapy_treatment ,"Inhibitor Aromatase",:value => "Inhibitor Aromatase" %>
+                        <%= form.label :adjuvant_hormone_therapy_treatment , "Inhibitor Aromatase", :value => "Inhibitor Aromatase"  %></div>
+                      </div>
+                      <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :adjuvant_hormone_therapy_treatment ,"Goserelina",:value => "Goserelina" %>
+                        <%= form.label :adjuvant_hormone_therapy_treatment , "Goserelina", :value => "Goserelina"  %></div>
+                      </div>
+                  </div>
+                  
+                  <div class="col-lg-12"><div class="no-click"><%= form.radio_button :adjuvant_hormone_therapy_duration ,"RT",:value => "RT" %> 
+                      <%= form.label :adjuvant_hormone_therapy_duration, "No", :value => "No"  %> <br>
+                      </div></div>
+                      </div>

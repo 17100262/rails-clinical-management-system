@@ -1,6 +1,20 @@
-<h1>Editing Note</h1>
+<div class="container-fluid container-top" style="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+        <div class="ibox float-e-margins bg-frm-opcty">
 
-<%= render 'form', note: @note %>
+    <div class="ibox-content">
 
-<%= link_to 'Show', @note %> |
-<%= link_to 'Back', user_notes_path(current_user) %>
+
+
+        <%= render 'form', note: @note %>
+        
+        <%= link_to 'Show', @note, class:"btn btn-primary" %> 
+        <%= link_to 'Back', user_notes_path(current_user), class:"btn btn-primary" %>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

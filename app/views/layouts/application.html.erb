@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <head>
     <title>Clinical Management System</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <%= javascript_include_tag 'application'%>
@@ -14,15 +16,20 @@
   <body>
     <%# unless params[:controller]=='home' && params[:action]=='admin' %>
       <%= render 'layouts/header' %>
-      <% if notice || alert %>
-        <div class="alert alert-info" role="alert">
-          <strong>Info!</strong> <%= notice || alert %>
-        </div>
-      <% end %>
+      <% if notice.present? %>
+      <script type="text/javascript">
+        toastr["success"]("<%= notice %>",'',{"closeButton": true})
+      </script>
+    <% end %>
+    <% if alert.present? %>
+      <script type="text/javascript">
+        toastr["error"]("<%= alert %>")
+      </script>
+    <% end %>
       <% unless params[:controller]=='home' && params[:action]=='admin' %>
           
       <% end %>
-      <div class="main" style="min-height:85vh; margin-top: 33px;">
+      <div class="main" style="min-height:85vh;">
         <%= yield %>
       </div>
     <% unless params[:controller]=='home' && params[:action]=='admin' %>

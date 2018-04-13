@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      
+        <% @clinical_case.attributes.each do |key,value| %>
+        <Row>
+        <Cell><Data ss:Type="String"><%= key.humanize %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= value.to_s %></Data></Cell>
+        <!--<Cell><Data ss:Type="String">Release Date</Data></Cell>-->
+        <!--<Cell><Data ss:Type="String">Price</Data></Cell>-->
+        </Row>
+        <% end %>
+      
+    <!--<Row>-->
+    <%# @clinical_case.attributes.values.map{|v| v.to_s }.each do |val| %>
+      
+        <!--<Cell><Data ss:Type="String"><%#= val %></Data></Cell>-->
+      <!--  <Cell><Data ss:Type="String"><%#= product.name %></Data></Cell>-->
+      <!--  <Cell><Data ss:Type="String"><%#= product.released_on %></Data></Cell>-->
+      <!--  <Cell><Data ss:Type="Number"><%#= product.price %></Data></Cell>-->
+      
+    <%# end %>
+    <!--</Row>-->
+    </Table>
+  </Worksheet>
+</Workbook>

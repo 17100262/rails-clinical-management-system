@@ -1,0 +1,666 @@
+<div class="container-fluid container-top">
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row" style="margin-bottom: 20px;">
+            <div class="col-md-3">
+                <div class="ibox-content text-center usr-bg">
+                    <h1 class="set-set">Nicki Smith</h1>
+                    <div class="m-b-sm">
+                            <img alt="image" class="img-circle" src="/a8.jpg">
+                    </div>
+                            <p class="font-bold">Consectetur adipisicing</p>
+
+                    <div class="text-center">
+                        <a class="btn btn-xs btn-primary">Signed in</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+<div class="col-md-9">
+    <div>
+        <table class="table white-bg">
+            <tbody>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-danger m-r-sm">12</button>
+                    Total messages
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary m-r-sm">28</button>
+                    Posts
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info m-r-sm">15</button>
+                   Comments
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-info m-r-sm">20</button>
+                    News
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success m-r-sm">40</button>
+                    Likes
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger m-r-sm">30</button>
+                    Notifications
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-warning m-r-sm">20</button>
+                    Albums
+                </td>
+                <td>
+                    <button type="button" class="btn btn-default m-r-sm">40</button>
+                    Groups
+                </td>
+                <td>
+                    <button type="button" class="btn btn-warning m-r-sm">30</button>
+                    Permissions
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-danger m-r-sm">12</button>
+                    Total messages
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary m-r-sm">28</button>
+                    Posts
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info m-r-sm">15</button>
+                   Comments
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+            
+            <!--<div class="row">-->
+            <!--    <div class="col-lg-12">-->
+            <!--        <div class="ibox float-e-margins">-->
+            <!--            <div class="ibox-title">-->
+            <!--                <h5>Line Chart Example-->
+            <!--                    <small>With custom colors.</small>-->
+            <!--                </h5>-->
+            <!--            </div>-->
+            <!--            <div class="ibox-content">-->
+            <!--                <div>-->
+                                
+                                <!--<canvas id="lineChart" height="140"></canvas>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</div>-->
+            <div class="row">
+                
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Histology Type</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <%
+                                    barData = {
+                                             labels: ClinicalCase.all.group(:histology_type).count.to_h.keys,
+                                             datasets: [
+                                                 
+                                                 {
+                                                     label: "N",
+                                                     backgroundColor: 'rgba(26,179,148,0.5)',
+                                                     borderColor: "rgba(26,179,148,0.7)",
+                                                     pointBackgroundColor: "rgba(26,179,148,1)",
+                                                     pointBorderColor: "#fff",
+                                                     data: ClinicalCase.all.group(:histology_type).count.to_h.values
+                                                 }
+                                             ]
+                                         };
+                                    
+                                         barOptions = {
+                                             responsive: true,
+                                             height: 140,
+                                             scales: {
+                                                yAxes: [{
+                                                    display: true,
+                                                    ticks: {
+                                                        suggestedMin: 0   
+                                                    }
+                                                }]
+                                            }
+                                            
+                                            
+                                         }
+                                %>
+                                <!--<canvas id="barChart" height="140"></canvas>-->
+                                <%= bar_chart barData, barOptions %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Notifications</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="notification-home">
+                            <a href="/user_management"><h3><%= User.where(approved: false).count > 0  ? "There are #{ pluralize(User.where(approved: false).count,"user")} waiting for approval": nil %></h3></a>
+                            <a href="/chats"><h3><%= @count > 0  ? "There are #{@count} unread messages": nil %></h3></a>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Histology Level</h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <div class="text-center">
+                                <!--<canvas id="polarChart" height="140"></canvas>-->
+                                <%
+                                    polarData = {
+                                        datasets: [{
+                                            data: ClinicalCase.all.group(:histology_level).group(:histology_level).count.to_h.values,
+                                            backgroundColor: [
+                                                "#a3e1d4", "#dedede", "#b5b8cf"
+                                            ],
+                                            label: [
+                                                "My Radar chart"
+                                            ]
+                                        }],
+                                        labels: ClinicalCase.all.group(:histology_level).count.to_h.keys
+                                    }
+                                    
+                                    polarOptions = {
+                                        segmentStrokeWidth: 2,
+                                        responsive: true,
+                                        height: 200,
+                                        scale: {
+                                        #   reverse: false,
+                                          ticks: {
+                                            min: 0,
+                                            max: ClinicalCase.count
+                                          }
+                                        }
+                                        
+                                    }
+
+                                %>
+                                <%= polar_area_chart polarData,polarOptions %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Surgery Type </h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <!--<canvas id="doughnutChart" height="140"></canvas>-->
+                                <%
+                                    surgery_type_data = {
+                                        labels: ClinicalCase.all.group(:surgery_type).count.to_h.keys,
+                                         datasets: [{
+                                             data: ClinicalCase.all.group(:surgery_type).count.to_h.values,
+                                             backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
+                                         }]
+                                     } ;
+                                
+                                
+                                    surgery_type_options = {
+                                        responsive: true,
+                                        height: 140
+                                    };
+                                    
+
+                                %>
+                                <%= doughnut_chart surgery_type_data,surgery_type_options %>
+                                
+
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Estrogen Receptors</h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <div class="text-center">
+                                <!--<canvas id="polarChart" height="140"></canvas>-->
+                                <%
+                                    surgery_type_data = {
+                                        labels: ClinicalCase.all.group(:estrogen_receptors).count.to_h.keys,
+                                         datasets: [{
+                                             data: ClinicalCase.all.group(:estrogen_receptors).count.to_h.values,
+                                             backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
+                                         }]
+                                     } ;
+                                
+                                
+                                    surgery_type_options = {
+                                        responsive: true,
+                                        height: 140
+                                    };
+                                    
+
+                                %>
+                                <%= doughnut_chart surgery_type_data,surgery_type_options %>
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Progesterone Receptors </h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <!--<canvas id="doughnutChart" height="140"></canvas>-->
+                                <%
+                                    surgery_type_data = {
+                                        labels: ClinicalCase.all.group(:progesterone_receptors).count.to_h.keys,
+                                         datasets: [{
+                                             data: ClinicalCase.all.group(:progesterone_receptors).count.to_h.values,
+                                             backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
+                                         }]
+                                     } ;
+                                
+                                
+                                    surgery_type_options = {
+                                        responsive: true,
+                                        height: 140
+                                    };
+                                    
+
+                                %>
+                                <%= doughnut_chart surgery_type_data,surgery_type_options %>
+                                
+
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>HER2</h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <div class="text-center">
+                                <!--<canvas id="polarChart" height="140"></canvas>-->
+                                <%
+                                    surgery_type_data = {
+                                        labels: ClinicalCase.all.group(:her2).count.keys,
+                                         datasets: [{
+                                             data: ClinicalCase.all.group(:her2).count.values,
+                                             backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
+                                         }]
+                                     } ;
+                                
+                                
+                                    surgery_type_options = {
+                                        responsive: true,
+                                        height: 140
+                                    };
+                                    
+
+                                %>
+                                <%= doughnut_chart surgery_type_data,surgery_type_options %>
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>KI67 </h5>
+
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <!--<canvas id="doughnutChart" height="140"></canvas>-->
+                                <%
+                                    surgery_type_data = {
+                                        labels: ClinicalCase.all.group(:progesterone_receptors).count.to_h.keys,
+                                         datasets: [{
+                                             data: ClinicalCase.all.group(:progesterone_receptors).count.to_h.values,
+                                             backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]
+                                         }]
+                                     } ;
+                                
+                                
+                                    surgery_type_options = {
+                                        responsive: true,
+                                        height: 140
+                                    };
+                                    
+
+                                %>
+                                <%= doughnut_chart surgery_type_data,surgery_type_options %>
+                                
+
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Sentinel Ganglion</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                            <%
+                                barData = {
+                                         labels: ClinicalCase.all.group(:sentinel_ganglion).count.to_h.keys,
+                                         datasets: [
+                                             
+                                             {
+                                                 label: "N",
+                                                 backgroundColor: 'rgba(26,179,148,0.5)',
+                                                 borderColor: "rgba(26,179,148,0.7)",
+                                                 pointBackgroundColor: "rgba(26,179,148,1)",
+                                                 pointBorderColor: "#fff",
+                                                 data: ClinicalCase.all.group(:sentinel_ganglion).count.to_h.values
+                                             }
+                                         ]
+                                     };
+                                
+                                     barOptions = {
+                                         responsive: true,
+                                         height: 400,
+                                         scales: {
+                                            yAxes: [{
+                                                display: true,
+                                                ticks: {
+                                                    min: 0,
+                                                    max: ClinicalCase.count
+                                                    
+                                                }
+                                            }]
+                                        }
+                                        
+                                        
+                                     }
+                                %>
+                            <%= bar_chart barData, barOptions %>
+
+                                <!--<canvas id="radarChart"></canvas>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Axillary Emptying</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <%
+                                barData = {
+                                         labels: ClinicalCase.all.group(:axillary_emptying).count.to_h.keys,
+                                         datasets: [
+                                             
+                                             {
+                                                 label: "N",
+                                                 backgroundColor: 'rgba(26,179,148,0.5)',
+                                                 borderColor: "rgba(26,179,148,0.7)",
+                                                 pointBackgroundColor: "rgba(26,179,148,1)",
+                                                 pointBorderColor: "#fff",
+                                                 data: ClinicalCase.all.group(:axillary_emptying).count.to_h.values
+                                             }
+                                         ]
+                                     };
+                                
+                                     barOptions = {
+                                         responsive: true,
+                                         height: 400,
+                                         scales: {
+                                            yAxes: [{
+                                                display: true,
+                                                ticks: {
+                                                    min: 0,
+                                                    max: ClinicalCase.count
+                                                    
+                                                }
+                                            }]
+                                        }
+                                        
+                                        
+                                     }
+                                %>
+                            <%= bar_chart barData, barOptions %>
+
+                                <!--<canvas id="radarChart"></canvas>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Adjuvant  Chemotherapy</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <%
+                                barData = {
+                                         labels: ClinicalCase.all.group(:adjuvant_chemotherapy).count.to_h.keys,
+                                         datasets: [
+                                             
+                                             {
+                                                 label: "N",
+                                                 backgroundColor: 'rgba(26,179,148,0.5)',
+                                                 borderColor: "rgba(26,179,148,0.7)",
+                                                 pointBackgroundColor: "rgba(26,179,148,1)",
+                                                 pointBorderColor: "#fff",
+                                                 data: ClinicalCase.all.group(:adjuvant_chemotherapy).count.to_h.values
+                                             }
+                                         ]
+                                     };
+                                
+                                     barOptions = {
+                                         responsive: true,
+                                         height: 400,
+                                         scales: {
+                                            yAxes: [{
+                                                display: true,
+                                                ticks: {
+                                                    min: 0,
+                                                    max: ClinicalCase.count
+                                                    
+                                                }
+                                            }]
+                                        }
+                                        
+                                        
+                                     }
+                                %>
+                            <%= bar_chart barData, barOptions %>
+
+                                
+                                <!--<canvas id="radarChart"></canvas>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Adjuvant Radiotherapy</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <%
+                                barData = {
+                                         labels: ClinicalCase.all.group(:adjuvant_radiotherapy).count.to_h.keys,
+                                         datasets: [
+                                             
+                                             {
+                                                 label: "N",
+                                                 backgroundColor: 'rgba(26,179,148,0.5)',
+                                                 borderColor: "rgba(26,179,148,0.7)",
+                                                 pointBackgroundColor: "rgba(26,179,148,1)",
+                                                 pointBorderColor: "#fff",
+                                                 data: ClinicalCase.all.group(:adjuvant_radiotherapy).count.to_h.values
+                                             }
+                                         ]
+                                     };
+                                
+                                     barOptions = {
+                                         responsive: true,
+                                         height: 400,
+                                         scales: {
+                                            yAxes: [{
+                                                display: true,
+                                                ticks: {
+                                                    min: 0,
+                                                    max: ClinicalCase.count
+                                                    
+                                                }
+                                            }]
+                                        }
+                                        
+                                        
+                                     }
+                                %>
+                            <%= bar_chart barData, barOptions %>
+
+                                
+                                <!--<canvas id="radarChart"></canvas>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+</div>
+
+
+
+<!--<tr>-->
+                <!--    <td>-->
+                <!--        <button type="button" class="btn btn-info m-r-sm">20</button>-->
+                <!--        News-->
+                <!--    </td>-->
+                <!--    <td>-->
+                <!--        <button type="button" class="btn btn-success m-r-sm">40</button>-->
+                <!--        Likes-->
+                <!--    </td>-->
+                <!--    <td>-->
+                <!--        <button type="button" class="btn btn-danger m-r-sm">30</button>-->
+                <!--        Notifications-->
+                <!--    </td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                <!--    <td>-->
+                <!--        <button type="button" class="btn btn-warning m-r-sm">20</button>-->
+                <!--        Albums-->
+                <!--    </td>-->
+                <!--    <td>-->
+                <!--        <button type="button" class="btn btn-default m-r-sm">40</button>-->
+                <!--        Groups-->
+                <!--    </td>-->
+                <!--    <td>-->
+                <!--        <button type="button" class="btn btn-warning m-r-sm">30</button>-->
+                <!--        Permissions-->
+                <!--    </td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                <!--    <td>-->
+                <!--        <button type="button" class="btn btn-danger m-r-sm">12</button>-->
+                <!--        Total messages-->
+                <!--    </td>-->
+                <!--    <td>-->
+                <!--        <button type="button" class="btn btn-primary m-r-sm">28</button>-->
+                <!--        Posts-->
+                <!--    </td>-->
+                <!--    <td>-->
+                <!--        <button type="button" class="btn btn-info m-r-sm">15</button>-->
+                <!--       Comments-->
+                <!--    </td>-->
+                <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Notifications</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="notification-home">
+                <a href="/user_management"><h3><%= User.where(approved: false).count > 0  ? "There are #{ pluralize(User.where(approved: false).count,"user")} waiting for approval": nil %></h3></a>
+                <a href="/chats"><h3><%= @count > 0  ? "There are #{@count} unread messages": nil %></h3></a>
+                </div>
+            </div>
+        </div>    
+    </div>
+    </div>
+                
+                <!--<div class="row">-->
+                <!--    <div class="col-lg-12">-->
+                <!--        <div class="ibox float-e-margins">-->
+                <!--            <div class="ibox-title">-->
+                <!--                <h5>Line Chart Example-->
+                <!--                    <small>With custom colors.</small>-->
+                <!--                </h5>-->
+                <!--            </div>-->
+                <!--            <div class="ibox-content">-->
+                <!--                <div>-->
+                                    
+                                    <!--<canvas id="lineChart" height="140"></canvas>-->
+                <!--                </div>-->
+                <!--            </div>-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->

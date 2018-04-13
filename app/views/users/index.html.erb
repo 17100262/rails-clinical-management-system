@@ -1,36 +1,35 @@
 <div class="container-fluid container-top" style="">
   <div class="container">
-        
-        
-              <div class="row">
-                  <h2>Chat Users</h2>
-                  <div class="table-responsive project-list">
-                    <table class="table white-bg border-left-right border-top-bottom">
-                      <thead>
-                        <tr>
-                          <!--<th>#</th>-->
-                          <th>Name</th>
-                          <th>User Type</th>
-                          <th>Email</th>
-                          <th class="actions">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                          <% @users.each do |user| %>
-                              
-                              <tr class="users-tr">
-                                  <td> <%= link_to ((user.name.nil? or user.name.blank?) ? "Not Provided": user.name),profile_user_path(user) %> </td>
-                                  <td> <%= (user.user_type.nil? or user.user_type.blank?) ? "Not Provided": user.user_type %> </td>
-                                  <td> <%= user.email %> </td>
-                                  <td><%= link_to 'Start Chat', chats_path({user_id: user.id}),method: :post, class: "btn btn-primary" %></td>
-                              </tr>
-                          <% end %>
-                        
-                      </tbody>
-                    </table>
-                  </div>
-                <!--</main>-->
-              </div>
-            </div>
+    <div class="row">
+        <div class="table-responsive project-list">
+          <table class="table white-bg border-left-right border-top-bottom">
+            <thead>
+              <tr>
+                <!--<th>#</th>-->
+                <th></th>
+                <th>Name</th>
+                <th>User Type</th>
+                <th>Email</th>
+                <th class="actions">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |user| %>
+                    
+                    <tr class="users-tr">
+                        <td class="client-avatar"><img alt="image" src="<%= user.profile_picture.url(:thumb %>"> </td>
+                        <td> <%= link_to ((user.name.nil? or user.name.blank?) ? "Not Provided": user.name),profile_user_path(user) %> </td>
+                        <td> <%= (user.user_type.nil? or user.user_type.blank?) ? "Not Provided": user.user_type %> </td>
+                        <td> <%= user.email %> </td>
+                        <td><%= link_to '<i class="fas fa-paper-plane"></i>'.html_safe, chats_path({user_id: user.id}),method: :post, class: "icon-chat" %></td>
+                    </tr>
+                <% end %>
+              
+            </tbody>
+          </table>
+        </div>
+      <!--</main>-->
+    </div>
+</div>
 </div>
 </div>

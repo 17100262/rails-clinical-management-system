@@ -1,15 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid container-top" style="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+        <div class="ibox float-e-margins bg-frm-opcty">
+    <div class="ibox-title">
+        <p id="notice"><%= notice %></p>
+        <div class="page-heading"><%= @note.title %></div>
+    </div>
+    <div class="ibox-content">
+      <div class="page-heading">Description</div>
+        <p><%= @note.description %></p>
+
+        <%= link_to 'Edit', edit_note_path(@note), class: "btn btn-primary" %> 
+        <%= link_to 'Back', user_notes_path(current_user), class: "btn btn-primary" %>   
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
-<p>
-  <strong>Title:</strong>
-  <%= @note.title %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @note.description %>
-</p>
-
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', user_notes_path(current_user) %>

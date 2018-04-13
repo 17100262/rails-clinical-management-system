@@ -7,11 +7,17 @@ class ClinicalCasesController < ApplicationController
   # GET /clinical_cases.json
   def index
     @clinical_cases = ClinicalCase.all
+    @clinical_cases = current_user.clinical_cases if params[:me]=="true"
   end
+  
 
   # GET /clinical_cases/1
   # GET /clinical_cases/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.xls
+    end
   end
 
   # GET /clinical_cases/new

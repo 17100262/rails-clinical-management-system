@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     end
     
     def index
-        @users = User.all.where.not(id: current_user.id)
+        @users = User.all
     end
     
     def approve_user
