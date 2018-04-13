@@ -23,34 +23,34 @@
                       <% if user_signed_in? %>
                         <% if current_user.admin? or current_user.moderator? %>
                           <li class="<%= (params[:controller]=="home" and params[:action]=="admin") ? "active": nil %>">
-                            <a class="page-scroll" href="<%= admin_path %>"><i class="fas fa-cogs"></i>User Management</a>
+                            <a class="page-scroll" href="<%= admin_path %>"><i class="fas fa-cogs"></i>Gestão de Utilizadores</a>
                           </li>
                         <% end %>
                         <li class="<%= (params[:controller]=="clinical_cases" and params[:action]=="index") ? "active": nil %>">
-                          <a class="page-scroll" href="<%= clinical_cases_path %>"><i class="fas fa-briefcase-medical"></i>Clinical Cases</a>
+                          <a class="page-scroll" href="<%= clinical_cases_path %>"><i class="fas fa-briefcase-medical"></i>Casos Clínicos</a>
                         </li>
                         <li class="<%= (params[:controller]=="users" and params[:action]=="index") ? "active": nil %>">
-                          <a class="page-scroll" href="<%= users_path %>"><i class="fas fa-users"></i>All Users</a>
+                          <a class="page-scroll" href="<%= users_path %>"><i class="fas fa-users"></i>Todos os Utilizadores</a>
                         </li>
                         <li class="<%= (params[:controller]=="chats" and params[:action]=="index") ? "active": nil %>">
                           <a href="<%= chats_path %>"><i class="far fa-envelope-open"></i>Inbox (<div id="unread_count" style="display: inline-block;"><%= @count %></div>)</a>
                         </li>
                         <li class="<%= (params[:controller]=="notes" and params[:action]=="index") ? "active": nil %>">
-                          <a class="page-scroll" href="<%= user_notes_path(current_user) %>"><i class="far fa-sticky-note"></i>Notes</a>
+                          <a class="page-scroll" href="<%= user_notes_path(current_user) %>"><i class="far fa-sticky-note"></i>Notas</a>
                         </li>
                         <li class="<%= (params[:controller]=="users" and params[:action]=="profile") ? "active": nil %>">
-                          <a class="page-scroll" href="<%= profile_user_path(current_user) %>"><i class="far fa-user-circle"></i>Profile</a>
+                          <a class="page-scroll" href="<%= profile_user_path(current_user) %>"><i class="far fa-user-circle"></i>Perfil</a>
                         </li>
                         
                         <li class="<%= (params[:controller]=="devise/registrations" and params[:action]=="edit") ? "active": nil %>">
                           
-                          <a class="page-scroll" href="<%= edit_user_registration_path %>"><i class="fas fa-cog"></i>Settings</a>
+                          <a class="page-scroll" href="<%= edit_user_registration_path %>"><i class="fas fa-cog"></i>Definições</a>
                         </li>
                       <% end %>
                       
                         <% if user_signed_in? %>
                           <li>
-                            <a class="log-button" href="<%= destroy_user_session_path %>" data-method="delete"> <i class="fas fa-sign-out-alt"></i>Log Out</a> 
+                            <a class="log-button" href="<%= destroy_user_session_path %>" data-method="delete"> <i class="fas fa-sign-out-alt"></i>Sair</a> 
                         <% else %>
                           <li class="<%= (params[:controller]=="devise/registrations" and params[:action]=="new") ? "active": nil %>">
                             <a class="" href="<%= new_user_registration_path %>"><i class="fas fa-user-plus"></i>Sign Up</a>

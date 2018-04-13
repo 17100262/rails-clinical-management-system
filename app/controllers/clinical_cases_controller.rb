@@ -37,7 +37,7 @@ class ClinicalCasesController < ApplicationController
 
     respond_to do |format|
       if @clinical_case.save
-        format.html { redirect_to @clinical_case, notice: 'Clinical case was successfully created.' }
+        format.html { redirect_to @clinical_case, notice: 'Caso clínico criado com sucesso.' }
         format.json { render :show, status: :created, location: @clinical_case }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class ClinicalCasesController < ApplicationController
         @clinical_case.satisfaction_survey_record_first.destroy if clinical_case_params[:satisfaction_survey_record_first]==""
         @clinical_case.satisfaction_survey_record_next.destroy if clinical_case_params[:satisfaction_survey_record_next]==""
         
-        format.html { redirect_to @clinical_case, notice: 'Clinical case was successfully updated.' }
+        format.html { redirect_to @clinical_case, notice: 'Caso clínico actualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @clinical_case }
       else
         format.html { render :edit }
@@ -70,7 +70,7 @@ class ClinicalCasesController < ApplicationController
   def destroy
     @clinical_case.destroy
     respond_to do |format|
-      format.html { redirect_to clinical_cases_url, notice: 'Clinical case was successfully destroyed.' }
+      format.html { redirect_to clinical_cases_url, notice: 'Caso clínico destruído com sucesso.' }
       format.json { head :no_content }
     end
   end

@@ -7,6 +7,6 @@ class NotificationJob < ApplicationJob
   
   def perform(notification)
     # Do something later
-    ActionCable.server.broadcast "notification_#{notification.user_id}", "You have recieved message from #{notification.message.user.name}"
+    ActionCable.server.broadcast "notification_#{notification.user_id}", "Recebeu uma nova mensagem de #{notification.message.user.name}"
   end
 end

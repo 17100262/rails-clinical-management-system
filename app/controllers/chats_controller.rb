@@ -45,7 +45,7 @@ class ChatsController < ApplicationController
   
       respond_to do |format|
         if @chat.save
-          format.html { redirect_to @chat, notice: 'Chat was successfully created.' }
+          format.html { redirect_to @chat, notice: 'Chat iniciado com sucesso.' }
           format.json { render :show, status: :created, location: @chat }
         else
           format.html { render :new }
@@ -62,11 +62,11 @@ class ChatsController < ApplicationController
     @message.user_id = current_user.id
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @chat, notice: 'Message has been successfully sent' }
+        format.html { redirect_to @chat, notice: 'Mensagem enviada com sucesso' }
         format.json { render :show, status: :ok, location: @chat }
         format.js
       else
-        format.html { redirect_to @chat, notice: 'Something went wrong. Please try again' }
+        format.html { redirect_to @chat, notice: 'Erro inesperado. Por favor tente novamente' }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
@@ -77,7 +77,7 @@ class ChatsController < ApplicationController
   def update
     respond_to do |format|
       if @chat.update(chat_params)
-        format.html { redirect_to @chat, notice: 'Chat was successfully updated.' }
+        format.html { redirect_to @chat, notice: 'Chat actualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @chat }
       else
         format.html { render :edit }
@@ -91,7 +91,7 @@ class ChatsController < ApplicationController
   def destroy
     @chat.destroy
     respond_to do |format|
-      format.html { redirect_to chats_url, notice: 'Chat was successfully destroyed.' }
+      format.html { redirect_to chats_url, notice: 'Chat destruido com sucesso.' }
       format.json { head :no_content }
     end
   end

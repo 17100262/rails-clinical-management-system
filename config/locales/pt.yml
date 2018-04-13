@@ -45,3 +45,5 @@ pt:
       month: Mês
       second: Segundo
       year: Ano
+  account_actions:
+    remember_me: Manter sessão iniciada

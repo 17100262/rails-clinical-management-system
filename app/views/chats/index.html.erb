@@ -6,10 +6,10 @@
       <table class="table white-bg border-left-right border-top-bottom">
         <thead>
           <tr>
-            <th>User</th>
-            <th>Last Message</th>
-            <th>Time</th>
-            <th>Read</th>
+            <th>Utilizador</th>
+            <th>Última mensagem</th>
+            <th>Hora</th>
+            <th>Lida?</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -20,7 +20,7 @@
               <% last_message  = chat.messages.order('created_at ASC').last if not chat.messages.blank? %>
               <td><%= chat.users.select{|u| u!=current_user}.first.name %> </td>
               <td><%= last_message.content if last_message %></td>
-              <td> <%= time_ago_in_words( last_message.created_at)+ " ago" if last_message %></td>
+              <td> <%= time_ago_in_words( last_message.created_at)+ " atrás" if last_message %></td>
               <td><%= last_message.read %></td>
               <td><%= link_to '<i class="fas fa-reply-all icon-chat"></i>'.html_safe, chat, class: "" %></td>
               <!--<td><%#= link_to 'Destroy', chat, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, chat %></td>-->

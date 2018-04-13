@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         authorize! :update, @user if current_user.id == @user.id
         if @user.update(user_params)
-            redirect_to profile_user_path(@user), notice: "User profile updated successfully"
+            redirect_to profile_user_path(@user), notice: "Perfil de utilizador actualizado com sucesso"
         else
             redirect_to edit_user_path, notice: @user.errors.full_messages.join
         end
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         else
             @user.moderator!
         end
-        redirect_to users_path, notice: "User has been #{@user.moderator? ? "successfully made moderator": "removed as moderator"}" 
+        redirect_to users_path, notice: "O utilizador #{@user.moderator? ? " ganhou permissões de moderador": "perdeu permissões de moderador"}" 
     end
     
     def profile
@@ -37,9 +37,9 @@ class UsersController < ApplicationController
     def approve_user
         @user = User.find(params[:user_id])
         if @user.update(approved: params[:approved])
-            redirect_to admin_path,notice: "User has been updated successfully"
+            redirect_to admin_path,notice: "Utilizador actualizado com sucesso"
         else
-            redirect_to admin_path,notice: "Something went wrong"
+            redirect_to admin_path,notice: "Erro inesperado. Por favor tente novamente"
         end
     end
     

@@ -4,11 +4,11 @@
       <div class="col-md-offset-3 col-md-6">
         <div class="ibox float-e-margins bg-frm-opcty">
     <div class="ibox-title">
-        <h5>Login</h5>
+        <h5>Iniciar sessão</h5>
     </div>
     <div class="ibox-content">
         <%= form_for(resource, as: resource_name,  url: session_path(resource_name),class:"form-horizontal") do |f| %>
-            <p class="btnlnk">Sign in today for more expirience.</p>
+            <p class="btnlnk">Introduza os seguintes dados:.</p>
             <div class="form-group row"><label class="col-lg-2 control-label">Email</label>
 
                 <div class="col-lg-10"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
@@ -26,7 +26,7 @@
                       <%= f.label :remember_me %>
                     </div>
                   <% end -%>
-                  <a href="/users/password/new" class="btn btn-link pull-right btnlnk">Forgot your password?</a>
+                  <a href="/users/password/new" class="btn btn-link pull-right btnlnk">Não se recorda da sua password?</a>
                 </div>
             </div>
             <div class="form-group row">
@@ -42,10 +42,10 @@
                   <table>
                     <tr>
                       <td>
-                        <span class="btnlnk">Don't hava account?</span>
+                        <span class="btnlnk">Ainda não tem conta registada?</span>
                       </td>
                        <td>
-                         <a href="/users/sign_up" class="btn btn-link btnlnk">Sign Up</a>
+                         <a href="/users/sign_up" class="btn btn-link btnlnk">Registar</a>
                       </td>
                     </tr>
                     

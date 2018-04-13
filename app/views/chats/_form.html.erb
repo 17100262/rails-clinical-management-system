@@ -1,7 +1,7 @@
 <%= form_with(model: chat, local: true) do |form| %>
   <% if chat.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(chat.errors.count, "error") %> prohibited this chat from being saved:</h2>
+      <h2><%= pluralize(chat.errors.count, "error") %> impediram o chat de ser gravado:</h2>
 
       <ul>
       <% chat.errors.full_messages.each do |message| %>
