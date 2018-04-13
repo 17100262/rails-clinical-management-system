@@ -49,8 +49,13 @@ class ClinicalCasesController < ApplicationController
   # PATCH/PUT /clinical_cases/1
   # PATCH/PUT /clinical_cases/1.json
   def update
+    
     respond_to do |format|
       if @clinical_case.update(clinical_case_params)
+        @clinical_case.satisfaction_survey_record_discharge.destroy if clinical_case_params[:satisfaction_survey_record_discharge]==""
+        @clinical_case.satisfaction_survey_record_first.destroy if clinical_case_params[:satisfaction_survey_record_first]==""
+        @clinical_case.satisfaction_survey_record_next.destroy if clinical_case_params[:satisfaction_survey_record_next]==""
+        
         format.html { redirect_to @clinical_case, notice: 'Clinical case was successfully updated.' }
         format.json { render :show, status: :ok, location: @clinical_case }
       else
@@ -78,7 +83,15 @@ class ClinicalCasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def clinical_case_params
-      params.require(:clinical_case).permit(:date_of_birth,:date_of_diagnostic,:histology_type,:histology_level,:estrogen_receptors,:progesterone_receptors,:her2,:ki67,:estadiamento_clinico,:neoadjuvant_systemic_treatment,:surgery_date,:surgery_type,:sentinel_ganglion, :axillary_emptying, :adjuvant_chemotherapy,:adjuvant_radiotherapy,:adjuvant_hormone_therapy_duration,:adjuvant_hormone_therapy_treatment, :date_of_ipo_discharge, :first_follow_up_at_mgf,:date_of_suspected_recurrence_local_recurrence, :date_of_suspected_recurrence_collateral_breast_cancer, :date_of_suspected_recurrence_distance_metastasis, :date_of_suspected_recurrence_second_neoplasm,:date_of_confirmation_of_recurrence, :global_survival, :Specif_breast_cancer_survival, :last_contact_or_death, :death_cause, :satisfaction_survey_record_discharge_text ,:satisfaction_survey_record_discharge, :satisfaction_survey_record_first_text, :satisfaction_survey_record_first, :satisfaction_survey_record_next_text, :satisfaction_survey_record_next,:unique_identifier, imaging_controls_attributes:[:date_of_imaging,:mammography,:eco_breast,:result,:_destroy,:id])
+      params.require(:clinical_case).permit(:date_of_birth,:date_of_diagnostic,:histology_type,:histology_level,:estrogen_receptors,:progesterone_receptors,:her2,:ki67,:estadiamento_clinico,:neoadjuvant_systemic_treatment,:surgery_date,:surgery_type,:sentinel_ganglion, :axillary_emptying, :adjuvant_chemotherapy,:adjuvant_radiotherapy,:adjuvant_hormone_therapy_duration,:adjuvant_hormone_therapy_treatment, :date_of_ipo_discharge, :first_follow_up_at_mgf,:date_of_suspected_recurrence_local_recurrence, :date_of_suspected_recurrence_collateral_breast_cancer, :date_of_suspected_recurrence_distance_metastasis, :date_of_suspected_recurrence_second_neoplasm,:date_of_confirmation_of_recurrence, :global_survival, :Specif_breast_cancer_survival, :last_contact_or_death, :death_cause, 
+        :satisfaction_survey_record_discharge_text ,
+        :satisfaction_survey_record_discharge, 
+        :satisfaction_survey_record_first_text, 
+        :satisfaction_survey_record_first, 
+        :satisfaction_survey_record_next_text, 
+        :satisfaction_survey_record_next,
+        :unique_identifier, 
+        imaging_controls_attributes:[:date_of_imaging,:mammography,:eco_breast,:result,:_destroy,:id])
       
       
     end

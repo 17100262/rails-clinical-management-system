@@ -83,12 +83,7 @@ $(document).ready(function() {
                 responsive: true,
  
             });
-// $(document).ready(function(){
-    
-//     if($('.fileinput .input-group-addon input').get(0).files.length !== 0){
-//     $('.fileinput').addClass("fileinput-exists").removeClass("fileinput-new");
-//     }
-//         });
+
         
     
 

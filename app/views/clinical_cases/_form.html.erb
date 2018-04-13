@@ -291,64 +291,67 @@
                 </div>
                   <label class="m-b-xs control-label"> At Discharge</label>
                   <div class="form-group">
-      
+                    <div class="col-lg-12"><%= form.text_area :satisfaction_survey_record_discharge_text, class:"form-control m-b-xs" %>
+                      </div>
                       <div class="col-lg-12">
-                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                        <div class="fileinput fileinput1 fileinput-new input-group" data-provides="fileinput">
                           <div class="form-control" data-trigger="fileinput">
-                            <%= @clinical_case.satisfaction_survey_record_discharge_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_discharge.exists? ) %>
-                              
+                            <div class="namee1"><%= @clinical_case.satisfaction_survey_record_discharge_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_discharge.exists? ) %>
+                              </div>
                           <span class="fileinput-filename"></span>
                           </div>
                           <span class="input-group-addon btn btn-default btn-file">
                               <span class="fileinput-new">Select file</span>
                               <span class="fileinput-exists">Change</span>
-                              <%= form.file_field :satisfaction_survey_record_discharge %>
+                              <%= form.file_field :satisfaction_survey_record_discharge, class:"file1" %>
                               <% if @clinical_case.satisfaction_survey_record_discharge.exists? %>
                                 <%#= link_to 'Remove File',  %>
                               <% end  %>
                           </span>
-                          <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                          <a href="#" class="input-group-addon btn btn-default fileinput-exists remove1" data-dismiss="fileinput">Remove</a>
                       </div> 
                         
                       </div>
                   </div>
                   <label class="m-b-xs control-label"> After 1st follow-up </label>
                   <div class="form-group">
-      
+                  <div class="col-lg-12"><%= form.text_area :satisfaction_survey_record_first_text, class:"form-control m-b-xs" %>
+                      </div>
                       <div class="col-lg-12">
-                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                        <div class="fileinput fileinput2 fileinput-new input-group" data-provides="fileinput">
                           
                           <div class="form-control" data-trigger="fileinput">
-                            <%= @clinical_case.satisfaction_survey_record_first_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_first.exists? ) %>
-                              
+                            <div class="namee2"><%= @clinical_case.satisfaction_survey_record_first_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_first.exists? ) %>
+                              </div>
                           <span class="fileinput-filename"></span>
                           </div>
                           <span class="input-group-addon btn btn-default btn-file">
                               <span class="fileinput-new">Select file</span>
                               <span class="fileinput-exists">Change</span>
-                              <%= form.file_field :satisfaction_survey_record_first %>
+                              <%= form.file_field :satisfaction_survey_record_first, class:"file2" %>
                           </span>
-                          <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                          <a href="#" class="input-group-addon btn btn-default fileinput-exists remove2" data-dismiss="fileinput">Remove</a>
                       </div> 
                         
                       </div>
                   </div>
                   <label class="m-b-xs control-label"> Next ones</label>
                   <div class="form-group">
-      
+                    <div class="col-lg-12"> <%= form.text_area :satisfaction_survey_record_next_text, class:"form-control m-b-xs" %>
+                      </div>
                       <div class="col-lg-12">
-                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                        <div class="fileinput fileinput3 fileinput-new input-group" data-provides="fileinput">
                           <div class="form-control" data-trigger="fileinput">
-                              <%= @clinical_case.satisfaction_survey_record_next_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_next.exists? )%>
-                              
+                              <div class="namee3"><%= @clinical_case.satisfaction_survey_record_next_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_next.exists? )%>
+                              </div>
                           <span class="fileinput-filename"></span>
                           </div>
                           <span class="input-group-addon btn btn-default btn-file">
                               <span class="fileinput-new">Select file</span>
                               <span class="fileinput-exists">Change</span>
-                              <%= form.file_field :satisfaction_survey_record_next %>
+                              <%= form.file_field :satisfaction_survey_record_next, class:"file3" %>
                           </span>
-                          <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                          <a href="#" class="input-group-addon btn btn-default fileinput-exists remove3" data-dismiss="fileinput">Remove</a>
                       </div> 
                        
                       </div>
@@ -369,17 +372,22 @@
 </div>  
 </div>
 <script>
- $('#clinical_cases_new .show-radio').hide();
+
   <% for id in 1..10 do %>
   
-     $('#clinical_cases_new .click-radio<%=id%> .yes-click input').change(function () {
-
-    $('#clinical_cases_new .click-radio<%=id%> .show-radio').show();
-    });
-    $('#clinical_cases_new .click-radio<%=id%> .no-click input').change(function () {
+    $(document).ready(function(){
     
-        $('#clinical_cases_new .click-radio<%=id%> .show-radio').hide();
+    
+    if($('.namee<%=id%>').text() != 0 ){ 
+
+
+    $('.fileinput<%=id%>').addClass("fileinput-exists").removeClass("fileinput-new");
+    }
+    $('.remove<%=id%>').on('click', function(){
+      $('.namee<%=id%>').html("");
+      $('.file<%=id%>').val() == "";
     });
+     });
     
   <% end %>
 </script>
