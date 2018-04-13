@@ -17,7 +17,7 @@
                         <p class="font-bold"><%= current_user.user_type %></p>
     
                 <div class="text-center">
-                    <a class="btn btn-xs btn-primary">Signed in</a>
+                    <a class="btn btn-xs btn-primary no-link">Signed in</a>
                 </div>
             </div>
         </div>
@@ -30,21 +30,21 @@
                 <tbody>
                 <tr>
                     <td class="td-notify"><center>
-                        <button type="button" class="btn btn-primary m-r-sm btn-notify"><%= ClinicalCase.count %></button>
+                        <button type="button" class="btn btn-primary m-r-sm btn-notify no-link"><%= ClinicalCase.count %></button>
                         <%= link_to "Total Cases",clinical_cases_path %>
                     </td></center>
                     <td class="td-notify"><center>
-                        <button type="button" class="btn btn-primary m-r-sm btn-notify"><%= current_user.clinical_cases.count %></button>
+                        <button type="button" class="btn btn-primary m-r-sm btn-notify no-link"><%= current_user.clinical_cases.count %></button>
                         <%= link_to "My Cases",clinical_cases_path({me: true}) %>
                     </td></center>
                     <td class="td-notify"><center>
-                        <button type="button" class="btn btn-primary m-r-sm btn-notify"><%= @count %></button>
+                        <button type="button" class="btn btn-primary m-r-sm btn-notify no-link"><%= @count %></button>
                        <%= link_to "Unread Messages",chats_path %>
                     </td></center>
                     <% if current_user.admin? or current_user.moderator? %>
                     <td class="td-notify"><center>
                         
-                        <button type="button" class="btn btn-primary m-r-sm btn-notify"><%= User.where(approved: false).count %></button>
+                        <button type="button" class="btn btn-primary m-r-sm btn-notify no-link"><%= User.where(approved: false).count %></button>
                         <%= link_to "Unapproved Users", admin_path %>
                     </td></center>
                     <% end %>

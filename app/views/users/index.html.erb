@@ -17,7 +17,7 @@
                 <% @users.each do |user| %>
                     
                     <tr class="users-tr">
-                        <td class="client-avatar"><img alt="image" src="<%= user.profile_picture.url(:thumb %>"> </td>
+                        <td class="client-avatar"><img alt="image" src="<%= user.profile_picture.url(:thumb) %>"> </td>
                         <td> <%= link_to ((user.name.nil? or user.name.blank?) ? "Not Provided": user.name),profile_user_path(user) %> </td>
                         <td> <%= (user.user_type.nil? or user.user_type.blank?) ? "Not Provided": user.user_type %> </td>
                         <td> <%= user.email %> </td>

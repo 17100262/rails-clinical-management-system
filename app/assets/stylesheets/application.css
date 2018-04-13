@@ -117,3 +117,7 @@
   display: block;
   text-align: center;
 }}
+.no-link{
+cursor:default !important;
+pointer-events:none !important;
+}
