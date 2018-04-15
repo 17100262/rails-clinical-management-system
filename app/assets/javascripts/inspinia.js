@@ -171,6 +171,25 @@ $(document).ready(function () {
     $('.full-height-scroll').slimscroll({
         height: '100%'
     })
+
+    // Clock and Date
+    function GetClock() {
+        var tday=new Array("Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado");
+        var tmonth=new Array("Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez");
+        var d=new Date();
+        var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate();
+        var nhour=d.getHours(),nmin=d.getMinutes();
+        if(nmin<=9) {
+            nmin="0"+nmin;
+        }
+
+        //document.getElementById('clockbox').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+" "+nhour+":"+nmin+"";
+        $('#clockbox').text(""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+" "+nhour+":"+nmin+"");
+
+    }
+
+     GetClock();
+     setInterval(GetClock,1000);
 });
 
 
@@ -288,5 +307,3 @@ function WinMove() {
         })
         .disableSelection();
 }
-
-
