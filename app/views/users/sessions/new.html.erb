@@ -8,7 +8,7 @@
     </div>
     <div class="ibox-content">
         <%= form_for(resource, as: resource_name,  url: session_path(resource_name),class:"form-horizontal") do |f| %>
-            <p class="btnlnk">Introduza os seguintes dados:.</p>
+            <br/>
             <div class="form-group row"><label class="col-lg-2 control-label">Email</label>
 
                 <div class="col-lg-10"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
@@ -21,17 +21,17 @@
             <div class="form-group row">
                 <div class="col-lg-offset-2 col-lg-10">
                   <% if devise_mapping.rememberable? -%>
-                    <div class="i-checks pull-left">
+                    <div class="i-checks pull-left text-small">
                       <%= f.check_box :remember_me %>
                       <%= f.label :remember_me %>
                     </div>
                   <% end -%>
-                  <a href="/users/password/new" class="btn btn-link pull-right btnlnk">Não se recorda da sua password?</a>
+                  <a href="/users/password/new" class="btn-link pull-right btnlnk m-t-xs">Recuperar password</a>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-lg-offset-2 col-lg-10">
-                  <%= f.submit "Log in", class:"btn btn-primary" %>
+                  <%= f.submit "Entrar", class:"btn btn-primary" %>
                 </div>
             </div>
             <hr>
@@ -42,10 +42,10 @@
                   <table>
                     <tr>
                       <td>
-                        <span class="btnlnk">Ainda não tem conta registada?</span>
+                        <span>Ainda não tem conta registada?</span>
                       </td>
                        <td>
-                         <a href="/users/sign_up" class="btn btn-link btnlnk">Registar</a>
+                         <a href="/users/sign_up" class="btn-link btnlnk m-l-md">Registar</a>
                       </td>
                     </tr>
                     
@@ -58,7 +58,6 @@
       </div>
     </div>
   </div>
-  
 </div>
   
 

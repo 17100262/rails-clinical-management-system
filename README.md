@@ -5,6 +5,11 @@ Commads to start:
     OR
     Run Project from C9
 
+
+
+ ---- for redis persistence ----
+ redis-cli shutdown
+
 # README
 
 This README would normally document whatever steps are necessary to get the

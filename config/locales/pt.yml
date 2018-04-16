@@ -1,4 +1,13 @@
 pt:
+  titles:
+    application: IPO de Coimbra
+  activerecord:
+    attributes:
+      user:
+        remember_me: Manter sessão iniciada
+    errors:
+      messages:
+        record_invalid: registo inválido
   datetime:
     distance_in_words:
       about_x_hours:
@@ -45,5 +54,3 @@ pt:
       month: Mês
       second: Segundo
       year: Ano
-  account_actions:
-    remember_me: Manter sessão iniciada

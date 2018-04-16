@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20180409132624) do
   end
 
   create_table "clinical_cases", force: :cascade do |t|
+    t.bigint "user_id"
     t.date "date_of_birth"
     t.date "date_of_diagnostic"
     t.string "histology_type"
@@ -76,7 +77,6 @@ ActiveRecord::Schema.define(version: 20180409132624) do
     t.datetime "satisfaction_survey_record_next_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.string "unique_identifier"
     t.index ["user_id"], name: "index_clinical_cases_on_user_id"
   end

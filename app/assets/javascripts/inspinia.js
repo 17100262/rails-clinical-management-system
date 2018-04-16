@@ -185,7 +185,6 @@ $(document).ready(function () {
 
         //document.getElementById('clockbox').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+" "+nhour+":"+nmin+"";
         $('#clockbox').text(""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+" "+nhour+":"+nmin+"");
-
     }
 
      GetClock();
