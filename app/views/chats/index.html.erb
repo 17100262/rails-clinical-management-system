@@ -23,7 +23,7 @@
               <td> <%= time_ago_in_words( last_message.created_at)+ " atrás" if last_message %></td>
               <td><%= last_message.read %></td>
               <td><%= link_to '<i class="fas fa-reply-all icon-chat"></i>'.html_safe, chat, class: "" %></td>
-              <!--<td><%#= link_to 'Destroy', chat, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, chat %></td>-->
+              <td><%= link_to '<i class="far fa-trash-alt icon-danger" title="Delete"></i>'.html_safe, chat, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, chat %></td>
             </tr>
           <% end %>
         </tbody>

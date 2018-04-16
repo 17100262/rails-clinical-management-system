@@ -15,6 +15,9 @@ class Ability
         can :read, User,:id => user.id
         # can :update,User
         can :create,Chat
+        can :destroy,Chat do |chat|
+          chat.chat_subscribers.pluck(:user_id).include?(user.id)
+        end
         can [:read,:messages], Chat do |chat|
           user.chats.pluck(:id).include?(chat.id)
         end

@@ -14,6 +14,7 @@
                     <th>Email</th>
                     <th class="actions">Actions</th>
                     <th></th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -22,6 +23,7 @@
                             <td> <%= user.name %> </td>
                             <td> <%= user.role %> </td>
                             <td> <%= user.email %> </td>
+                            <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' if can? :destroy, user %></td>
                             <td> <%= link_to (user.approved ? 'Block user':'Approve User'),approve_user_path({user_id: user.id,approved: !user.approved}),method: :put, class: "btn btn-#{user.approved ? 'danger':'primary'}"  if not current_user.id==user.id %> </td>
                             <td> <%= link_to (user.moderator? ? 'Remove Moderator':'Make Moderator'),make_moderator_user_path(user),method: :put, class: "btn btn-primary" if current_user.id!=user.id and not current_user.moderator? %> </td>
                         </tr>
