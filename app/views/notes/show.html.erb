@@ -3,21 +3,18 @@
     <div class="row">
       <div class="col-md-offset-3 col-md-6">
         <div class="ibox float-e-margins bg-frm-opcty">
-    <div class="ibox-title">
-        <p id="notice"><%= notice %></p>
-        <div class="page-heading"><%= @note.title %></div>
+          <div class="ibox-title">
+            <h5><%= @note.title %></h5>
+          </div>
+          <div class="ibox-content">
+            <p class="m-b-xl"><%= @note.description %></p>
+            <%= link_to 'Voltar', user_notes_path(current_user), class: "btn btn-sm btn-default w-150" %>   
+            <%= link_to 'Editar', edit_note_path(@note), class: "btn btn-sm btn-primary w-150 pull-right" %> 
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="ibox-content">
-      <div class="page-heading">Description</div>
-        <p><%= @note.description %></p>
-
-        <%= link_to 'Edit', edit_note_path(@note), class: "btn btn-primary" %> 
-        <%= link_to 'Back', user_notes_path(current_user), class: "btn btn-primary" %>   
-</div>
-</div>
-</div>
-</div>
-</div>
+  </div>
 </div>
 
 

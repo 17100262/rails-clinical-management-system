@@ -3,12 +3,9 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
   <div class="row m-b-xs">
-    <div class="col-lg-12">
-      
-        <%= link_to 'View my cases', clinical_cases_path({me: true}), class:"btn btn-primary m-t-xs" %>
-        <%= link_to 'New Clinical Case', new_clinical_case_path, class:"btn btn-primary m-t-xs pull-right" %>
-        
-        
+    <div class="col-lg-12 m-b-md">
+        <%= link_to 'Os meus casos', clinical_cases_path({me: true}), class:"btn btn-sm w-150 btn-default m-t-xs" %>
+        <%= link_to 'Novo caso clínico', new_clinical_case_path, class:"btn btn-sm w-150 btn-primary m-t-xs pull-right" %>
     </div>
     
   </div>
@@ -34,10 +31,10 @@
       <tr>
         <td><%= clinical_case.unique_identifier  %></td>
         <td> <%= clinical_case.user.name %></td>
-        <td><%= link_to '<i class="far fa-folder-open icon-chat" title="Show"></i>'.html_safe, clinical_case, class:"" %>
-        <%= link_to '<i class="fas fa-edit icon-chat" title="Edit"></i>'.html_safe, edit_clinical_case_path(clinical_case) , class:"" if can? :update, clinical_case %>
-        <%= link_to '<i class="far fa-trash-alt icon-danger" title="Delete"></i>'.html_safe, clinical_case, method: :delete, data: { confirm: 'Are you sure?'}, class:""  if can? :destroy, clinical_case %>
-        <%= link_to '<i class="far fa-save icon-chat" title="Download in Excel"></i>'.html_safe, clinical_case_path(clinical_case,format: "xls"), class:"" %>
+        <td><%= link_to '<i class="fa fa-folder-open icon-chat" style="font-size: 19px" title="Consultar"></i>'.html_safe, clinical_case, class:"" %>
+        <%= link_to '<i class="fa fa-edit icon-chat" style="font-size: 19px" title="Editar"></i>'.html_safe, edit_clinical_case_path(clinical_case) , class:"" if can? :update, clinical_case %>
+        <%= link_to '<i class="fa fa-trash icon-chat" style="font-size: 19px" title="Apagar"></i>'.html_safe, clinical_case, method: :delete, data: { confirm: 'Deseja prosseguir com esta acção?'}, class:""  if can? :destroy, clinical_case %>
+        <%= link_to '<i class="fa fa-save icon-chat" style="font-size: 19px" title="Download"></i>'.html_safe, clinical_case_path(clinical_case,format: "xls"), class:"" %>
         </td>
         <% counter = counter + 1 %>
       </tr>

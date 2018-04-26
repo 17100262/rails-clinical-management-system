@@ -1,0 +1,225 @@
+<div class="wrapper wrapper-content">
+    <div class="row animated fadeInRight">
+        <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+
+            <div class="ibox-content inspinia-timeline">
+
+                <div class="timeline-item">
+                    <div class="row">
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Unique Identifier:</strong></p>
+
+                            <p><%= @clinical_case.unique_identifier %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Date of Birth:</strong></p>
+
+                            <p><%= @clinical_case.date_of_birth %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Date of Diagnostic:</strong></p>
+
+                            <p><%= @clinical_case.date_of_diagnostic %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Histology Type:</strong></p>
+
+                            <p><%= @clinical_case.histology_type %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Histology Level:</strong></p>
+
+                            <p><%= @clinical_case.histology_level %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Estrogen Receptor:</strong></p>
+
+                            <p><%= @clinical_case.estrogen_receptors %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Progesterone Receptors:</strong></p>
+
+                            <p><%= @clinical_case.progesterone_receptors %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>KI67:</strong></p>
+
+                            <p><%= @clinical_case.ki67 %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Estadiamento Clinico:</strong></p>
+
+                            <p><%= @clinical_case.estadiamento_clinico %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Neoadjuvant Systemic Treatement:</strong></p>
+
+                            <p><%= @clinical_case.neoadjuvant_systemic_treatment %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Surgery Date:</strong></p>
+
+                            <p><%= @clinical_case.surgery_date %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Surgery Type:</strong></p>
+
+                            <p><%= @clinical_case.surgery_type %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Sentinel Ganglion:</strong></p>
+
+                            <p><%= @clinical_case.sentinel_ganglion %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Axillary Emptying:</strong></p>
+
+                            <p><%= @clinical_case.axillary_emptying %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Adjuvent Chemotherapy:</strong></p>
+
+                            <p><%= @clinical_case.adjuvant_chemotherapy %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Adjuvent Hormone Therapy Duration:</strong></p>
+
+                            <p><%= @clinical_case.adjuvant_hormone_therapy_duration %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Adjuvent Hormone Therapy Treatement:</strong></p>
+
+                            <p><%= @clinical_case.adjuvant_hormone_therapy_treatment %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Date of IPO Discharge:</strong></p>
+
+                            <p><%= @clinical_case.date_of_ipo_discharge %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Date of 1st Follow up at MGF:</strong></p>
+
+                            <p><%= @clinical_case.first_follow_up_at_mgf %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <h3>Date of imaging control</h3>
+                        </div> 
+                        <% @clinical_case.imaging_controls.each do |casee| %>
+                        <div class="col-xs-12 content no-top-border">
+                            <p class="m-b-xs"><strong>Date</strong></p>
+
+                            <p><%= casee.date_of_imaging %></p>
+                        </div>
+                        <div class="col-xs-12 content no-top-border">
+                            <p class="m-b-xs"><strong>Mammography</strong></p>
+
+                            <p><%= casee.mammography ? "Yes":"No" %></p>
+                        </div>
+                        <div class="col-xs-12 content no-top-border">
+                            <p class="m-b-xs"><strong>Eco Breast</strong></p>
+
+                            <p><%= casee.eco_breast ? "Yes":"No" %></p>
+                        </div>
+                        <div class="col-xs-12 content no-top-border">
+                            <p class="m-b-xs"><strong>Result</strong></p>
+
+                            <p><%= casee.result %></p>
+                        </div>
+                        <% end %>
+                        
+                        <div class="col-xs-12 content">
+                            <h3>Date of suspected recurrence</h3>
+                        </div> 
+                        <div class="col-xs-12 content no-top-border">
+                            <p class="m-b-xs"><strong>Local recurrence:</strong></p>
+
+                            <p><%= @clinical_case.date_of_suspected_recurrence_local_recurrence %></p>
+                        </div>
+                        <div class="col-xs-12 content no-top-border">
+                            <p class="m-b-xs"><strong>Collateral breast cancer:</strong></p>
+
+                            <p><%= @clinical_case.date_of_suspected_recurrence_collateral_breast_cancer %></p>
+                        </div>
+                        <div class="col-xs-12 content no-top-border">
+                            <p class="m-b-xs"><strong>Distance metastasis:</strong></p>
+
+                            <p><%= @clinical_case.date_of_suspected_recurrence_distance_metastasis %></p>
+                        </div>
+                        <div class="col-xs-12 content no-top-border">
+                            <p class="m-b-xs"><strong>Second neoplasm:</strong></p>
+
+                            <p><%= @clinical_case.date_of_suspected_recurrence_second_neoplasm %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Date of confirmation of recurrence (PFS):</strong></p>
+
+                            <p><%= @clinical_case.date_of_confirmation_of_recurrence %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Global survival:</strong></p>
+
+                            <p><%= @clinical_case.global_survival %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Specif breast cancer survival:</strong></p>
+
+                            <p><%= @clinical_case.Specif_breast_cancer_survival %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Last contact or death:</strong></p>
+
+                            <p><%= @clinical_case.last_contact_or_death %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <p class="m-b-xs"><strong>Death cause (oncologic vs no oncologic):</strong></p>
+
+                            <p><%= @clinical_case.death_cause %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                            <h3>Satisfaction survey record</h3>
+                        </div> 
+                        
+                        <div class="col-xs-12 content no-top-border">
+                            <p class="m-b-xs"><strong>At discharge</strong></p>
+
+                            <p><%= @clinical_case.satisfaction_survey_record_discharge_text %></p>
+                             </p><% if @clinical_case.satisfaction_survey_record_discharge.exists? %>
+                                <a href=<%= @clinical_case.satisfaction_survey_record_discharge.url %>> <i class="fas fa-download icon-chat"></i> Download File </a>
+                            <% else %>
+                                File Not Provided
+                            <% end %><p>
+                        </div>
+                        <div class="col-xs-12 content no-top-border">
+                            <p class="m-b-xs"><strong>After 1st follow-up</strong></p>
+
+                            <p><%= @clinical_case.satisfaction_survey_record_first_text %></p>
+                            <p><% if @clinical_case.satisfaction_survey_record_first.exists? %>
+                                <a href=<%=@clinical_case.satisfaction_survey_record_first.url %>>  <i class="fas fa-download icon-chat"></i> Download File </a>
+                            <% else %>
+                                File Not Provided
+                            <% end %></p>
+                        </div>
+                        <div class="col-xs-12 content no-top-border">
+                            <p class="m-b-xs"><strong>Next Ones</strong></p>
+
+                            <p><%= @clinical_case.satisfaction_survey_record_next_text %></p>
+                            <p><% if @clinical_case.satisfaction_survey_record_next.exists? %>
+                                <a href="<%=@clinical_case.satisfaction_survey_record_next.url%>"> <i class="fas fa-download icon-chat"></i> Download File </a>
+                            <% else %>
+                                File Not Provided
+                            <% end %></p>
+                        </div>
+                        <div class="col-xs-12 content">
+                        <%= link_to 'Editar', edit_clinical_case_path(@clinical_case), class:"btn btn-primary" %> |
+                        <%= link_to 'Voltar', clinical_cases_path, class:"btn btn-primary" %>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

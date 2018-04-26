@@ -23,7 +23,7 @@ class UsersController < ApplicationController
         else
             @user.moderator!
         end
-        redirect_to users_path, notice: "O utilizador #{@user.moderator? ? " ganhou permissões de moderador": "perdeu permissões de moderador"}" 
+        redirect_to admin_path, notice: "O utilizador #{@user.moderator? ? " ganhou permissões de moderador": "perdeu permissões de moderador"}" 
     end
     
     def profile

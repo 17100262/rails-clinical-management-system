@@ -1,5 +1,13 @@
+<div id="hide_till_jquery_at_show_page_runs", class="hide">
+	<%= render 'form', clinical_case: @clinical_case %>
+</div>
 
-<%= render 'form', clinical_case: @clinical_case %>
+<script>
+    
+      $(document).ready(function(){
+        $('.ibox-title').text("");								  	  // replaces original h5 title by empty simple text
+        $( "<h5>Editar caso</h5>" ).appendTo( ".ibox-title" );	      // inserts a new h5 into it
+	    $("#hide_till_jquery_at_show_page_runs").removeClass("hide"); // everything is done, now page can be shown
+       });
 
-<%#= link_to 'Consultar', @clinical_case %> |
-<%#= link_to 'Voltar', clinical_cases_path %>
+</script>

@@ -4,7 +4,7 @@
 <p id="notice"><%= notice %></p>
 <div class="row m-b-xs">
     <div class="col-lg-12 text-right">
-      <%= link_to 'New Note', new_user_note_path(current_user), class:"btn btn-primary m-t-xs" %>
+      <%= link_to 'Nova nota', new_user_note_path(current_user), class:"btn btn-sm w-150 m-b-md btn-primary m-t-xs" %>
         
     </div>
     
@@ -16,9 +16,9 @@
   <thead>
     
     <tr>
-      <th> Title</th>
-      <th> Description</th>
-      <th class="actions">Actions</th>
+      <th> Título</th>
+      <th> Descrição</th>
+      <th class="actions">Acções</th>
       
     </tr>
   </thead>
@@ -28,9 +28,9 @@
       <tr>
         <td><%= note.title %></td>
         <td> <%= note.description.truncate(100) %></td>
-        <td><%= link_to "<i class='far fa-folder-open icon-chat' title='Show'></i>".html_safe, note_path(note) %>
-        <%= link_to "<i class='fas fa-edit icon-chat' title='edit'></i>".html_safe, edit_note_path(note) %>
-        <%= link_to "<i class='far fa-trash-alt icon-danger icon-chat' title='Destroy'></i>".html_safe, note, method: :delete, data: { confirm: 'Are you sure?'} %>
+        <td><%= link_to "<i class='fa fa-folder-open icon-chat' style='font-size: 19px' title='Show'></i>".html_safe, note_path(note) %>
+        <%= link_to "<i class='fa fa-edit icon-chat' style='font-size: 19px' title='edit'></i>".html_safe, edit_note_path(note) %>
+        <%= link_to "<i class='fa fa-trash icon-chat' style='font-size: 19px' title='Destroy'></i>".html_safe, note, method: :delete, data: { confirm: 'Deseja prosseguir com esta acção?'} %>
         </td>
       </tr>
     <% end %>

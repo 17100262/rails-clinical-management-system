@@ -38,6 +38,7 @@ $(document).ready(function() {
     //   if ($('.user-list table').length == 1)
     //     users_table.destroy()
    
+
      
      
      $(document).ready(function () {
@@ -46,7 +47,7 @@ $(document).ready(function() {
     
 //      $('.show-radio').show(); 
     // $("input[type='date']").datepicker({format: 'dd/mm/yyyy'});
-    $(".date").datepicker({dateFormat: 'dd/mm/yy'});
+    $(".date").datepicker({dateFormat: 'dd/mm/yy', language: 'pt'});
     
 // });
 });

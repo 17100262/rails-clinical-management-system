@@ -7,3 +7,12 @@
 	    <div class="pull-right" id= "clockbox"></div>
     </div>
 </div>
+
+
+<script>
+	$(document).ready(function () {
+	    if ($(window).width() < 640) {
+	        $('#clockbox').remove();
+	    }
+	});
+</script>

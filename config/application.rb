@@ -8,6 +8,11 @@ Bundler.require(*Rails.groups)
 
 module Freelance
   class Application < Rails::Application
+
+    # GMT (Lisbon) by default
+    config.time_zone = 'Lisbon'
+    config.active_record.default_timezone = :local
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.active_job.queue_adapter = :sidekiq

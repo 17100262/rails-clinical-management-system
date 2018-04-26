@@ -1,13 +1,69 @@
 pt:
+  errors:
+    messages:
+      not_saved: 'Por favor verifique o(s) erro(s) abaixo'
   titles:
     application: IPO de Coimbra
   activerecord:
     attributes:
+      messages:
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          has_many: Não pode ser eliminado por existirem dependências de %{record}
+          has_one: Não pode ser eliminado por existir uma dependência de %{record}
       user:
         remember_me: Manter sessão iniciada
+        password_confirmation: 'A password inserida'
+        current_password: Password actual
+        email: O email seleccionado
+        name: Nome
+        gender: Género
+        about_me: Sobre mim
+        user_type: Tipo de utilizador
+        organization: Organização
+        profile_picture: Foto de perfil
+        role: Nível de permissões
+      user/role: 
+          admin: Administrador
+          moderator: Moderador
+          user: Utilizador
+      clinical_case:
+        date_of_birth: Data de nascimento
+        unique_identifier: Identificador único
     errors:
       messages:
         record_invalid: registo inválido
+        blank: não pode estar vazio
+        confirmation: não coincide com a confirmação
+        empty: não pode estar vazio
+        equal_to: tem de ser igual a %{count}
+        exclusion: é reservado
+        greater_than: tem de ser maior que %{count}
+        greater_than_or_equal_to: tem de ser maior ou igual a %{count}
+        inclusion: não está incluído na lista
+        invalid: é inválido
+        less_than: tem de ser menor que %{count}
+        less_than_or_equal_to: tem de ser menor ou igual a %{count}
+        model_invalid: 'A validação falhou: %{errors}'
+        not_a_number: não é um número
+        not_an_integer: tem de ser um inteiro
+        odd: tem de ser ímpar
+        other_than: tem de ser diferente de %{count}
+        present: não pode estar em branco
+        required: é obrigatório
+        taken: não está disponível
+        too_long: é demasiado grande (o máximo é de %{count} caracteres)
+        too_short: é demasiado pequeno (o mínimo é de %{count} caracteres)
+    template:
+      body: 'Por favor, verifique os seguintes campos:'
+      header:
+        one: 'Não foi possível guardar %{model}: 1 erro'
+        other: 'Não foi possível guardar %{model}: %{count} erros'
+      models:
+        clinical_case:
+          attributes:
+            date_of_birth:
+              blank: não pode ser deixada em branco
   datetime:
     distance_in_words:
       about_x_hours:

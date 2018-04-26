@@ -2,17 +2,20 @@ pt:
   datetime:
     distance_in_words:
     x_days:
-      one: "1 day"
-      other: "%{count} days"
+      one: "1 dia"
+      other: "%{count} dias"
   errors:
     messages:
       not_found: "não encontrado"
       already_confirmed: "já foi confirmado"
       not_locked: "não foi bloqueado"
-
   devise:
     failure:
-      unauthenticated: 'Para continuar, deve fazer login ou registrar-se.'
+      user:
+        not_found_in_database: 'Por favor verifique se introduziu correctamente as suas credenciais de acesso'
+        not_approved: 'O seu registo aguarda validação por parte de um moderador'
+      unauthenticated: 'Para continuar, deve fazer login ou registar-se.'
+      already_authenticated: 'Já se encontra autenticado'
       unconfirmed: 'Antes de continuar, deve confirmar a sua conta.'
       locked: 'A sua conta está bloqueada.'
       invalid: 'O endereço de correio electrónico não está correcto ou a palavra-passe é inválida.'

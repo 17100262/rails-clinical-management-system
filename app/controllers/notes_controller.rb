@@ -47,7 +47,7 @@ class NotesController < ApplicationController
     # authorize! :update, @user 
     respond_to do |format|
       if @note.update(note_params)
-        format.html { redirect_to action: "index", notice: 'Note was successfully updated.' }
+        format.html { redirect_to action: "index", notice: 'Nota actualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @note }
       else
         format.html { render :edit }

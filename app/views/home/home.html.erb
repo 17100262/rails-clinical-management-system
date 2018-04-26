@@ -1,6 +1,3 @@
-
-    
-
 <div class="container-fluid container-top">  
 <% total = "(N=#{ClinicalCase.count})" %>
 
@@ -8,7 +5,7 @@
     <div class="row m-t-md">
         <div class="col-lg-2 col-md-offset-1">
             <div class="text-center m-t-n m-b-md">
-                <h2><%=current_user.name %></h2>
+                <h2><%=current_user.name.split.first %></h2>
                 <div class="m-b-sm">
                     <a href="<%= profile_user_path(current_user) %>">
                         <%= image_tag(current_user.profile_picture.url(:thumb),:class => 'img-circle img-md',alt:"profile-picture") %>
@@ -32,7 +29,7 @@
           <div class="ibox-content">
             <h1 class="no-margins"><%= ClinicalCase.count %></h1>
             <div class="stat-percent font-bold text-success">
-              <i class="fa fa-refresh"></i>
+              <a href="/" class="text-success"><i class="fa fa-refresh" style="text-decoration: none"></i></a>
             </div>
             <a href="/clinical_cases" class="btn-link btnlnk m-t-xs"><small>Consultar</small></a>
           </div>
@@ -47,7 +44,7 @@
           <div class="ibox-content">
             <h1 class="no-margins"><%= current_user.clinical_cases.count%></h1>
             <div class="stat-percent font-bold text-info">
-              <i class="fa fa-refresh"></i>
+              <a href="/" class="text-info"><i class="fa fa-refresh" style="text-decoration: none"></i></a>
             </div>
             <a href="/clinical_cases?me=true" class="btn-link btnlnk m-t-xs"><small>Consultar</small></a>
           </div>
@@ -62,7 +59,7 @@
           <div class="ibox-content">
             <h1 class="no-margins"><%= @count %></h1>
             <div class="stat-percent font-bold text-navy">
-              <i class="fa fa-refresh"></i>
+              <a href="/" class="text-navy"><i class="fa fa-refresh" style="text-decoration: none"></i></a>
             </div>
             <a href="/chats" class="btn-link btnlnk m-t-xs"><small>Consultar</small></a>
           </div>
@@ -79,7 +76,7 @@
               <div class="ibox-content">
                 <h1 class="no-margins"><%= User.where(approved: false).count %></h1>
                 <div class="stat-percent font-bold text-danger">
-                  <i class="fa fa-refresh"></i>
+                  <a href="/" class="text-danger"><i class="fa fa-refresh" style="text-decoration: none"></i></a>
                 </div>
                 <a href="/user_management" class="btn-link btnlnk m-t-xs"><small>Consultar</small></a>
               </div>
@@ -92,7 +89,7 @@
                 <div class="ibox-content">
                   <h1 class="no-margins"><%= current_user.notes.count %></h1>
                   <div class="stat-percent font-bold text-danger">
-                    <i class="fa fa-refresh"></i>
+                    <a href="/" class="text-danger"><i class="fa fa-refresh" style="text-decoration: none"></i></a>
                   </div>
                   <a href="<%= user_notes_path(current_user) %>" class="btn-link btnlnk m-t-xs"><small>Consultar</small></a>
                 </div>
@@ -103,7 +100,7 @@
     </div>
 </div>
 
-<div class="container" style="width: 80%"">
+<div class="container" style="width: 75%"">
     <div class="row m-b-md m-t-n">
         <div class="col-lg-6">
             <div class="ibox float-e-margins">
@@ -210,7 +207,7 @@
                         <!--<canvas id="polarChart" height="140"></canvas>-->
                         <%
                             surgery_type_data = {
-                                labels: ClinicalCase.all.group(:estrogen_receptors).count.to_h.keys.map{|k| k==nil ? "N.D.": k},
+                                labels: ClinicalCase.all.group(:estrogen_receptors).count.to_h.keys.map{|k| k==nil ? "N.dggd.": k},
                                  datasets: [{
                                      data: ClinicalCase.all.group(:estrogen_receptors).count.to_h.values,
                                      backgroundColor: ["#a3e1d4","#dedede","#b5b8cf"]

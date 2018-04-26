@@ -18,10 +18,10 @@
                     
                     <tr class="users-tr">
                         <td class="client-avatar"><img alt="image" src="<%= user.profile_picture.url(:thumb) %>"> </td>
-                        <td> <%= link_to ((user.name.nil? or user.name.blank?) ? "Not Provided": user.name),profile_user_path(user) %> </td>
-                        <td> <%= (user.user_type.nil? or user.user_type.blank?) ? "Not Provided": user.user_type %> </td>
+                        <td> <%= link_to ((user.name.nil? or user.name.blank?) ? "Não fornecido": user.name),profile_user_path(user) %> </td>
+                        <td> <%= (user.user_type.nil? or user.user_type.blank?) ? "Não fornecido": user.user_type %> </td>
                         <td> <%= user.email %> </td>
-                        <td><%= link_to '<i class="fas fa-paper-plane"></i>'.html_safe, chats_path({user_id: user.id}),method: :post, class: "icon-chat" %></td>
+                        <td><%= link_to '<i class="fas fa-paper-plane" style="font-size: 19px"></i>'.html_safe, chats_path({user_id: user.id}),method: :post, class: "icon-chat" %></td>
                     </tr>
                 <% end %>
               

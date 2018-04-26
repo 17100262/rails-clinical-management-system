@@ -4,47 +4,51 @@
       <div class="col-md-offset-3 col-md-6">
         <div class="ibox float-e-margins">
           <div class="ibox-title">
-              <h5>Edit <%= resource_name.to_s.humanize %></h5>
+            <h5>Definições</h5>
           </div>
           <div class="ibox-content">
-              <%= form_for(resource, as: resource_name,  url: registration_path(resource_name), html: { method: :put },class:"form-horizontal") do |f| %>
-                  <%= devise_error_messages! %>
-                  
-                  <div class="form-group"><label class="col-lg-12 control-label">Email</label>
-      
-                      <div class="col-lg-12"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-                      </div>
-                      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-                      <% end %>
-                  </div>
-                  <div class="form-group"><label class="m-t-sm col-lg-12 control-label">Password <small>(leave blank if you don't want to change it)</small></label>
-      
-                      <div class="col-lg-12"><%= f.password_field :password, autocomplete: "off" , class:"form-control" %></div>
-                  </div>
-                  <div class="form-group"><label class="m-t-sm col-lg-12 control-label">Password Confirmation</label>
-      
-                      <div class="col-lg-12"><%= f.password_field :password_confirmation, autocomplete: "off" , class:"form-control" %></div>
-                  </div>
-                  <div class="form-group"><label class="m-t-sm col-lg-12 control-label">Current Password <small>(we need your current password to confirm your changes)</small></label>
-      
-                      <div class="col-lg-12"><%= f.password_field :current_password, autocomplete: "off", class:"form-control" %></div>
-                  </div>
-                  <div class="form-group">
-                      <div class="col-lg-12 m-t-sm">
-                         <%= f.submit "Update", class:"btn btn-primary" %>
-                      </div>
-                  </div>
-              <% end %>
-              <div class="form-group">
-              
-              <center>
-              <h4>Cancel my account</h4>
-              <p>Unhappy?</p>
-               <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-sm btn-white" %>
-              <%= link_to "Back", :back, class:"btn btn-sm btn-white" %>
-              </center>
+            <%= form_for(resource, as: resource_name,  url: registration_path(resource_name), html: { method: :put },class:"form-horizontal") do |f| %>
+            <%= devise_error_messages! %>
+
+            <div class="form-group"><label class="col-lg-12 control-label">Email</label>
+
+              <div class="col-lg-12"><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
               </div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+            </div>
+            <div class="form-group"><label class="m-t-sm col-lg-12 control-label">Password <small>(deixe em branco se não pretender alterar)</small></label>
+
+              <div class="col-lg-12"><%= f.password_field :password, autocomplete: "off" , class:"form-control" %></div>
+            </div>
+            <div class="form-group"><label class="m-t-sm col-lg-12 control-label">Confirmação de password</label>
+
+              <div class="col-lg-12"><%= f.password_field :password_confirmation, autocomplete: "off" , class:"form-control" %></div>
+            </div>
+            <div class="form-group"><label class="m-t-sm col-lg-12 control-label">Password actual</label>
+
+              <div class="col-lg-12"><%= f.password_field :current_password, autocomplete: "off", class:"form-control" %></div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-12 m-t-sm">
+                <%= f.submit "Actualizar", class:"btn btn-sm btn-primary w-150 pull-right" %>
+                <%= link_to "Voltar", :back, class:"btn btn-sm btn-default w-150" %>
+              </div>
+            </div>
+            <% end %>
+            <div class="form-group">
+              <center>
+                <br>
+                <br>
+                <br>
+                <p style="font-size: 1px">______</p>
+                <br>
+                <br>
+                <p>Insatisfeito?</p>
+                <%= button_to "Cancelar a minha conta", registration_path(resource_name), data: { confirm: "Deseja prosseguir com esta acção?" }, method: :delete, class:"btn btn-sm btn-white" %>
+              </center>
+            </div>
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
 
     <div class="author-name">
         <%= message.user.name %> <small class="chat-date">
-        <%= time_ago_in_words(message.created_at) %> ago
+        <%= message.created_at.to_s.split.first + " às " + message.created_at.to_s.split.second + " horas" %>
     </small>
     </div>
-    <div class="chat-message active">
+    <div class="chat-message active" style="font-size: 12px">
         <%= message.content  %>
     </div>

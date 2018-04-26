@@ -4,7 +4,7 @@
       <div class="col-md-offset-2 col-md-8">
         <div class="ibox float-e-margins">
           <div class="ibox-title">
-              <h5>Edit Profile</h5>
+              <h5>Editar perfil</h5>
           </div>
           <div class="ibox-content">
               <%= form_for @user, class: "form-horizontal" do |f| %>
@@ -18,7 +18,7 @@
                   <div class="form-group row">
                       <%= f.label :gender, class:"col-lg-2 control-label" %>
                       <div class="col-lg-10">
-                           <%= f.select(:gender, ["Male","Female"], { prompt: "Please Select Gender" }) %>
+                           <%= f.select(:gender, ["Masculino","Feminino"], { prompt: "Seleccione o género" }) %>
                           
                       </div>
                   </div>
@@ -28,10 +28,16 @@
                         <%= f.text_area :about_me, class: "form-control"%>
                       </div>
                   </div>
-                   <div class="form-group row">
+                  <div class="form-group row">
                        <%= f.label :user_type, class: "col-lg-2 control-label" %>
                     <div class="col-lg-10">
-                        <%= f.select(:user_type, ["Medic","Researcher","Other"], { prompt: "Please Select User Type" }) %>
+                        <%= f.select(:user_type, ["Médico","Investigador","Outro"], { prompt: "Seleccione o tipo de utilizador" }) %>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                       <%= f.label :role, class: "col-lg-2 control-label" %>
+                    <div class="col-lg-10">
+                        <p><%=User.human_attribute_name("role.#{current_user.role}")%></p>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -49,8 +55,8 @@
                             <span class="fileinput-filename"></span>
                             </div>
                             <span class="input-group-addon btn btn-default btn-file">
-                                <span class="fileinput-new">Select file</span>
-                                <span class="fileinput-exists">Change</span>
+                                <span class="fileinput-new">Seleccionar imagem</span>
+                                <span class="fileinput-exists">Alterar</span>
                                 <%= f.file_field :profile_picture %>
                             </span>
                                 <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
@@ -64,13 +70,14 @@
                   </div>
                   <div class="form-group row">
                       <%= f.label :email, class: "col-lg-2 control-label" %>
-                    <div class="col-lg-10">
-                         <%= f.text_field :email, class: "form-control" %>
+                    <div class="col-lg-10 m-t-sm">
+                         <p><%=@user.email%></p>
                     </div>
                   </div>
                   <div class="form-group row">
                       <div class="col-lg-offset-2 col-lg-10">
-                          <%= f.submit "Update", class:"btn btn-primary" %>
+                          <%= link_to "Voltar", profile_user_path(current_user), class:"btn btn-sm btn-default w-150" %>
+                          <%= f.submit "Actualizar", class:"btn btn-sm btn-primary w-150 pull-right" %>
                       </div>
                   </div>
               <% end %>

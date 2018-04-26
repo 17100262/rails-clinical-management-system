@@ -4,7 +4,7 @@
      <div class="col-md-offset-2 col-md-8">
       <div class="ibox float-e-margins">
           <div class="ibox-title">
-              <h5><%= @user.name %> Profile</h5>
+              <h5><%= @user.name %></h5>
           </div>
         <div class="ibox-content">
             <table class="footable table table-stripped toggle-arrow-tiny default breakpoint footable-loaded">
@@ -12,7 +12,7 @@
                 <tbody>
                 <tr class="footable-even" style="">
                     <td class="footable-visible footable-first-column">
-                        <span class="footable-toggle"></span>Name:</td>
+                        <span class="footable-toggle"></span>Nome:</td>
                     <td class="footable-visible"><%= @user.name %></td>
                    
                 </tr>
@@ -24,32 +24,39 @@
                 </tr>
                 <tr class="footable-even" style="">
                     <td class="footable-visible footable-first-column">
-                        <span class="footable-toggle"></span>Profile Picture:</td>
-                    <td class="footable-visible"><%= @user.profile_picture.exists? ? image_tag(@user.profile_picture.url(:medium)):"Not Provided"  %></td>
+                        <span class="footable-toggle"></span>Imagem de perfil:</td>
+                    <td class="footable-visible"><%= @user.profile_picture.exists? ? image_tag(@user.profile_picture.url(:medium)):"Não fornecido"  %></td>
                    
                 </tr>
                 <tr class="footable-even" style="">
                     <td class="footable-visible footable-first-column">
-                        <span class="footable-toggle"></span>About Me:</td>
-                    <td class="footable-visible"><%= @user.about_me.blank? ? "Not Provided": @user.about_me %></td>
+                        <span class="footable-toggle"></span>Sobre mim:</td>
+                    <td class="footable-visible"><%= @user.about_me.blank? ? "Não fornecido": @user.about_me %></td>
                    
                 </tr>
                 
                 <tr class="footable-even" style="">
                     <td class="footable-visible footable-first-column">
-                        <span class="footable-toggle"></span>User Type:</td>
-                    <td class="footable-visible"><%= @user.user_type.blank? ? "Not Provided": @user.user_type %></td>
+                        <span class="footable-toggle"></span>Tipo de utilizador:</td>
+                    <td class="footable-visible"><%= @user.user_type.blank? ? "Não fornecido": @user.user_type %></td>
                    
                 </tr>
+
+                <tr class="footable-even" style="">
+                  <td class="footable-visible footable-first-column">
+                      <span class="footable-toggle"></span>Nível de permissões:</td>
+                  <td class="footable-visible"><%=User.human_attribute_name("role.#{current_user.role}")%></td>
+                </tr>
+
                 <tr class="footable-even" style="">
                     <td class="footable-visible footable-first-column">
-                        <span class="footable-toggle"></span>Organization:</td>
-                    <td class="footable-visible"><%= @user.organization.blank? ? "Not Provided": @user.organization %></td>
+                        <span class="footable-toggle"></span>Organização:</td>
+                    <td class="footable-visible"><%= @user.organization.blank? ? "Não fornecido": @user.organization %></td>
                    
                 </tr>
              </table>
-            <%= link_to 'Edit', edit_user_path(@user), class:"btn btn-primary" if can? :update, @user %> 
-            <%#= link_to 'Back', clinical_cases_path %>
+            <%= link_to 'Voltar', root_path, class:"btn btn-sm btn-default w-150" %>
+            <%= link_to 'Editar', edit_user_path(@user), class:"btn btn-sm btn-primary pull-right w-150" if can? :update, @user %> 
 
         </div>
     </div>

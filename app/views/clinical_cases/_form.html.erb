@@ -4,14 +4,18 @@
       <div class="row">
         <div class="col-md-offset-2 col-md-8">
           <div class="ibox float-e-margins">
+            <div class="ibox">
+              <%=link_to "Voltar à listagem", clinical_cases_path, class: "btn btn-sm btn-default w-150" %>
+              <%=link_to "Ver os meus casos", clinical_cases_path({me: true}), class: "btn btn-sm btn-default w-150 pull-right" %>
+            </div>
             <div class="ibox-title">
                 <h5>Novo caso clínico</h5>
             </div>
             <div class="ibox-content">
-              <%= form_with(model: clinical_case, local: true, class:"form-horizontal") do |form| %>
+              <%= form_with(model: clinical_case, local: true, id: "clinical_case_form", class:"form-horizontal") do |form| %>
                   <% if clinical_case.errors.any? %>
                     <div id="error_explanation">
-                      <h3><%= pluralize(clinical_case.errors.count, "error") %> proibiram este caso clínico de ser gravado:</h3>
+                      <h3 class="text-danger">O seguinte está a impossibilitar a gravação do caso:</h3>
                 
                       <ul>
                       <% clinical_case.errors.full_messages.each do |message| %>
@@ -72,8 +76,8 @@
                         <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :estrogen_receptors,"Negativos",:value => "Negativos" %>
                         <%= form.label :estrogen_receptors, "Negativos", :value => "Negativos"  %></div>
                         </div>
-                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :estrogen_receptors,"N.D.",:value => "N.D." %>
-                        <%= form.label :estrogen_receptors, "Desconhecidos", :value => "Desconhecido"  %></div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :estrogen_receptors,"Desconhecido",:value => "Descnonhecido" %>
+                        <%= form.label :estrogen_receptors, "Desconhecido", :value => "Desconhecido"  %></div>
                         </div>
                     </div>
                     <div class="form-group"><label class="col-lg-12 control-label">Recetores de Progesterona</label>
@@ -84,8 +88,8 @@
                         <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :progesterone_receptors,"Negativos",:value => "Negativos" %>
                         <%= form.label :progesterone_receptors, "Negativos", :value => "Negativos"  %></div>
                         </div>
-                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :progesterone_receptors,"N.D.",:value => "N.D." %>
-                        <%= form.label :progesterone_receptors, "Desconhecidos", :value => "N.D."  %></div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :progesterone_receptors,"Desconhecido",:value => "Desconhecido" %>
+                        <%= form.label :progesterone_receptors, "Desconhecido", :value => "Desconhecido"  %></div>
                         </div>
                     </div>
                     <div class="form-group"><label class="col-lg-12 control-label">HER2</label>
@@ -223,9 +227,11 @@
                       <%= form.fields_for :imaging_controls do |ff| %>
                           <%= render 'imaging_control_fields', f: ff %>
                       <% end %>
-                      <div class="links">
-                        <%= link_to_add_association 'Adicionar Controlo Imagiológico', form, :imaging_controls, class: "" %>
-                      </div>
+                      <% if current_page?(new_clinical_case_path)%>
+                          <div class="links">
+                            <%= link_to_add_association 'Adicionar Controlo Imagiológico', form, :imaging_controls, class: "" %>
+                          </div>
+                      <%end%>
                     </div>
                     <div class="row wrapper border-bottom  page-heading">
                       <div class="col-lg-12">
@@ -299,7 +305,7 @@
                             <span class="fileinput-filename"></span>
                             </div>
                             <span class="input-group-addon btn btn-default btn-file">
-                                <span class="fileinput-new">Seleccionar ficheiro</span>
+                                <span class="fileinput-new" style="font-size: 12px">Seleccionar ficheiro</span>
                                 <span class="fileinput-exists">Alterar</span>
                                 <%= form.file_field :satisfaction_survey_record_discharge, class:"file1" %>
                                 <% if @clinical_case.satisfaction_survey_record_discharge.exists? %>
@@ -324,7 +330,7 @@
                             <span class="fileinput-filename"></span>
                             </div>
                             <span class="input-group-addon btn btn-default btn-file">
-                                <span class="fileinput-new">Seleccionar ficheiro</span>
+                                <span class="fileinput-new" style="font-size: 12px">Seleccionar ficheiro</span>
                                 <span class="fileinput-exists">Alterar</span>
                                 <%= form.file_field :satisfaction_survey_record_first, class:"file2" %>
                             </span>
@@ -345,7 +351,7 @@
                             <span class="fileinput-filename"></span>
                             </div>
                             <span class="input-group-addon btn btn-default btn-file">
-                                <span class="fileinput-new">Seleccionar ficheiro</span>
+                                <span class="fileinput-new" style="font-size: 12px">Seleccionar ficheiro</span>
                                 <span class="fileinput-exists">Alterar</span>
                                 <%= form.file_field :satisfaction_survey_record_next, class:"file3" %>
                             </span>
@@ -354,9 +360,10 @@
                          
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-lg-12">
-                          <%= form.submit "Submeter Caso", class:"btn btn-primary" %>
+                    <div id="action_buttons" class="form-group">
+                        <div class="col-lg-12 m-t-md">
+                          <%= link_to 'Cancelar', clinical_cases_path, class: "btn btn-sm btn-default w-150" %>
+                          <%= form.submit "Submeter", class:"btn btn-sm btn-primary w-150 pull-right" %>
                         </div>
                     </div>
                 <% end %>
