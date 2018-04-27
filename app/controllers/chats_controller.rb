@@ -37,8 +37,9 @@ class ChatsController < ApplicationController
     @chat = current_user.chat_with(params[:user_id].to_i)
     if not @chat.blank?
      redirect_to @chat.first
+    elsif params[:user_id].to_i == current_user.id
+      redirect_to users_path, notice: 'Ups! Não pode iniciar um chat consigo próprio.'
     else
-      
       @chat = Chat.new(chat_params)
       @chat.chat_subscribers.new(user_id: current_user.id)
       @chat.chat_subscribers.new(user_id: params[:user_id])

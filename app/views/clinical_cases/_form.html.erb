@@ -1,4 +1,4 @@
-  <div class="container-fluid container-top" style="">
+  <div class="container-fluid container-top clinical-form" style="">
   <div id="<%= params[:controller]+"_"+params[:action] %>">
     <div class="container">
       <div class="row">
@@ -16,7 +16,6 @@
                   <% if clinical_case.errors.any? %>
                     <div id="error_explanation">
                       <h3 class="text-danger">O seguinte está a impossibilitar a gravação do caso:</h3>
-                
                       <ul>
                       <% clinical_case.errors.full_messages.each do |message| %>
                         <li><%= message %></li>

@@ -6,6 +6,15 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         authorize! :update, @user 
     end
+
+    def destroy
+        @user = User.find(params[:id])
+        @user.destroy
+        respond_to do |format|
+          format.html { redirect_to admin_path, notice: 'Utilizador eliminado com sucesso' }
+          format.json { head :no_content }
+        end
+  end
     
     def update
         @user = User.find(params[:id])
@@ -31,7 +40,7 @@ class UsersController < ApplicationController
     end
     
     def index
-        @users = User.all
+        @users = User.where(approved: true)
     end
     
     def approve_user

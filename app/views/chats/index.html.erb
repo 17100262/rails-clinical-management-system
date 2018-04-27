@@ -22,8 +22,8 @@
               <td><%= last_message.content if last_message %></td>
               <td> <%=last_message.created_at.to_s.split.first + " às " + last_message.created_at.to_s.split.second + " horas" if last_message %></td>
               <td><%= last_message.read ? "Sim" : "Não"  %></td>
+              <td><%= link_to '<i class="fa fa-trash icon-chat" style="font-size: 19px" title="Eliminar"></i>'.html_safe, chat, method: :delete, data: { confirm: 'Deseja prosseguir com esta acção?' } if can? :destroy, chat %></td>
               <td><%= link_to '<i class="fa fa-reply icon-chat" style="font-size: 19px" title="Responder"></i>'.html_safe, chat, class: "" %></td>
-              <!--<td><%#= link_to 'Destroy', chat, method: :delete, data: { confirm: 'Deseja prosseguir com esta acção?' } if can? :destroy, chat %></td>-->
             </tr>
           <% end %>
         </tbody>
