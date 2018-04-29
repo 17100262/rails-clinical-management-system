@@ -4,13 +4,13 @@
         <div class="table-responsive project-list">
           <table class="table white-bg border-left-right border-top-bottom">
             <thead>
-              <tr>
+              <tr class="bg-primary">
                 <!--<th>#</th>-->
                 <th></th>
-                <th>Name</th>
-                <th>User Type</th>
+                <th>Nome</th>
+                <th>Tipo de utilizador</th>
                 <th>Email</th>
-                <th class="actions">Actions</th>
+                <th class="actions">Acções</th>
               </tr>
             </thead>
             <tbody>
@@ -21,7 +21,7 @@
                         <td> <%= link_to ((user.name.nil? or user.name.blank?) ? "Não fornecido": user.name),profile_user_path(user) %> </td>
                         <td> <%= (user.user_type.nil? or user.user_type.blank?) ? "Não fornecido": user.user_type %> </td>
                         <td> <%= user.email %> </td>
-                        <td><%= link_to '<i class="fas fa-paper-plane" style="font-size: 19px"></i>'.html_safe, chats_path({user_id: user.id}),method: :post, class: "icon-chat" %></td>
+                        <td><%= link_to '<i class="fas fa-paper-plane" style="font-size: 19px" title="Enviar mensagem"></i>'.html_safe, chats_path({user_id: user.id}),method: :post, class: "icon-chat" %></td>
                     </tr>
                 <% end %>
               
