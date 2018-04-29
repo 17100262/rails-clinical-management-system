@@ -15,7 +15,7 @@
 <table class="table white-bg border-left-right border-top-bottom table-icons">
   <thead>
     
-    <tr>
+    <tr class="bg-primary">
       <th> Título</th>
       <th> Descrição</th>
       <th class="actions">Acções</th>
@@ -28,9 +28,9 @@
       <tr>
         <td><%= note.title %></td>
         <td> <%= note.description.truncate(100) %></td>
-        <td><%= link_to "<i class='fa fa-folder-open icon-chat' style='font-size: 19px' title='Show'></i>".html_safe, note_path(note) %>
-        <%= link_to "<i class='fa fa-edit icon-chat' style='font-size: 19px' title='edit'></i>".html_safe, edit_note_path(note) %>
-        <%= link_to "<i class='fa fa-trash icon-chat' style='font-size: 19px' title='Destroy'></i>".html_safe, note, method: :delete, data: { confirm: 'Deseja prosseguir com esta acção?'} %>
+        <td><%= link_to "<i class='fa fa-folder-open icon-chat' style='font-size: 19px' title='Consultar'></i>".html_safe, note_path(note) %>
+        <%= link_to "<i class='fa fa-edit icon-chat' style='font-size: 19px' title='Editar'></i>".html_safe, edit_note_path(note) %>
+        <%= link_to "<i class='fa fa-trash icon-chat' style='font-size: 19px' title='Eliminar'></i>".html_safe, note, method: :delete, data: { confirm: 'Deseja prosseguir com esta acção?'} %>
         </td>
       </tr>
     <% end %>
