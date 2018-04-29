@@ -5,21 +5,23 @@
       <div class="table-responsive">
       <table class="table white-bg border-left-right border-top-bottom">
         <thead>
-          <tr>
-            <th>Utilizador</th>
+          <tr class="bg-primary">
+            <th>Interlocutor</th>
             <th>Última mensagem</th>
+            <th>Último a escrever</th>
             <th>Quando</th>
-            <th>Lida</th>
+            <th>Destinatário leu</th>
             <th colspan="3"></th>
           </tr>
         </thead>
       
         <tbody>
           <% @chats.each do |chat| %>
-            <tr class="inbx-tr">
+            <tr class=<%= !chat.messages.order('created_at ASC').last.read && chat.messages.order('created_at ASC').last.user.id.equal?(current_user.id) ?  "" : "bg-muted" %>>
               <% last_message  = chat.messages.order('created_at ASC').last if not chat.messages.blank? %>
               <td><%= chat.users.select{|u| u!=current_user}.first.name %> </td>
               <td><%= last_message.content if last_message %></td>
+              <td><%= last_message.user.id.equal?(current_user.id) ? "Eu" : last_message.user.name %></td>
               <td> <%=last_message.created_at.to_s.split.first + " às " + last_message.created_at.to_s.split.second + " horas" if last_message %></td>
               <td><%= last_message.read ? "Sim" : "Não"  %></td>
               <td><%= link_to '<i class="fa fa-trash icon-chat" style="font-size: 19px" title="Eliminar"></i>'.html_safe, chat, method: :delete, data: { confirm: 'Deseja prosseguir com esta acção?' } if can? :destroy, chat %></td>
@@ -32,3 +34,4 @@
       <br>
 </div>
 </div>
+
