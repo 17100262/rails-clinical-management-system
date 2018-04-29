@@ -4,10 +4,13 @@
   <p id="notice"><%= notice %></p>
   <div class="row m-b-xs">
     <div class="col-lg-12 m-b-md">
+      <% if params[:me] %>
+        <%= link_to 'Todos os casos', clinical_cases_path, class:"btn btn-sm w-150 btn-default m-t-xs" %>
+      <% else %>
         <%= link_to 'Os meus casos', clinical_cases_path({me: true}), class:"btn btn-sm w-150 btn-default m-t-xs" %>
-        <%= link_to 'Novo caso clínico', new_clinical_case_path, class:"btn btn-sm w-150 btn-primary m-t-xs pull-right" %>
+      <% end %>
+      <%= link_to 'Novo caso clínico', new_clinical_case_path, class:"btn btn-sm w-150 btn-primary m-t-xs pull-right" %>
     </div>
-    
   </div>
   
 
@@ -17,7 +20,7 @@
 <table class="table white-bg border-left-right border-top-bottom table-icons">
   <thead>
     
-    <tr>
+    <tr class="bg-primary">
       <th> Identificador único</th>
       <th> Autor</th>
       <th class="actions">Acções</th>
