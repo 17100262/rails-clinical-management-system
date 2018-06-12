@@ -1,50 +1,57 @@
 <div class="container-fluid container-top" style="">
-
-<div class="container">
-  <p id="notice"><%= notice %></p>
-  <div class="row m-b-xs">
-    <div class="col-lg-12 m-b-md">
-      <% if params[:me] %>
-        <%= link_to 'Todos os casos', clinical_cases_path, class:"btn btn-sm w-150 btn-default m-t-xs" %>
-      <% else %>
-        <%= link_to 'Os meus casos', clinical_cases_path({me: true}), class:"btn btn-sm w-150 btn-default m-t-xs" %>
-      <% end %>
-      <%= link_to 'Novo caso clínico', new_clinical_case_path, class:"btn btn-sm w-150 btn-primary m-t-xs pull-right" %>
-    </div>
-  </div>
-  
-
-
-
-<div class="table-responsive project-list">
-<table class="table white-bg border-left-right border-top-bottom table-icons">
-  <thead>
-    
-    <tr class="bg-primary">
-      <th> Identificador único</th>
-      <th> Autor</th>
-      <th class="actions">Acções</th>
+   <div class="container">
+      <p id="notice"><%= notice %></p>
+      <div class="row m-b-xs">
+         <div class="col-lg-12 m-b-md">
+            <% if params[:me] %>
+            <%= link_to 'Todos os casos', clinical_cases_path, class:"btn btn-sm w-150 btn-default m-t-xs" %>
+            <% else %>
+            <%= link_to 'Os meus casos', clinical_cases_path({me: true}), class:"btn btn-sm w-150 btn-default m-t-xs" %>
+            <% end %>
+            <% unless current_user.user_type == "MGF" %>
+            <%= link_to 'Novo caso clínico', new_clinical_case_path, class:"btn btn-sm w-150 btn-primary m-t-xs pull-right" %>
+            <% end %>
+         </div>
+      </div>
       
-    </tr>
-  </thead>
-
-  <tbody>
-    <% counter = 1 %>
-    <% @clinical_cases.each do |clinical_case| %>
-      <tr>
-        <td><%= clinical_case.unique_identifier  %></td>
-        <td> <%= clinical_case.user.name %></td>
-        <td><%= link_to '<i class="fa fa-folder-open icon-chat" style="font-size: 19px" title="Consultar"></i>'.html_safe, clinical_case, class:"" %>
-        <%= link_to '<i class="fa fa-edit icon-chat" style="font-size: 19px" title="Editar"></i>'.html_safe, edit_clinical_case_path(clinical_case) , class:"" if can? :update, clinical_case %>
-        <%= link_to '<i class="fa fa-trash icon-chat" style="font-size: 19px" title="Apagar"></i>'.html_safe, clinical_case, method: :delete, data: { confirm: 'Deseja prosseguir com esta acção?'}, class:""  if can? :destroy, clinical_case %>
-        <%= link_to '<i class="fa fa-save icon-chat" style="font-size: 19px" title="Download"></i>'.html_safe, clinical_case_path(clinical_case,format: "xls"), class:"" %>
-        </td>
-        <% counter = counter + 1 %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="table-responsive project-list search">
+         <div class="">
+            <div class="col-md-6 col-md-offset-6 text-right search-right">
+               <% unless current_user.user_type!="MGF" %>
+               <%= form_tag('/clinical_cases', method: :get) do %>
+                 <%= text_field_tag 'query', nil ,placeholder: 'Pesquisa', class: "form-control input-sm" %>
+                 <%= submit_tag 'Search', class: "btn-primary btn-sm" %>
+               <% end %>
+               <% end %>
+            </div>
+         </div>
+         <table class="table white-bg border-left-right border-top-bottom table-icons">
+            <thead>
+               <tr class="bg-primary">
+                  <th> Identificador único</th>
+                  <th> Autor</th>
+                  <th class="actions">Acções</th>
+               </tr>
+            </thead>
+            <tbody>
+              <% if @clinical_cases %>
+                 <% counter = 1 %>
+                 <% @clinical_cases.each do |clinical_case| %>
+                 <tr>
+                    <td><%= clinical_case.unique_identifier  %></td>
+                    <td> <%= clinical_case.user.name %></td>
+                    <td><%= link_to '<i class="fa fa-folder-open icon-chat" style="font-size: 19px" title="Consultar"></i>'.html_safe, clinical_case, class:"" %>
+                       <%= link_to '<i class="fa fa-edit icon-chat" style="font-size: 19px" title="Editar"></i>'.html_safe, edit_clinical_case_path(clinical_case) , class:"" if can? :update, clinical_case %>
+                       <%= link_to '<i class="fa fa-trash icon-chat" style="font-size: 19px" title="Apagar"></i>'.html_safe, clinical_case, method: :delete, data: { confirm: 'Deseja prosseguir com esta acção?'}, class:""  if can? :destroy, clinical_case %>
+                       <%= link_to '<i class="fa fa-save icon-chat" style="font-size: 19px" title="Download"></i>'.html_safe, clinical_case_path(clinical_case,format: "xls"), class:"" %>
+                       <%= link_to '<i class="fa fa-save icon-chat" style="font-size: 19px" title="Download"></i>'.html_safe, clinical_case_path(clinical_case,format: "pdf"), class:"" %>
+                    </td>
+                    <% counter = counter + 1 %>
+                 </tr>
+                 <% end %>
+                <% end %>
+            </tbody>
+         </table>
+      </div>
+   </div>
 </div>
-</div>
-</div>
-

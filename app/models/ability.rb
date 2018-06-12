@@ -7,7 +7,7 @@ class Ability
     #   user ||= User.new # guest user (not logged in)
       if user.admin?
         can :manage, :all
-      elsif(user.user? or user.moderator?)
+      elsif(user.user?)
         # can :read, :all
         # can :update,User,:id => user.id
         # can :edit,:user,:id => user.id
@@ -27,7 +27,8 @@ class Ability
         can :crud,Note,:user_id => user.id
         can :read, ClinicalCase
         can :create, ClinicalCase
-        can [:update,:destroy],ClinicalCase,:user_id => user.id
+        can [:update,:destroy],ClinicalCase
+        # ,:user_id => user.id
         # can :read,Note
         # can :create,Note,:user_id => user.id
         

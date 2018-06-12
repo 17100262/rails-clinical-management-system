@@ -8,12 +8,12 @@
 User.create(email:"admin@test.com",password:"admin123",role:"admin",approved: true, name: "Administrador")
 
 50.times do
-    User.create(email: Faker::Internet.unique.email,password:"admin123", name: Faker::Name.name,approved:true)
+    User.create(email: Faker::Internet.unique.email,password:"admin123", name: Faker::Name.name,approved:true,user_type:["OM","MGF"].sample)
 end
 
 50.times do
 	ClinicalCase.create!(user_id: User.all.pluck(:id).sample,
-	unique_identifier: Faker::Number.unique.between(1, 100),
+	unique_identifier: SecureRandom.hex(5),
 	date_of_birth: Faker::Date.between(50.years.ago, Date.today),
 	date_of_diagnostic: Faker::Date.between(2.years.ago, Date.today),
 	histology_type: ["Ductal","Lobular","Outro"].sample,
@@ -22,7 +22,9 @@ end
 	progesterone_receptors: ["Positivos","Negativos", "Desconhecido"].sample,
 	her2: ["Positivo","Negativo"].sample,
 	ki67: Faker::Number.between(1, 100),
-	estadiamento_clinico: Faker::Lorem.paragraph,
+	estadiamento_clinico_t_field: ["T0","T1","T2","T4","T4a","T4b","T4c","T4d"].sample,
+	estadiamento_clinico_n_field: ["N1","N2","N3"].sample,
+	estadiamento_clinico_m_field: ["M0","M1"].sample,
 	neoadjuvant_systemic_treatment: ["QT","HT","RT"].sample,
 	surgery_date: Faker::Date.between(2.years.ago, Date.today),
 	surgery_type: ["Tumorectomia","Mastectomia"].sample,
@@ -53,6 +55,7 @@ end
 	    date_of_imaging: Faker::Date.between(6.months.ago, Date.today),
 	    mammography: Faker::Boolean.boolean,
 	    eco_breast: Faker::Boolean.boolean,
+	    birads: [1,2,3,4,5].sample,
 	    result: Faker::Lorem.paragraph
 	)
 end

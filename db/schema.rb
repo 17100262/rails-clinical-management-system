@@ -39,7 +39,9 @@ ActiveRecord::Schema.define(version: 20180409132624) do
     t.string "progesterone_receptors"
     t.string "her2"
     t.integer "ki67"
-    t.text "estadiamento_clinico"
+    t.string "estadiamento_clinico_t_field"
+    t.string "estadiamento_clinico_n_field"
+    t.string "estadiamento_clinico_m_field"
     t.string "neoadjuvant_systemic_treatment"
     t.date "surgery_date"
     t.string "surgery_type"
@@ -85,6 +87,7 @@ ActiveRecord::Schema.define(version: 20180409132624) do
     t.bigint "clinical_case_id"
     t.date "date_of_imaging"
     t.boolean "mammography"
+    t.integer "birads"
     t.boolean "eco_breast"
     t.text "result"
     t.datetime "created_at", null: false

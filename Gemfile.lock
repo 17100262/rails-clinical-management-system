@@ -156,6 +156,7 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
+    pdfkit (0.8.2)
     pg (1.0.0)
     public_suffix (3.0.2)
     puma (3.11.2)
@@ -192,6 +193,8 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redis (3.3.5)
+    render_anywhere (0.0.12)
+      rails (>= 3.0.7)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -249,6 +252,8 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
+    wicked_pdf (1.1.0)
+    wkhtmltopdf-binary (0.12.3.1)
     xpath (3.0.0)
       nokogiri (~> 1.8)
 
@@ -274,10 +279,12 @@ DEPENDENCIES
   omniauth-linkedin-oauth2
   omniauth-twitter
   paperclip
+  pdfkit
   pg (>= 0.18, < 2.0)
   puma (~> 3.7)
   rails (~> 5.1.5)
   redis (~> 3.0)
+  render_anywhere
   sass-rails (~> 5.0)
   selenium-webdriver
   sidekiq
@@ -287,6 +294,8 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  wicked_pdf
+  wkhtmltopdf-binary
 
 BUNDLED WITH
    1.16.1

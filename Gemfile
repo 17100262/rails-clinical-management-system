@@ -67,3 +67,7 @@ gem "cocoon"
 gem 'faker'
 gem 'chartjs-ror'
 gem 'toastr-rails'
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
+gem 'render_anywhere'
+gem 'wicked_pdf'

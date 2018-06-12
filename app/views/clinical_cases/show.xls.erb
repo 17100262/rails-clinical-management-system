@@ -9,7 +9,8 @@
       
         <% @clinical_case.attributes.each do |key,value| %>
         <Row>
-        <Cell><Data ss:Type="String"><%= key.humanize %></Data></Cell>
+        <!--<Cell><Data ss:Type="String"><%#= key.humanize %></Data></Cell>-->
+        <Cell><Data ss:Type="String"><%= I18n.t(key.to_sym) %></Data></Cell>
         <Cell><Data ss:Type="String"><%= value.to_s %></Data></Cell>
         <!--<Cell><Data ss:Type="String">Release Date</Data></Cell>-->
         <!--<Cell><Data ss:Type="String">Price</Data></Cell>-->

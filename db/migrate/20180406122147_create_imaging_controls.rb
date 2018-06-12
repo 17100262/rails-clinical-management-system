@@ -4,6 +4,7 @@ class CreateImagingControls < ActiveRecord::Migration[5.1]
       t.references :clinical_case, foreign_key: true
       t.date :date_of_imaging
       t.boolean :mammography
+      t.integer :birads
       t.boolean :eco_breast
       t.text :result
 

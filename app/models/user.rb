@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many :clinical_cases, dependent: :destroy
   has_many :message_notifications,dependent: :destroy
   
-  enum role: [:user,:admin,:moderator]
+  enum role: [:user,:admin]
   
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

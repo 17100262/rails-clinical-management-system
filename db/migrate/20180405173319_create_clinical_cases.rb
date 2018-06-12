@@ -10,7 +10,9 @@ class CreateClinicalCases < ActiveRecord::Migration[5.1]
       t.string :progesterone_receptors
       t.string :her2
       t.integer :ki67
-      t.text :estadiamento_clinico
+      t.string :estadiamento_clinico_t_field
+      t.string :estadiamento_clinico_n_field
+      t.string :estadiamento_clinico_m_field
       t.string :neoadjuvant_systemic_treatment
       t.date :surgery_date
       t.string :surgery_type

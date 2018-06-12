@@ -1,4 +1,53 @@
 pt:
+  id: id
+  unique_identifier: Identificador único
+  date_of_birth: Data de nascimento
+  user_id: Utilizador
+  date_of_diagnostic: Data de diagnóstico
+  histology_type: Tipo de histologia
+  histology_level: Nível histológico
+  estrogen_receptors: Receptores de estrogénio
+  progesterone_receptors: Receptores de progesterona
+  her2: Her2
+  ki67: Ki67
+  estadiamento_clinico: Estadiamento clínico
+  neoadjuvant_systemic_treatment: Tratamento sistêmico neoadjuvante
+  surgery_date: Data da cirurgia
+  surgery_type: Tipo de cirurgia
+  sentinel_ganglion: Gânglio sentinela
+  axillary_emptying: Esvaziamento axilar
+  adjuvant_chemotherapy: Quimioterapia adjuvante
+  adjuvant_radiotherapy: Radioterapia adjuvante
+  adjuvant_hormone_therapy_duration: Duração da terapia hormonal adjuvante
+  adjuvant_hormone_therapy_treatment: Tratamento terapêutico hormonal adjuvante
+  date_of_ipo_discharge: Data de alta do ipo
+  first_follow_up_at_mgf: Primeiro follow up na mgf
+  date_of_suspected_recurrence_local_recurrence: Data de suspeita recorrência – Local
+  date_of_suspected_recurrence_collateral_breast_cancer: Data de suspeita recorrência – Cancro da mama colateral
+  date_of_suspected_recurrence_distance_metastasis: Data de suspeita recorrência – Metastização à distância
+  date_of_suspected_recurrence_second_neoplasm: Data de suspeita recorrência – Segunda neoplasia
+  date_of_confirmation_of_recurrence: Data de confirmação da recorrência
+  global_survival: Sobrevivência global
+  Specif_breast_cancer_survival: Sobrevivência específica de cancro da mama
+  last_contact_or_death: Último contato ou morte
+  death_cause: Causa de morte (oncologica vs não oncologica)
+  satisfaction_survey_record_discharge_text: Texto do ficheiro de registo de inquérito de satisfação (aquando da alta)
+  satisfaction_survey_record_discharge_file_name: Nome do ficheiro de registo de inquérito de satisfação (aquando da alta)
+  satisfaction_survey_record_discharge_content_type: Tipo do ficheiro de registo de inquérito de satisfação (aquando da alta)
+  satisfaction_survey_record_discharge_file_size: Tamanho do ficheiro de registo de inquérito de satisfação (aquando da alta)
+  satisfaction_survey_record_discharge_updated_at: Última actualização do ficheiro de registo de inquérito de satisfação (aquando da alta)
+  satisfaction_survey_record_first_text: Texto do ficheiro de registo de inquérito de satisfação (1º followUp)
+  satisfaction_survey_record_first_file_name: Nome do ficheiro de registo de inquérito de satisfação (1º followUp)
+  satisfaction_survey_record_first_content_type: Tipo do ficheiro de registo de inquérito de satisfação aquando da alta (1º followUp)
+  satisfaction_survey_record_first_file_size: Tamanho do ficheiro de registo de inquérito de satisfação aquando da alta (1º followUp)
+  satisfaction_survey_record_first_updated_at: Última actualização do ficheiro de registo de inquérito de satisfação aquando da alta (1º followUp)
+  satisfaction_survey_record_next_text: Texto do ficheiro de registo de inquérito de satisfação (followUps seguintes)
+  satisfaction_survey_record_next_file_name: Nome do ficheiro de registo de inquérito de satisfação (followUps seguintes)
+  satisfaction_survey_record_next_content_type: Tipo do ficheiro de registo de inquérito de satisfação aquando da alta (followUps seguintes)
+  satisfaction_survey_record_next_file_size: Tamanho do ficheiro de registo de inquérito de satisfação aquando da alta (followUps seguintes)
+  satisfaction_survey_record_next_updated_at: Última actualização do ficheiro de registo de inquérito de satisfação aquando da alta (followUps seguintes)
+  created_at: Criado em
+  updated_at: Atualizado em
   errors:
     messages:
       not_saved: 'Por favor verifique o(s) erro(s) abaixo'

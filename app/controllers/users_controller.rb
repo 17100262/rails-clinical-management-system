@@ -25,15 +25,15 @@ class UsersController < ApplicationController
             redirect_to edit_user_path, notice: @user.errors.full_messages.join
         end
     end
-    def make_moderator
-        @user = User.find(params[:id])
-        if @user.moderator?
-            @user.user!
-        else
-            @user.moderator!
-        end
-        redirect_to admin_path, notice: "O utilizador #{@user.moderator? ? " ganhou permissões de moderador": "perdeu permissões de moderador"}" 
-    end
+    # def make_moderator
+    #     @user = User.find(params[:id])
+    #     if @user.moderator?
+    #         @user.user!
+    #     else
+    #         @user.moderator!
+    #     end
+    #     redirect_to admin_path, notice: "O utilizador #{@user.moderator? ? " ganhou permissões de moderador": "perdeu permissões de moderador"}" 
+    # end
     
     def profile
         @user = User.find(params[:id])

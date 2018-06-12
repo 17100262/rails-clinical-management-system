@@ -1,0 +1,196 @@
+<div class="container-fluid container-top clinical-form" style="">
+<div id="<%= params[:controller]+"_"+params[:action] %>">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-offset-2 col-md-8">
+            <div class="ibox float-e-margins">
+               <div class="ibox">
+                  <%=link_to "Voltar à listagem", clinical_cases_path, class: "btn btn-sm btn-default w-150" %>
+                  <%=link_to "Ver os meus casos", clinical_cases_path({me: true}), class: "btn btn-sm btn-default w-150 pull-right" %>
+               </div>
+               <div class="ibox-title bg-primary">
+                  <h5>Novo caso clínico</h5>
+               </div>
+               <div class="ibox-content">
+                  <%= form_with(model: clinical_case, local: true, id: "clinical_case_form", class:"form-horizontal") do |form| %>
+                  <% if clinical_case.errors.any? %>
+                  <div id="error_explanation">
+                     <h3 class="text-danger">O seguinte está a impossibilitar a gravação do caso:</h3>
+                     <ul>
+                        <% clinical_case.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                        <% end %>
+                     </ul>
+                  </div>
+                  <% end %>
+                  <div class="form-group">
+                     <label class="col-lg-12 control-label">Data do 1º Follow-up na MGF</label>
+                     <div class="col-lg-12"><%= form.text_field :first_follow_up_at_mgf, class:"form-control date" %>
+                     </div>
+                  </div>
+                  <div class="row wrapper border-bottom  page-heading">
+                     <div class="col-lg-12">
+                        <h3>Data do 1º Controle Imagiológico:</h3>
+                     </div>
+                  </div>
+                  <div id="imaging_controls">
+                     <%= form.fields_for :imaging_controls do |ff| %>
+                     <%= render 'imaging_control_fields', f: ff %>
+                     <% end %>
+                     <% if current_page?(new_clinical_case_path)%>
+                     <div class="links">
+                        <%= link_to_add_association 'Adicionar Controlo Imagiológico', form, :imaging_controls, class: "" %>
+                     </div>
+                     <%end%>
+                  </div>
+                  <div class="row wrapper border-bottom  page-heading">
+                     <div class="col-lg-12">
+                        <h3>Data da Suspeita de Recorrência</h3>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-lg-12 control-label">Recorrência local</label>
+                     <div class="col-lg-12"><%= form.text_field :date_of_suspected_recurrence_local_recurrence, class:"form-control date" %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-lg-12 control-label">Cancro da Mama Contralateral</label>
+                     <div class="col-lg-12"><%= form.text_field :date_of_suspected_recurrence_collateral_breast_cancer, class:"form-control date" %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-lg-12 control-label">Metastização à Distância</label>
+                     <div class="col-lg-12"><%= form.text_field :date_of_suspected_recurrence_distance_metastasis, class:"form-control date" %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-lg-12 control-label">Segunda Neoplasia</label>
+                     <div class="col-lg-12"><%= form.text_field :date_of_suspected_recurrence_second_neoplasm, class:"form-control date" %>
+                     </div>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                     <label class="col-lg-12 control-label">Data da Confirmação da Recorrência (PFS)</label>
+                     <div class="col-lg-12"><%= form.text_field :date_of_confirmation_of_recurrence, class:"form-control date" %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-lg-12 control-label">Sobrevivência Global</label>
+                     <div class="col-lg-12"><%= form.text_area :global_survival, class:"form-control" %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-lg-12 control-label">Sobrevivência Específica de Cancro da Mama</label>
+                     <div class="col-lg-12"><%= form.text_area :Specif_breast_cancer_survival, class:"form-control" %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-lg-12 control-label">Último Contacto ou Morte</label>
+                     <div class="col-lg-12"><%= form.text_area :last_contact_or_death, class:"form-control" %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="col-lg-12 control-label">Causa de Morte (Oncologica vs Não Oncologica)</label>
+                     <div class="col-lg-12"><%= form.text_area :death_cause, class:"form-control" %>
+                     </div>
+                  </div>
+                  <div class="row wrapper border-bottom  page-heading">
+                     <div class="col-lg-12">
+                        <h3>Registo de Inquérito de Satisfação</h3>
+                     </div>
+                  </div>
+                  <label class="m-b-xs control-label">Aquando da Alta</label>
+                  <div class="form-group">
+                     <div class="col-lg-12"><%= form.text_area :satisfaction_survey_record_discharge_text, class:"form-control m-b-xs" %>
+                     </div>
+                     <div class="col-lg-12">
+                        <div class="fileinput fileinput1 fileinput-new input-group" data-provides="fileinput">
+                           <div class="form-control" data-trigger="fileinput">
+                              <div class="namee1"><%= @clinical_case.satisfaction_survey_record_discharge_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_discharge.exists? ) %>
+                              </div>
+                              <span class="fileinput-filename"></span>
+                           </div>
+                           <span class="input-group-addon btn btn-default btn-file">
+                           <span class="fileinput-new" style="font-size: 12px">Seleccionar ficheiro</span>
+                           <span class="fileinput-exists">Alterar</span>
+                           <%= form.file_field :satisfaction_survey_record_discharge, class:"file1" %>
+                           <% if @clinical_case.satisfaction_survey_record_discharge.exists? %>
+                           <%#= link_to 'Remove File',  %>
+                           <% end  %>
+                           </span>
+                           <a href="#" class="input-group-addon btn btn-default fileinput-exists remove1" data-dismiss="fileinput">Remover</a>
+                        </div>
+                     </div>
+                  </div>
+                  <label class="m-b-xs control-label"> Após 1º follow-up </label>
+                  <div class="form-group">
+                     <div class="col-lg-12"><%= form.text_area :satisfaction_survey_record_first_text, class:"form-control m-b-xs" %>
+                     </div>
+                     <div class="col-lg-12">
+                        <div class="fileinput fileinput2 fileinput-new input-group" data-provides="fileinput">
+                           <div class="form-control" data-trigger="fileinput">
+                              <div class="namee2"><%= @clinical_case.satisfaction_survey_record_first_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_first.exists? ) %>
+                              </div>
+                              <span class="fileinput-filename"></span>
+                           </div>
+                           <span class="input-group-addon btn btn-default btn-file">
+                           <span class="fileinput-new" style="font-size: 12px">Seleccionar ficheiro</span>
+                           <span class="fileinput-exists">Alterar</span>
+                           <%= form.file_field :satisfaction_survey_record_first, class:"file2" %>
+                           </span>
+                           <a href="#" class="input-group-addon btn btn-default fileinput-exists remove2" data-dismiss="fileinput">Remover</a>
+                        </div>
+                     </div>
+                  </div>
+                  <label class="m-b-xs control-label">Seguintes</label>
+                  <div class="form-group">
+                     <div class="col-lg-12"> <%= form.text_area :satisfaction_survey_record_next_text, class:"form-control m-b-xs" %>
+                     </div>
+                     <div class="col-lg-12">
+                        <div class="fileinput fileinput3 fileinput-new input-group" data-provides="fileinput">
+                           <div class="form-control" data-trigger="fileinput">
+                              <div class="namee3"><%= @clinical_case.satisfaction_survey_record_next_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_next.exists? )%>
+                              </div>
+                              <span class="fileinput-filename"></span>
+                           </div>
+                           <span class="input-group-addon btn btn-default btn-file">
+                           <span class="fileinput-new" style="font-size: 12px">Seleccionar ficheiro</span>
+                           <span class="fileinput-exists">Alterar</span>
+                           <%= form.file_field :satisfaction_survey_record_next, class:"file3" %>
+                           </span>
+                           <a href="#" class="input-group-addon btn btn-default fileinput-exists remove3" data-dismiss="fileinput">Remover</a>
+                        </div>
+                     </div>
+                  </div>
+                  <div id="action_buttons" class="form-group">
+                     <div class="col-lg-12 m-t-md">
+                        <%= link_to 'Cancelar', clinical_cases_path, class: "btn btn-sm btn-default w-150" %>
+                        <%= form.submit "Submeter", class:"btn btn-sm btn-primary w-150 pull-right" %>
+                     </div>
+                  </div>
+                  <% end %>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<script>
+   <% for id in 1..10 do %>
+   
+     $(document).ready(function(){
+     
+     
+     if($('.namee<%=id%>').text() != 0 ){ 
+   
+   
+     $('.fileinput<%=id%>').addClass("fileinput-exists").removeClass("fileinput-new");
+     }
+     $('.remove<%=id%>').on('click', function(){
+       $('.namee<%=id%>').html("");
+       $('.file<%=id%>').val() == "";
+     });
+      });
+     
+   <% end %>
+</script>

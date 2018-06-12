@@ -1,0 +1,409 @@
+  <div class="container-fluid container-top clinical-form" style="">
+  <div id="<%= params[:controller]+"_"+params[:action] %>">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+          <div class="ibox float-e-margins">
+            <div class="ibox">
+              <%=link_to "Voltar à listagem", clinical_cases_path, class: "btn btn-sm btn-default w-150" %>
+              <%=link_to "Ver os meus casos", clinical_cases_path({me: true}), class: "btn btn-sm btn-default w-150 pull-right" %>
+            </div>
+            <div class="ibox-title bg-primary">
+                <h5>Novo caso clínico</h5>
+            </div>
+            <div class="ibox-content">
+              <%= form_with(model: clinical_case, local: true, id: "clinical_case_form", class:"form-horizontal") do |form| %>
+                  <% if clinical_case.errors.any? %>
+                    <div id="error_explanation">
+                      <h3 class="text-danger">O seguinte está a impossibilitar a gravação do caso:</h3>
+                      <ul>
+                      <% clinical_case.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                     
+                    </div>
+                  <% end %>
+                  <% unless params[:action] == "new" %>
+                  <div class="form-group"><label class="col-lg-12 control-label">Identificador único</label>
+        
+                      <div class="col-lg-12"><%= form.text_field :unique_identifier,required: true, class:"form-control" %>
+                      </div>
+                  </div>
+                  <% end %>
+                  
+                    <div class="form-group"><label class="col-lg-12 control-label">Data de nascimento</label>
+        
+                        <div class="col-lg-12"><%#= form.date_field :date_of_birth, class:"form-control" %>
+                        <!--,value: form.object.try(:strftime,"%d/%m/%Y")-->
+                        <%= form.text_field :date_of_birth,class:"form-control date" %>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Data de diagnóstico de cancro da mama</label>
+        
+                        <div class="col-lg-12"><%= form.text_field :date_of_diagnostic, class:"form-control date" %>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Tipo Histológico</label>
+        
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :histology_type,"Ductal",:value => "Ductal" %>
+                        <%= form.label :histology_type, "Ductal", :value => "Ductal"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :histology_type,"Lobular",:value => "Lobular" %>
+                        <%= form.label :histology_type, "Lobular", :value => "Lobular"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :histology_type,"Outro",:value => "Outro" %>
+                        <%= form.label :histology_type, "Outro", :value => "Outro"  %></div>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Grau Histológico</label>
+        
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :histology_level,1,:value => 1 %>
+                        <%= form.label :histology_level, "1", :value => 1  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :histology_level,2,:value => 2 %>
+                        <%= form.label :histology_level, "2", :value => 2  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :histology_level,3,:value => 3 %>
+                        <%= form.label :histology_level, "3", :value => 3  %></div>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Recetores de Estrogénio</label>
+        
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :estrogen_receptors,"Positivos",:value => "Positivos" %>
+                        <%= form.label :estrogen_receptors, "Positivos", :value => "Positivos"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :estrogen_receptors,"Negativos",:value => "Negativos" %>
+                        <%= form.label :estrogen_receptors, "Negativos", :value => "Negativos"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :estrogen_receptors,"Desconhecido",:value => "Desconhecido" %>
+                        <%= form.label :estrogen_receptors, "Desconhecido", :value => "Desconhecido"  %></div>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Recetores de Progesterona</label>
+        
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :progesterone_receptors,"Positivos",:value => "Positivos" %>
+                        <%= form.label :progesterone_receptors, "Positivos", :value => "Positivos"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :progesterone_receptors,"Negativos",:value => "Negativos" %>
+                        <%= form.label :progesterone_receptors, "Negativos", :value => "Negativos"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :progesterone_receptors,"Desconhecido",:value => "Desconhecido" %>
+                        <%= form.label :progesterone_receptors, "Desconhecido", :value => "Desconhecido"  %></div>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">HER2</label>
+        
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :hher22,"Positivo",:value => "Positivo" %>
+                        <%= form.label :hher22, "Positivo", :value => "Positivo"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :hher22,"Negativo",:value => "Negativo" %>
+                        <%= form.label :hher22, "Negativo", :value => "Negativo"  %></div>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">KI67</label>
+        
+                        <div class="col-lg-12"><%= form.number_field :ki67, class:"form-control" %>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Estadiamento Clinico T field</label>
+        
+                        <div class="col-lg-12"><%= form.select :estadiamento_clinico_t_field,["T0","T1","T2","T4","T4a","T4b","T4c","T4d"] %>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group"><label class="col-lg-12 control-label">Estadiamento Clinico M field</label>
+        
+                        <div class="col-lg-12"><%= form.select :estadiamento_clinico_m_field,["M0","M1"] %>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group"><label class="col-lg-12 control-label">Estadiamento Clinico N field</label>
+        
+                        <div class="col-lg-12"><%= form.select :estadiamento_clinico_n_field,["N1","N2","N3"]%>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group"><label class="col-lg-12 control-label">Tratamento Sistémico Neoadjuvante</label>
+        
+                        <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :neoadjuvant_systemic_treatment,"QT",:value => "QT" %>
+                        <%= form.label :neoadjuvant_systemic_treatment, "QT", :value => "QT"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :neoadjuvant_systemic_treatment ,"HT",:value => "HT" %>
+                        <%= form.label :neoadjuvant_systemic_treatment , "HT", :value => "HT"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :neoadjuvant_systemic_treatment ,"RT",:value => "RT" %>
+                        <%= form.label :neoadjuvant_systemic_treatment , "RT", :value => "RT"  %></div></div>
+                        <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :neoadjuvant_systemic_treatment ,"Não",:value => "RT" %> 
+                        <%= form.label :neoadjuvant_systemic_treatment, "Não", :value => "Não"  %></div></div>
+                    </div>
+                        
+                    <div class="form-group"><label class="col-lg-12 control-label">Data da Cirurgia</label>
+        
+                        <div class="col-lg-12"><%= form.text_field :surgery_date, class:"form-control date" %>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Tipo de Cirurgia</label>
+        
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :surgery_type,"Tumorectomia",:value => "Tumorectomia" %>
+                        <%= form.label :surgery_type, "Tumorectomia", :value => "Tumorectomia"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :surgery_type ,"Mastectomia",:value => "Mastectomia" %>
+                        <%= form.label :surgery_type , "Mastectomia", :value => "Mastectomia"  %></div>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Gânglio Sentinela</label>
+        
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :sentinel_ganglion,"Sim",:value => "Sim" %>
+                          <%= form.label :sentinel_ganglion, "Sim", :value => "Sim"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :sentinel_ganglion ,"Não",:value => "Não" %>
+                          <%= form.label :sentinel_ganglion , "Não", :value => "Não"  %></div>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Esvaziamento Axilar</label>
+        
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :axillary_emptying,"Sim",:value => "Sim" %>
+                        <%= form.label :axillary_emptying, "Sim", :value => "Sim"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :axillary_emptying ,"Não",:value => "Não" %>
+                        <%= form.label :axillary_emptying , "Não", :value => "Não"  %></div>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Quimioterapia Adjuvante</label>
+        
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :adjuvant_chemotherapy,"Sim",:value => "Sim" %>
+                          <%= form.label :adjuvant_chemotherapy, "Sim", :value => "Sim"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :adjuvant_chemotherapy ,"Não",:value => "Não" %>
+                          <%= form.label :adjuvant_chemotherapy , "Não", :value => "Não"  %></div>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Radioterapia Adjuvante</label>
+        
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :adjuvant_radiotherapy,"Sim",:value => "Sim" %>
+                          <%= form.label :adjuvant_radiotherapy, "Sim", :value => "Sim"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :adjuvant_radiotherapy ,"Não",:value => "Não" %>
+                          <%= form.label :adjuvant_radiotherapy , "Não", :value => "Não"  %></div>
+                        </div>
+                    </div>
+                    
+                    <div class="row wrapper border-bottom  page-heading">
+                      <div class="col-lg-12">
+                          <h3>Hormonoterapia Adjuvante</h3>
+                      </div>
+                      
+                    </div>
+                    <div class="form-group">
+                        
+                       
+                        <label class="col-lg-12 control-label">Duração</label>
+        
+                        <div class="col-lg-12"><%= form.number_field :adjuvant_hormone_therapy_duration, class:"form-control" %>
+                        </div>
+                    
+                    <label class="col-lg-12 control-label">Tratamento</label>
+        
+                        <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :adjuvant_hormone_therapy_treatment ,"Tamoxifeno",:value => "Tamoxifeno" %>
+                          <%= form.label :adjuvant_hormone_therapy_treatment , "Tamoxifeno", :value => "Tamoxifeno"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"> <%= form.radio_button :adjuvant_hormone_therapy_treatment ,"Inibidor da Aromatase",:value => "Inibidor da Aromatase" %>
+                          <%= form.label :adjuvant_hormone_therapy_treatment , "Inibidor da Aromatase", :value => "Inibidor da Aromatase"  %></div>
+                        </div>
+                        <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :adjuvant_hormone_therapy_treatment ,"Goserelina",:value => "Goserelina" %>
+                          <%= form.label :adjuvant_hormone_therapy_treatment , "Goserelina", :value => "Goserelina"  %></div>
+                        </div>
+                   
+                    
+                    <div class="col-lg-12"><div class="i-checks"><%= form.radio_button :adjuvant_hormone_therapy_treatment ,"RT",:value => "RT" %> 
+                        <%= form.label :adjuvant_hormone_therapy_treatment, "Não", :value => "Não"  %> <br>
+                        </div></div>
+                        </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Data da Alta do IPO</label>
+        
+                        <div class="col-lg-12"><%= form.text_field :date_of_ipo_discharge, class:"form-control date" %>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group"><label class="col-lg-12 control-label">Data do 1º Follow-up na MGF</label>
+        
+                        <div class="col-lg-12"><%= form.text_field :first_follow_up_at_mgf, class:"form-control date" %>
+                        </div>
+                    </div>
+                    <div class="row wrapper border-bottom  page-heading">
+                      <div class="col-lg-12">
+                          <h3>Data do 1º Controle Imagiológico:</h3>
+                      </div>
+                      
+                  </div>
+                    <div id="imaging_controls">
+                      <%= form.fields_for :imaging_controls do |ff| %>
+                          <%= render 'imaging_control_fields', f: ff %>
+                      <% end %>
+                      <% if current_page?(new_clinical_case_path)%>
+                          <div class="links">
+                            <%= link_to_add_association 'Adicionar Controlo Imagiológico', form, :imaging_controls, class: "" %>
+                          </div>
+                      <%end%>
+                    </div>
+                    <div class="row wrapper border-bottom  page-heading">
+                      <div class="col-lg-12">
+                          <h3>Data da Suspeita de Recorrência</h3>
+                      </div>
+                      
+                  </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Recorrência local</label>
+        
+                        <div class="col-lg-12"><%= form.text_field :date_of_suspected_recurrence_local_recurrence, class:"form-control date" %>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Cancro da Mama Contralateral</label>
+        
+                        <div class="col-lg-12"><%= form.text_field :date_of_suspected_recurrence_collateral_breast_cancer, class:"form-control date" %>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Metastização à Distância</label>
+        
+                        <div class="col-lg-12"><%= form.text_field :date_of_suspected_recurrence_distance_metastasis, class:"form-control date" %>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Segunda Neoplasia</label>
+        
+                        <div class="col-lg-12"><%= form.text_field :date_of_suspected_recurrence_second_neoplasm, class:"form-control date" %>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group"><label class="col-lg-12 control-label">Data da Confirmação da Recorrência (PFS)</label>
+        
+                        <div class="col-lg-12"><%= form.text_field :date_of_confirmation_of_recurrence, class:"form-control date" %>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Sobrevivência Global</label>
+        
+                        <div class="col-lg-12"><%= form.text_area :global_survival, class:"form-control" %>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Sobrevivência Específica de Cancro da Mama</label>
+        
+                        <div class="col-lg-12"><%= form.text_area :Specif_breast_cancer_survival, class:"form-control" %>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Último Contacto ou Morte</label>
+        
+                        <div class="col-lg-12"><%= form.text_area :last_contact_or_death, class:"form-control" %>
+                        </div>
+                    </div>
+                    <div class="form-group"><label class="col-lg-12 control-label">Causa de Morte (Oncologica vs Não Oncologica)</label>
+        
+                        <div class="col-lg-12"><%= form.text_area :death_cause, class:"form-control" %>
+                        </div>
+                    </div>
+                    <div class="row wrapper border-bottom  page-heading">
+                      <div class="col-lg-12">
+                          <h3>Registo de Inquérito de Satisfação</h3>
+    
+                          
+                      </div>
+                      
+                  </div>
+                    <label class="m-b-xs control-label">Aquando da Alta</label>
+                    <div class="form-group">
+                      <div class="col-lg-12"><%= form.text_area :satisfaction_survey_record_discharge_text, class:"form-control m-b-xs" %>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="fileinput fileinput1 fileinput-new input-group" data-provides="fileinput">
+                            <div class="form-control" data-trigger="fileinput">
+                              <div class="namee1"><%= @clinical_case.satisfaction_survey_record_discharge_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_discharge.exists? ) %>
+                                </div>
+                            <span class="fileinput-filename"></span>
+                            </div>
+                            <span class="input-group-addon btn btn-default btn-file">
+                                <span class="fileinput-new" style="font-size: 12px">Seleccionar ficheiro</span>
+                                <span class="fileinput-exists">Alterar</span>
+                                <%= form.file_field :satisfaction_survey_record_discharge, class:"file1" %>
+                                <% if @clinical_case.satisfaction_survey_record_discharge.exists? %>
+                                  <%#= link_to 'Remove File',  %>
+                                <% end  %>
+                            </span>
+                            <a href="#" class="input-group-addon btn btn-default fileinput-exists remove1" data-dismiss="fileinput">Remover</a>
+                        </div> 
+                          
+                        </div>
+                    </div>
+                    <label class="m-b-xs control-label"> Após 1º follow-up </label>
+                    <div class="form-group">
+                    <div class="col-lg-12"><%= form.text_area :satisfaction_survey_record_first_text, class:"form-control m-b-xs" %>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="fileinput fileinput2 fileinput-new input-group" data-provides="fileinput">
+                            
+                            <div class="form-control" data-trigger="fileinput">
+                              <div class="namee2"><%= @clinical_case.satisfaction_survey_record_first_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_first.exists? ) %>
+                                </div>
+                            <span class="fileinput-filename"></span>
+                            </div>
+                            <span class="input-group-addon btn btn-default btn-file">
+                                <span class="fileinput-new" style="font-size: 12px">Seleccionar ficheiro</span>
+                                <span class="fileinput-exists">Alterar</span>
+                                <%= form.file_field :satisfaction_survey_record_first, class:"file2" %>
+                            </span>
+                            <a href="#" class="input-group-addon btn btn-default fileinput-exists remove2" data-dismiss="fileinput">Remover</a>
+                        </div> 
+                          
+                        </div>
+                    </div>
+                    <label class="m-b-xs control-label">Seguintes</label>
+                    <div class="form-group">
+                      <div class="col-lg-12"> <%= form.text_area :satisfaction_survey_record_next_text, class:"form-control m-b-xs" %>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="fileinput fileinput3 fileinput-new input-group" data-provides="fileinput">
+                            <div class="form-control" data-trigger="fileinput">
+                                <div class="namee3"><%= @clinical_case.satisfaction_survey_record_next_file_name if (@clinical_case.id and @clinical_case.satisfaction_survey_record_next.exists? )%>
+                                </div>
+                            <span class="fileinput-filename"></span>
+                            </div>
+                            <span class="input-group-addon btn btn-default btn-file">
+                                <span class="fileinput-new" style="font-size: 12px">Seleccionar ficheiro</span>
+                                <span class="fileinput-exists">Alterar</span>
+                                <%= form.file_field :satisfaction_survey_record_next, class:"file3" %>
+                            </span>
+                            <a href="#" class="input-group-addon btn btn-default fileinput-exists remove3" data-dismiss="fileinput">Remover</a>
+                        </div> 
+                         
+                        </div>
+                    </div>
+                    <div id="action_buttons" class="form-group">
+                        <div class="col-lg-12 m-t-md">
+                          <%= link_to 'Cancelar', clinical_cases_path, class: "btn btn-sm btn-default w-150" %>
+                          <%= form.submit "Submeter", class:"btn btn-sm btn-primary w-150 pull-right" %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+    <% for id in 1..10 do %>
+    
+      $(document).ready(function(){
+      
+      
+      if($('.namee<%=id%>').text() != 0 ){ 
+
+
+      $('.fileinput<%=id%>').addClass("fileinput-exists").removeClass("fileinput-new");
+      }
+      $('.remove<%=id%>').on('click', function(){
+        $('.namee<%=id%>').html("");
+        $('.file<%=id%>').val() == "";
+      });
+       });
+      
+    <% end %>
+  </script>

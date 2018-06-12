@@ -1,0 +1,3 @@
+<% @clinical_case.attributes.each do |key,value| %>
+    <Strong><%= I18n.t(key.to_sym) %></Strong> : <%= value.to_s %><br><br>
+<% end %>

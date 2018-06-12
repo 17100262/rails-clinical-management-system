@@ -311,8 +311,28 @@
                 </div>
                 <div class="ibox-content">
                     <div>
+                        <div id="gauge"></div>
+                        
+                        <script>
+                            c3.generate({
+                                bindto: '#gauge',
+                                data:{
+                                    columns: [
+                                        ['data', <%= ClinicalCase.pluck(:ki67).compact.sum.to_f/ClinicalCase.count.to_f %>]
+                                    ],
+                
+                                    type: 'gauge'
+                                },
+                                color:{
+                                    pattern: ['#1ab394', '#BABABA']
+                
+                                }
+                            });
+
+                        </script>
+
                         <!--<canvas id="doughnutChart" height="140"></canvas>-->
-                        <%
+                        <%#
                             surgery_type_data = {
                                 labels: ClinicalCase.all.group(:progesterone_receptors).count.to_h.keys.map{|k| k==nil ? "N.D.": k},
                                  datasets: [{
@@ -329,7 +349,8 @@
                             
 
                         %>
-                        <%= doughnut_chart surgery_type_data,surgery_type_options %>
+                        <%#= radar_chart,surgery_type_data %>
+                        <%#= doughnut_chart surgery_type_data,surgery_type_options %>
                         
 
                         

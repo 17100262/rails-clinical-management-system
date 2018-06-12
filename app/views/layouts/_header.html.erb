@@ -21,7 +21,7 @@
                       </li>
                       
                       <% if user_signed_in? %>
-                        <% if current_user.admin? or current_user.moderator? %>
+                        <% if current_user.admin? %>
                           <li class="<%= (params[:controller]=="home" and params[:action]=="admin") ? "active": nil %>">
                             <a class="page-scroll" href="<%= admin_path %>"><i class="fas fa-cogs"></i>Gestão de Utilizadores</a>
                           </li>

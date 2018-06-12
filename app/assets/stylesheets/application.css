@@ -12,8 +12,8 @@
  *
  *= require_tree .
  *= require_self
- *= require jquery-ui
  *= require toastr
+ *= require jquery-ui
  *= require_custom
  */
  
@@ -133,4 +133,11 @@ pointer-events:none !important;
 
 .element-shadow-soft{
   box-shadow: 0px 0.25px 0.25px 0px;
+}
+.search-right input[type="text"]{
+   display: inline-block !important;
+   width: 35% !important;
+}
+.search .dataTables_length, .search .dataTables_filter{
+ display: none !important;
 }

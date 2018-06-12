@@ -1,7 +1,7 @@
 <div class="container-fluid container-top" style="">
 
 <div class="container">
-<% if current_user.admin? or current_user.moderator? %>
+<% if current_user.admin? %>
         <div class="row">
             
             <div class="table-responsive user-list">
@@ -25,7 +25,6 @@
                             <td> <%= user.email %> </td>
                             <td><%= link_to 'Remover', user, method: :delete, data: { confirm: 'Deseja prosseguir com esta acção?' },class: 'btn btn-sm btn-outline w-150' if can? :destroy, user %></td>
                             <td> <%= link_to (user.approved ? 'Suspender':'Aprovar'),approve_user_path({user_id: user.id,approved: !user.approved}),method: :put, class: "btn btn-sm btn-outline w-150 btn-#{user.approved ? 'danger':'primary'}"  if not current_user.id==user.id %> </td>
-                            <td> <%= link_to (user.moderator? ? 'Tornar utilizador':'Tornar moderador'),make_moderator_user_path(user),method: :put, class: "btn btn-sm btn-outline w-150 btn-primary" if current_user.id!=user.id and not current_user.moderator? %> </td>
                         </tr>
                     <% end %>
                   
