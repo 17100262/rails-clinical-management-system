@@ -20,7 +20,8 @@ class ClinicalCasesController < ApplicationController
       format.html
       format.xls
       format.pdf do
-        render pdf: "#{@clinical_case.id}",template: "clinical_cases/show.pdf.erb"   # Excluding ".pdf" extension.
+        render pdf: "#{@clinical_case.id}",template: "clinical_cases/show.pdf.erb",encoding: 'utf8'
+   # Excluding ".pdf" extension.
       end
     end
   end

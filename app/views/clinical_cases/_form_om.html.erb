@@ -8,7 +8,9 @@
       <div class="ibox">
          <%=link_to "Voltar à listagem", clinical_cases_path, class: "btn btn-sm btn-default w-150" %>
          <%=link_to "Ver os meus casos", clinical_cases_path({me: true}), class: "btn btn-sm btn-default w-150 pull-right" %>
-         <%= link_to 'Download in PDF', clinical_case_path(clinical_case,format: "pdf"), class:"btn btn-sm btn-default w-150 pull-right" %>
+      <% unless params[:action]=="new" %>
+         <%= link_to 'Gravar em PDF', clinical_case_path(clinical_case,format: "pdf"), class:"btn btn-sm btn-default w-150 pull-right" %>
+      <% end %>
       
       </div>
       <div class="ibox-title bg-primary">

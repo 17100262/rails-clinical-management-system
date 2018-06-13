@@ -1,6 +1,9 @@
 pt:
   id: id
   unique_identifier: Identificador único
+  estadiamento_clinico_t_field: Estadiamento clínico - T
+  estadiamento_clinico_n_field: Estadiamento clínico - N
+  estadiamento_clinico_m_field: Estadiamento clínico - M
   date_of_birth: Data de nascimento
   user_id: Utilizador
   date_of_diagnostic: Data de diagnóstico

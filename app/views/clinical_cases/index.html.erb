@@ -44,7 +44,7 @@
                        <%= link_to '<i class="fa fa-edit icon-chat" style="font-size: 19px" title="Editar"></i>'.html_safe, edit_clinical_case_path(clinical_case) , class:"" if can? :update, clinical_case %>
                        <%= link_to '<i class="fa fa-trash icon-chat" style="font-size: 19px" title="Apagar"></i>'.html_safe, clinical_case, method: :delete, data: { confirm: 'Deseja prosseguir com esta acção?'}, class:""  if can? :destroy, clinical_case %>
                        <%= link_to '<i class="fa fa-save icon-chat" style="font-size: 19px" title="Download"></i>'.html_safe, clinical_case_path(clinical_case,format: "xls"), class:"" %>
-                       <%= link_to '<i class="fa fa-save icon-chat" style="font-size: 19px" title="Download"></i>'.html_safe, clinical_case_path(clinical_case,format: "pdf"), class:"" %>
+                       <%= link_to '<i class="fa fa-file-pdf-o" style="font-size: 19px" title="Download"></i>'.html_safe, clinical_case_path(clinical_case,format: "pdf"), class:"" %>
                     </td>
                     <% counter = counter + 1 %>
                  </tr>

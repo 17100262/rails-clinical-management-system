@@ -25,9 +25,24 @@ class Ability
         # can :manage,Note,:user_id => user.id
         # can :read,Note,
         can :crud,Note,:user_id => user.id
-        can :read, ClinicalCase
-        can :create, ClinicalCase
-        can [:update,:destroy],ClinicalCase
+        
+        can :read ,ClinicalCase
+        if user.user_type == "OM"
+          can [:update,:destroy],ClinicalCase, :user_id => user.id
+          can :create, ClinicalCase
+          
+        elsif user.user_type == "MGF"
+          can [:update],ClinicalCase
+          
+        
+        end
+
+          
+        
+        # can :read, ClinicalCase
+        
+        # can [:update,:destroy],ClinicalCase
+        # ,user.user_type => "MGF"
         # ,:user_id => user.id
         # can :read,Note
         # can :create,Note,:user_id => user.id
